@@ -24,5 +24,5 @@ urlpatterns = [
     path("", include("necysc_app.urls")),
     path("admin/", admin.site.urls),
     path("__debug__/", include("debug_toolbar.urls")),
-   
+    path('favicon.ico', RedirectView.as_view(url=staticfiles_storage.url('images/favicon.ico'))),
 ]

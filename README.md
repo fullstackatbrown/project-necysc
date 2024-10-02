@@ -55,11 +55,14 @@ Django is a Model-View-Template (MVT) framework that allows you to build web app
 When creating a new feature, create a new view and a new template. Add the view to the `urls.py` file in the `necysc_app` folder.
 
 - Setting up Model for Applicants (features)
+- Setting up dummy data in SQLite DB
 - Setting up the Applicant Registration Form
 - Landing page
 - Registration pages
 - Login page
 - Admin dashboard
+
+Full feature list: [Features](https://docs.google.com/document/d/1HAvoRSCq9xL82BeaFbCh62o52kM0SjMGxGbaqewAdVM/edit?usp=sharing)
 
 ## How To Run
 
