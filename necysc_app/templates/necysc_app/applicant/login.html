@@ -3,7 +3,34 @@
 {% block title %} Login / Register {% endblock %} 
 
 {% block content %}
-<h1>Login / Register</h1>
+<h1>Login</h1>
+<form method="POST" action="">
+    {% csrf_token %}
+    {{form.username.label}}
+    {{form.username}}
+
+    {{form.password.label}}
+    {{form.password}}
+
+    <input type="submit" value="Login" name="Login User">
+</form>
+<div>
+    {{form.errors}}
+</div>
+
+<div>
+    Don't have an account? <a href="{% url 'necysc_app:register' %}">Sign Up</a>
+</div>
+
+<script>
+    var form_fields = document.getElementsByTagName('input')
+    form_fields[1].placeholder = 'Username..';
+    form_fields[2].placeholder = 'Enter password...';
+
+    for (var field in form_fields) {
+        form_fields[field].className += ' form-control'
+    }
+</script>
 
 <p>for NECYSC account</p>
 

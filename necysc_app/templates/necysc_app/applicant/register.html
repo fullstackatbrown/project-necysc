@@ -1,0 +1,48 @@
+{% extends "necysc_app/base.html" %} 
+
+{% block title %} Login / Register {% endblock %} 
+
+{% block content %}
+<h1>Register</h1>
+<form method="POST" action="">
+    {% csrf_token %}
+    {{form.username.label}}
+    {{form.username}}
+
+    {{form.email.label}}
+    {{form.email}}
+
+    {{form.password1.label}}
+    {{form.password1}}
+
+    {{form.password2.label}}
+    {{form.password2}}
+   
+    <input type="submit" value="Register" name="Create User">
+
+</form>
+    <div>
+        {{form.errors}}
+    </div>
+    <div>
+        Already have an account? <a href="{% url 'necysc_app:login' %}">Login</a>
+    </div>
+<script>
+    //starting at 1 because the CSRF token counts as an input field??
+    var form_fields = document.getElementsByTagName('input')
+    form_fields[1].placeholder = 'Username..';
+    form_fields[2].placeholder = 'Email..';
+    form_fields[3].placeholder = 'Enter password...';
+    form_fields[4].placeholder = 'Re-enter password...';
+
+    for (var field in form_fields) {
+        form_fields[field].className += ' form-control'
+    }
+</script>
+
+
+<p>for NECYSC account</p>
+
+
+{% endblock %}
+
