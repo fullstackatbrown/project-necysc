@@ -23,4 +23,5 @@ class Applicant(models.Model):
     #     # default= # TODO: maybe set a default?
     # )
 
-    pass
+    # program data
+    
