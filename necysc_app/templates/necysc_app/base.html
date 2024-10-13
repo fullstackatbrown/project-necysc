@@ -1,20 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-  <!-- Header -->
-  {% load static %} {% include 'necysc_app/header.html' %}
+<!-- Header -->
+{% load static %} {% include 'necysc_app/header.html' %}
 
-  <head>
-    <title>{% block title %} {% endblock %}</title>
-  </head>
+<head>
+  <title>{% block title %} {% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+    rel="stylesheet">
+</head>
 
-  <body>
-    <!-- Navbar -->
-    {% include 'necysc_app/navbar.html' %}
+<body>
+  <!-- Navbar -->
+  {% include 'necysc_app/navbar.html' %}
 
-    <!-- Content -->
-    <div class="container">{% block content %} {% endblock %}</div>
+  <!-- Content -->
+  <div class="container">{% block content %} {% endblock %}</div>
 
-    <!-- Footer -->
-    {% include 'necysc_app/footer.html' %}
-  </body>
+  <!-- Footer -->
+  {% include 'necysc_app/footer.html' %}
+</body>
+
 </html>
