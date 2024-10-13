@@ -96,10 +96,10 @@ class Applicant(models.Model):
     additional_emergency_contact_relationship = models.CharField(max_length=200, blank=True, null=True) # optional
     additional_emergency_contact_phone = models.CharField(max_length=15, blank=True, null=True) # optional
 
-    street_address = models.CharFIeld(max_length=200)
-    city = models.CharFIeld(max_length=200)
-    state = models.CharFIeld(max_length=200)
-    zip_code = models.CharFIeld(max_length=200)
+    street_address = models.CharField(max_length=200)
+    city = models.CharField(max_length=200)
+    state = models.CharField(max_length=200)
+    zip_code = models.CharField(max_length=200)
 
     applicant_bday = models.DateField()
     applicant_sex = models.CharField(
