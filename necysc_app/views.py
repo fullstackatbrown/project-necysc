@@ -1,5 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.contrib.auth.forms import UserCreationForm
+from .forms import CreateAuthenticationForm, CreateUserForm
 
 # Website Pages
 def index(request):
@@ -24,8 +26,31 @@ def faq(request):
 
 # Applicant Portal
 def login(request):
-    context = {}
+    if request.method == 'Post':
+        form = CreateAuthenticationForm(request, data = request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(request, username = username, password = password)
+            if user is not None:
+                login(request, user)
+                return redirect('home')
+    else:
+        form = CreateAuthenticationForm()
+    context = {'form': form}
     return render(request, 'necysc_app/applicant/login.html', context)
+
+def register(request):
+    form = CreateUserForm()
+
+    if request.method == 'POST':
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            #fix
+            return redirect('necysc_app:login')
+    context = {'form': form}
+    return render(request, 'necysc_app/applicant/register.html', context)
 
 def home(request):
     context = {}
