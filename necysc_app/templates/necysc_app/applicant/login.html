@@ -1,51 +1,37 @@
-{% extends "necysc_app/base.html" %}
+{% extends "necysc_app/base.html" %} 
 
-{% load static %}
+{% block title %} Login / Register {% endblock %} 
 
-{% block title %} Login / Register {% endblock %}
-
-<!-- Remember to add media queries -->
 {% block content %}
-<link rel="stylesheet" href="{% static 'necysc_app/login.css' %}">
-<div class="login_page">
-    <div class="login_form">
-        <h1>Welcome Back!</h1>
-        <form method="POST" action="" class="login_form_body">
-            {% csrf_token %}
-            <div>
-                {{ form.username.label }}
-                {{ form.username }}
-            </div>
-            <div>
-                {{ form.password.label }}
-                {{ form.password }}
-            </div>
+<h1>Login</h1>
+<form method="POST" action="">
+    {% csrf_token %}
+    {{form.username.label}}
+    {{form.username}}
 
-            <input type="submit" value="Login" name="Login User">
-        </form>
-        <div>
-            {{ form.errors }}
-        </div>
+    {{form.password.label}}
+    {{form.password}}
 
-
-        <script>
-            var form_fields = document.getElementsByTagName('input');
-            form_fields[1].placeholder = 'Username..';
-            form_fields[2].placeholder = 'Enter password...';
-
-            for (var i = 0; i < form_fields.length; i++) {
-                form_fields[i].className += ' form-control';
-            }
-        </script>
-
-
-    </div>
-    <div class="register_form">
-        <h2>Don't Have an Account?</h2>
-        <p>Sign up and discover great amounts of opportunities!</p>
-        <a href="{% url 'necysc_app:register' %}">Sign Up</a>
-    </div>
+    <input type="submit" value="Login" name="Login User">
+</form>
+<div>
+    {{form.errors}}
 </div>
 
+<div>
+    Don't have an account? <a href="{% url 'necysc_app:register' %}">Sign Up</a>
+</div>
+
+<script>
+    var form_fields = document.getElementsByTagName('input')
+    form_fields[1].placeholder = 'Username..';
+    form_fields[2].placeholder = 'Enter password...';
+
+    for (var field in form_fields) {
+        form_fields[field].className += ' form-control'
+    }
+</script>
+
+<p>for NECYSC account</p>
 
 {% endblock %}
