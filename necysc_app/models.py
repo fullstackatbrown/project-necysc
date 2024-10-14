@@ -41,6 +41,22 @@ class Applicant(models.Model):
         "AL": "Adult L",
         "AX": "Adult XL",
     }
+    
+    # choices for program data
+    PROGRAM_CHOICES={
+        "D": "Day",
+        "O": "Overnight",
+        "CIT": "CIT",
+        "C": "Counselor",
+        "EA": "EA",
+    }
+
+    # choices for forms
+    HEALTH_FORM_RECEIVED_CHOICES={
+        "NS": "Not Submitted",
+        "P": "Pending",
+        "A": "Approved",
+    }
 
     # general info
     user_email = models.EmailField()
@@ -109,6 +125,49 @@ class Applicant(models.Model):
     applicant_shirt_size = models.CharField(
         max_length=2,
         choices=SHIRT_SIZE_CHOICES)
+
+    # program data
+    program = models.CharField(
+        max_length=3,
+        choices=PROGRAM_CHOICES
+    )
+    payment_received = models.BooleanField(default=False)
+    payment_total = models.DecimalField(max_digits=10, decimal_places=2)
+    payment_camp = models.DecimalField(max_digits=10, decimal_places=2)
+    payment_donation = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+    payment_pod = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+
+    # other
+    allowed_pickup_persons = models.CharField(max_length=500, blank=True, null=True)
+    financial_aid_requested = models.BooleanField(default=False)
+    listing_on_weekbook = models.BooleanField(default=False)
+    camper_contact_email = models.EmailField(blank=True, null=True)
+    interest_in_committee = models.BooleanField(default=False)
+    interest_in_wkbook_ads = models.BooleanField(default=False)
+    available_for_carpool = models.BooleanField(default=False)
+    referrals = models.CharField(max_length=200, blank=True, null=True)
+    heard_from = models.CharField(max_length=200, blank=True, null=True)
+    preferred_roommate = models.CharField(max_length=200, blank=True, null=True)
+
+    # forms
+    health_form_a_received = models.CharField(
+        max_length=10,
+        choices=HEALTH_FORM_RECEIVED_CHOICES,
+        default="NS",
+    )
+    health_form_b_received = models.BooleanField(default=False)
+    medication_slip_received = models.BooleanField(default=False)
+    parent1_cori_status = models.CharField(max_length=10, blank=True, null=True)
+    parent1_sori_status = models.CharField(max_length=10, blank=True, null=True)
+    parent1_id_status = models.CharField(max_length=10, blank=True, null=True)
+    parent2_cori_status = models.CharField(max_length=10, blank=True, null=True)
+    parent2_sori_status = models.CharField(max_length=10, blank=True, null=True)
+    parent2_id_status = models.CharField(max_length=10, blank=True, null=True)
+    camper_cori_status = models.CharField(max_length=10, blank=True, null=True)
+    camper_sori_status = models.CharField(max_length=10, blank=True, null=True)
+    camper_id_status = models.CharField(max_length=10, blank=True, null=True)
+    camp_rule_agreement = models.BooleanField(default=False)
+    liability_agreement = models.BooleanField(default=False)
     
     # medical data
 
