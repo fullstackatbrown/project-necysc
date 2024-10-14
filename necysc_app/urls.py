@@ -13,6 +13,7 @@ urlpatterns = [
     
     # Applicant Portal Pages
     path("applicant/login/", views.login, name="login"),
+    path("applicant/register/", views.register, name="register"),
     path("applicant/", views.home, name="home"),
     path("applicant/new_application/", views.new_application, name="new_application"),
     path("applicant/application_status/", views.application_status, name="application_status"),
