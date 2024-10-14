@@ -129,11 +129,12 @@ class Applicant(models.Model):
     # program data
     program = models.CharField(
         max_length=3,
-        choices=PROGRAM_CHOICES
+        choices=PROGRAM_CHOICES,
+        default='Pending'
     )
     payment_received = models.BooleanField(default=False)
-    payment_total = models.DecimalField(max_digits=10, decimal_places=2)
-    payment_camp = models.DecimalField(max_digits=10, decimal_places=2)
+    payment_total = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    payment_camp = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     payment_donation = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     payment_pod = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
 
@@ -171,10 +172,10 @@ class Applicant(models.Model):
     
     # medical data
 
-    insurance_provider = models.CharField(max_length=200)
-    subscriber_name = models.CharField(max_length=200)
-    primary_physician_name = models.CharField(max_length=200)
-    primary_physician_phone = models.CharField(max_length=15)
+    insurance_provider = models.CharField(max_length=200, default='Pending')
+    subscriber_name = models.CharField(max_length=200, default='Pending')
+    primary_physician_name = models.CharField(max_length=200, default='Pending')
+    primary_physician_phone = models.CharField(max_length=15, default='Pending')
 
     # grant permission to questions - if left false contact guardian(s)
     grant_hospital_permission = models.BooleanField(default=False)
@@ -184,10 +185,11 @@ class Applicant(models.Model):
     grant_bug_spray_permission = models.BooleanField(default=False)
     grant_skin_treatment_permission = models.BooleanField(default=False)
 
+    #allergies description default pending temporarily
     allergies = models.BooleanField(default=False)
     if (allergies):
-        allergies_description = models.CharField(max_length=200)
-        initial_for_allergy_treatment = models.CharField(max_length=200)
+        allergies_description = models.CharField(max_length=200, default='Pending')
+        initial_for_allergy_treatment = models.CharField(max_length=200, default='Pending')
         epi_pen_prescribed = models.BooleanField(default=False)
     
     social_emotional_concerns = models.CharField(max_length=200, blank=True, null=True)
@@ -198,16 +200,17 @@ class Applicant(models.Model):
 
     medication = models.BooleanField(default=False)
     if(medication):
-        medication_description = models.CharField(max_length=200)
+        medication_description = models.CharField(max_length=200, default='Pending')
 
     opt_out_activities = models.CharField(max_length=200, blank=True, null=True)
     medical_comments = models.CharField(max_length=200, blank=True, null=True)
 
-    signature = models.CharField(max_length=200)
+    signature = models.CharField(max_length=200, default='Pending')
 
 
     # registration
 
-    group_id = models.IntegerField()
+    #default 0 temporarily
+    group_id = models.IntegerField(default=0)
     room_id = models.CharField(max_length=200, blank=True, null=True)
     internal_comments = models.CharField(max_length=200, blank=True, null=True)
