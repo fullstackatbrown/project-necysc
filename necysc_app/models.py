@@ -109,3 +109,46 @@ class Applicant(models.Model):
     applicant_shirt_size = models.CharField(
         max_length=2,
         choices=SHIRT_SIZE_CHOICES)
+    
+    # medical data
+
+    insurance_provider = models.CharField(max_length=200)
+    subscriber_name = models.CharField(max_length=200)
+    primary_physician_name = models.CharField(max_length=200)
+    primary_physician_phone = models.CharField(max_length=15)
+
+    # grant permission to questions - if left false contact guardian(s)
+    grant_hospital_permission = models.BooleanField(default=False)
+    grant_medical_treatment_permission = models.BooleanField(default=False)
+    grant_first_aid_permission = models.BooleanField(default=False)
+    grant_meds_permission = models.BooleanField(default=False)
+    grant_bug_spray_permission = models.BooleanField(default=False)
+    grant_skin_treatment_permission = models.BooleanField(default=False)
+
+    allergies = models.BooleanField(default=False)
+    if (allergies):
+        allergies_description = models.CharField(max_length=200)
+        initial_for_allergy_treatment = models.CharField(max_length=200)
+        epi_pen_prescribed = models.BooleanField(default=False)
+    
+    social_emotional_concerns = models.CharField(max_length=200, blank=True, null=True)
+    
+    wear_glasses = models.BooleanField(default=False)
+    wear_contacts = models.BooleanField(default=False)
+    wear_hearing_aids = models.BooleanField(default=False)
+
+    medication = models.BooleanField(default=False)
+    if(medication):
+        medication_description = models.CharField(max_length=200)
+
+    opt_out_activities = models.CharField(max_length=200, blank=True, null=True)
+    medical_comments = models.CharField(max_length=200, blank=True, null=True)
+
+    signature = models.CharField(max_length=200)
+
+
+    # registration
+
+    group_id = models.IntegerField()
+    room_id = models.CharField(max_length=200, blank=True, null=True)
+    internal_comments = models.CharField(max_length=200, blank=True, null=True)
