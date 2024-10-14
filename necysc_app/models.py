@@ -69,7 +69,8 @@ class Applicant(models.Model):
     app_status = models.CharField(
         max_length=1,
         choices=APP_STATUS_CHOICES,
-        # default= # TODO: maybe set a default? pending or incomplete?
+        # default= # TODO: maybe set a default? pending or incomplete? 
+
     )
     # TODO: this should be hidden from the user
     health_record_status = models.CharField(
@@ -130,11 +131,13 @@ class Applicant(models.Model):
     program = models.CharField(
         max_length=3,
         choices=PROGRAM_CHOICES,
-        default='Pending'
+        blank=True,
+        null=True
     )
+
     payment_received = models.BooleanField(default=False)
-    payment_total = models.DecimalField(max_digits=10, decimal_places=2, default=0)
-    payment_camp = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    payment_total = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+    payment_camp = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     payment_donation = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     payment_pod = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
 
@@ -172,10 +175,10 @@ class Applicant(models.Model):
     
     # medical data
 
-    insurance_provider = models.CharField(max_length=200, default='Pending')
-    subscriber_name = models.CharField(max_length=200, default='Pending')
-    primary_physician_name = models.CharField(max_length=200, default='Pending')
-    primary_physician_phone = models.CharField(max_length=15, default='Pending')
+    insurance_provider = models.CharField(max_length=200, blank=True)
+    subscriber_name = models.CharField(max_length=200, blank=True)
+    primary_physician_name = models.CharField(max_length=200, blank=True)
+    primary_physician_phone = models.CharField(max_length=15, blank=True)
 
     # grant permission to questions - if left false contact guardian(s)
     grant_hospital_permission = models.BooleanField(default=False)
@@ -185,11 +188,10 @@ class Applicant(models.Model):
     grant_bug_spray_permission = models.BooleanField(default=False)
     grant_skin_treatment_permission = models.BooleanField(default=False)
 
-    #allergies description default pending temporarily
     allergies = models.BooleanField(default=False)
     if (allergies):
-        allergies_description = models.CharField(max_length=200, default='Pending')
-        initial_for_allergy_treatment = models.CharField(max_length=200, default='Pending')
+        allergies_description = models.CharField(max_length=200, blank=True)
+        initial_for_allergy_treatment = models.CharField(max_length=200, blank=True)
         epi_pen_prescribed = models.BooleanField(default=False)
     
     social_emotional_concerns = models.CharField(max_length=200, blank=True, null=True)
@@ -200,17 +202,21 @@ class Applicant(models.Model):
 
     medication = models.BooleanField(default=False)
     if(medication):
-        medication_description = models.CharField(max_length=200, default='Pending')
+        medication_description = models.CharField(max_length=200, blank=True)
 
     opt_out_activities = models.CharField(max_length=200, blank=True, null=True)
-    medical_comments = models.CharField(max_length=200, blank=True, null=True)
+    medical_comments = models.CharField(max_length=200, blank=True)
 
-    signature = models.CharField(max_length=200, default='Pending')
+    signature = models.CharField(max_length=200, blank=True)
 
 
     # registration
 
-    #default 0 temporarily
-    group_id = models.IntegerField(default=0)
+
+    group_id = models.IntegerField(blank=True, null=True)
     room_id = models.CharField(max_length=200, blank=True, null=True)
     internal_comments = models.CharField(max_length=200, blank=True, null=True)
+
+    # default heading in admin changed to the applicants name
+    def __str__(self):
+        return f"{self.applicant_fname} {self.applicant_lname}'s Application"
