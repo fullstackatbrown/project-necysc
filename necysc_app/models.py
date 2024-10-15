@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 import datetime
 from django.core.validators import MinValueValidator
 
-# Create your models here.
 
 # TODO: should we make this a forms.ModelForm?
 class Applicant(models.Model):
@@ -45,7 +44,7 @@ class Applicant(models.Model):
     # choices for program data
     PROGRAM_CHOICES={
         "D": "Day",
-        "O": "Overnight",
+        "ON": "Overnight",
         "CIT": "CIT",
         "C": "Counselor",
         "EA": "EA",
@@ -57,10 +56,8 @@ class Applicant(models.Model):
         "P": "Pending",
         "A": "Approved",
     }
-
-    # general info
-    user_email = models.EmailField()
-    user_pw = models.CharField(max_length=200)
+    
+    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
 
     # status data
     created_at = models.DateTimeField(auto_now_add=True)
@@ -69,14 +66,13 @@ class Applicant(models.Model):
     app_status = models.CharField(
         max_length=1,
         choices=APP_STATUS_CHOICES,
-        # default= # TODO: maybe set a default? pending or incomplete?
+         default= "I" # TODO: maybe set a default? pending or incomplete?
     )
     # TODO: this should be hidden from the user
     health_record_status = models.CharField(
         max_length=2,
         choices=HEALTH_RECORD_STATUS_CHOICES,
         default="NC",
-        # widget=forms.HiddenInput()
     )
 
     # personal data
@@ -129,13 +125,14 @@ class Applicant(models.Model):
     # program data
     program = models.CharField(
         max_length=3,
-        choices=PROGRAM_CHOICES
+        choices=PROGRAM_CHOICES,
+        default="ON",
     )
     payment_received = models.BooleanField(default=False)
-    payment_total = models.DecimalField(max_digits=10, decimal_places=2)
-    payment_camp = models.DecimalField(max_digits=10, decimal_places=2)
-    payment_donation = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
-    payment_pod = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+    payment_total = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    payment_camp = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    payment_donation = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True, default=0)
+    payment_pod = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True, default=0)
 
     # other
     allowed_pickup_persons = models.CharField(max_length=500, blank=True, null=True)
@@ -171,10 +168,10 @@ class Applicant(models.Model):
     
     # medical data
 
-    insurance_provider = models.CharField(max_length=200)
-    subscriber_name = models.CharField(max_length=200)
-    primary_physician_name = models.CharField(max_length=200)
-    primary_physician_phone = models.CharField(max_length=15)
+    insurance_provider = models.CharField(max_length=200, blank=True, null=True)
+    subscriber_name = models.CharField(max_length=200, blank=True, null=True)
+    primary_physician_name = models.CharField(max_length=200, blank=True, null=True)
+    primary_physician_phone = models.CharField(max_length=15, blank=True, null=True)
 
     # grant permission to questions - if left false contact guardian(s)
     grant_hospital_permission = models.BooleanField(default=False)
@@ -185,10 +182,9 @@ class Applicant(models.Model):
     grant_skin_treatment_permission = models.BooleanField(default=False)
 
     allergies = models.BooleanField(default=False)
-    if (allergies):
-        allergies_description = models.CharField(max_length=200)
-        initial_for_allergy_treatment = models.CharField(max_length=200)
-        epi_pen_prescribed = models.BooleanField(default=False)
+    allergies_description = models.CharField(max_length=200, blank=True, null=True)
+    initial_for_allergy_treatment = models.CharField(max_length=200, blank=True, null=True)
+    epi_pen_prescribed = models.BooleanField(default=False)
     
     social_emotional_concerns = models.CharField(max_length=200, blank=True, null=True)
     
@@ -197,17 +193,17 @@ class Applicant(models.Model):
     wear_hearing_aids = models.BooleanField(default=False)
 
     medication = models.BooleanField(default=False)
-    if(medication):
-        medication_description = models.CharField(max_length=200)
+    medication_description = models.CharField(max_length=200, blank=True, null=True)
 
     opt_out_activities = models.CharField(max_length=200, blank=True, null=True)
     medical_comments = models.CharField(max_length=200, blank=True, null=True)
 
-    signature = models.CharField(max_length=200)
+    signature = models.CharField(max_length=200, blank=True, null=True)
 
 
     # registration
-
-    group_id = models.IntegerField()
+    
+    # TODO: hidden in form
+    group_id = models.CharField(max_length=200, blank=True, null=True, default="0")
     room_id = models.CharField(max_length=200, blank=True, null=True)
     internal_comments = models.CharField(max_length=200, blank=True, null=True)
