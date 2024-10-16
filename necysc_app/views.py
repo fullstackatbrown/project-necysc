@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 from .forms import CreateAuthenticationForm, CreateUserForm
+from django.contrib.auth import login as auth_login, authenticate
 
 # Website Pages
 def index(request):
@@ -26,15 +27,15 @@ def faq(request):
 
 # Applicant Portal
 def login(request):
-    if request.method == 'Post':
+    if request.method == 'POST':
         form = CreateAuthenticationForm(request, data = request.POST)
         if form.is_valid():
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
             user = authenticate(request, username = username, password = password)
             if user is not None:
-                login(request, user)
-                return redirect('home')
+                auth_login(request, user)
+                return redirect('necysc_app:home')
     else:
         form = CreateAuthenticationForm()
     context = {'form': form}
@@ -42,7 +43,6 @@ def login(request):
 
 def register(request):
     form = CreateUserForm()
-
     if request.method == 'POST':
         form = CreateUserForm(request.POST)
         if form.is_valid():
@@ -53,18 +53,26 @@ def register(request):
     return render(request, 'necysc_app/applicant/register.html', context)
 
 def home(request):
+    if not request.user.is_authenticated:
+        return redirect('necysc_app:login')
     context = {}
     return render(request, 'necysc_app/applicant/index.html', context)
 
 def new_application(request):
+    if not request.user.is_authenticated:
+        return redirect('necysc_app:login')
     context = {}
     return render(request, 'necysc_app/applicant/new_application.html', context)
 
 def application_status(request):
+    if not request.user.is_authenticated:
+        return redirect('necysc_app:login')
     context = {}
     return render(request, 'necysc_app/applicant/application_status.html', context)
 
 def application_review(request):
+    if not request.user.is_authenticated:
+        return redirect('necysc_app:login')
     # for reviewing and editing a single application
     context = {}
     return render(request, 'necysc_app/applicant/read_application.html', context)   
