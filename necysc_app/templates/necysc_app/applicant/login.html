@@ -14,8 +14,8 @@
         <form method="POST" action="" class="login_form_body">
             {% csrf_token %}
             <div>
-                {{ form.username.label }}
-                {{ form.username }}
+                {{ form.email.label }}
+                {{ form.email }}
             </div>
             <div>
                 {{ form.password.label }}
@@ -38,7 +38,7 @@
     </div>
     <script>
         var form_fields = document.getElementsByTagName('input')
-        form_fields[1].placeholder = 'Username..';
+        form_fields[1].placeholder = 'Email...';
         form_fields[2].placeholder = 'Enter password...';
         for (var field in form_fields) {
             form_fields[field].className += ' form-control'

@@ -10,7 +10,9 @@ class CreateUserForm(UserCreationForm):
         fields = ['username', 'email', 'password1', 'password2']
 
 class CreateAuthenticationForm(AuthenticationForm):
+    email = forms.EmailField(label='Email', max_length=255)
+    
     class Meta:
         model = User
-        fields = ['username', 'password']
+        fields = ['email', 'password']
 
