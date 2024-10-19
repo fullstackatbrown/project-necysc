@@ -1,11 +1,45 @@
 {% extends "necysc_app/base.html" %}
 
+{% load static %}
+
 {% block title %} Applicant Portal {% endblock %}
 
 {% block content %}
+<link rel="stylesheet" href="{% static 'necysc_app/applicant_home.css' %}">
+
 <h1>Welcome!</h1>
 
-{{ applications }}
-{{ applications.fname }}
+{% if applications %}
+    <div class="dashboard">
+        {% for application in applications %}
+            {% comment <a href="{% url 'application_review' application.id %}" class="application-card"> %} {% endcomment %}
+            <div class="application-card">
+                <h2>{{ application.applicant_fname }} {{ application.applicant_lname }}</h2>
+                {% if application.applicant_chinese_name %}
+                    <h3>{{ application.applicant_chinese_name }}</h3>
+                {% endif %}
+                <div>
+                    <p>Created: {{ application.created_at|date:"F j, Y" }}</p>
+                    <p>Updated: {{ application.last_updated_at|date:"F j, Y" }}</p>
+                </div>
+                <p class="status {{ application.app_status|lower }}">
+                        {% if application.app_status == 'A' %}
+                            Accepted
+                        {% elif application.app_status == 'D' %}
+                            Denied
+                        {% elif application.app_status == 'P' %}
+                            Pending
+                        {% elif application.app_status == 'I' %}
+                            Incomplete
+                        {% else %}
+                             
+                        {% endif %}
+                </p>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <h3>You have no applications.</h3>
+{% endif %}
 
 {% endblock %}
