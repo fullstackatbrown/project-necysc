@@ -1,0 +1,64 @@
+.dashboard {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.application-card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    width: 300px;
+    height: 180px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    position: relative;
+}
+
+.application-card h2 {
+    font-size: 1.5em;
+    margin: 0 0 10px 0;
+}
+
+.application-card h3 {
+    font-size: 1.2em;
+    color: #555;
+}
+
+.application-card p {
+    margin: 5px 0;
+}
+
+.status {
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: inline-block;
+    z-index: 1;
+}
+
+.status.a {
+    background-color: rgba(0, 128, 0, 0.2);
+    color: green;
+}
+
+.status.d {
+    background-color: rgba(255, 0, 0, 0.2);
+    color: red;
+}
+
+.status.p {
+    background-color: rgba(255, 165, 0, 0.2);
+    color: orange;
+}
+
+.status.i {
+    background-color: rgba(0, 0, 255, 0.2);
+    color: blue;
+}
