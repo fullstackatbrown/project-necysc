@@ -1,8 +1,11 @@
-{% extends "necysc_app/base.html" %} 
+{% extends "necysc_app/base.html" %}
 
-{% block title %} Applicant Portal {% endblock %} 
+{% block title %} Applicant Portal {% endblock %}
 
 {% block content %}
 <h1>Welcome!</h1>
+
+{{ applications }}
+{{ applications.fname }}
 
 {% endblock %}

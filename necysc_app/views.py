@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 from .forms import CreateAuthenticationForm, CreateUserForm
+from .models import Applicant
 from django.contrib.auth import login as auth_login, authenticate
 
 # Website Pages
@@ -55,8 +56,11 @@ def register(request):
 def home(request):
     if not request.user.is_authenticated:
         return redirect('necysc_app:login')
-    context = {}
-    return render(request, 'necysc_app/applicant/index.html', context)
+
+    applications = Applicant.objects.filter(user=request.user)
+    
+    context = {'applications': applications}
+    return render(request, 'necysc_app/applicant/index.html', context)   
 
 def new_application(request):
     if not request.user.is_authenticated:
