@@ -44,6 +44,8 @@ def login(request):
 def register(request):
     form = CreateUserForm()
     if request.method == 'POST':
+        email = request.POST.get('email')
+        password = request.POST.get('password1')
         form = CreateUserForm(request.POST)
         if form.is_valid():
             form.save()
