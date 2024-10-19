@@ -30,9 +30,9 @@ def login(request):
     if request.method == 'POST':
         form = CreateAuthenticationForm(request, data = request.POST)
         if form.is_valid():
-            username = form.cleaned_data.get('username')
+            email = form.cleaned_data.get('email')
             password = form.cleaned_data.get('password')
-            user = authenticate(request, username = username, password = password)
+            user = authenticate(request, email = email, password = password)
             if user is not None:
                 auth_login(request, user)
                 return redirect('necysc_app:home')

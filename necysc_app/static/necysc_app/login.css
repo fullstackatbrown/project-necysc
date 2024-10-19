@@ -28,7 +28,7 @@
     width: 100%;
 }
 
-.login_form_body #id_username, .login_form_body #id_password {
+.login_form_body #id_email, .login_form_body #id_password {
     width: 300px;
     padding: 10px;
 }
