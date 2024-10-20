@@ -197,6 +197,8 @@ class Applicant(models.Model):
     medication_description = models.CharField(max_length=200, blank=True, null=True)
 
     opt_out_activities = models.CharField(max_length=200, blank=True, null=True)
+    
+    # hidden in form
     medical_comments = models.CharField(max_length=200, blank=True, null=True)
 
     signature = models.CharField(max_length=200, blank=True, null=True)
