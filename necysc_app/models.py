@@ -1,3 +1,4 @@
+from django import forms
 from django.db import models
 from django.contrib.auth.models import User
 import datetime
@@ -66,9 +67,9 @@ class Applicant(models.Model):
     app_status = models.CharField(
         max_length=1,
         choices=APP_STATUS_CHOICES,
-         default= "I" # TODO: maybe set a default? pending or incomplete?
+         default= "I"
     )
-    # TODO: this should be hidden from the user
+    # this should be hidden from the user
     health_record_status = models.CharField(
         max_length=2,
         choices=HEALTH_RECORD_STATUS_CHOICES,
@@ -76,57 +77,61 @@ class Applicant(models.Model):
     )
 
     # personal data
-    applicant_fname = models.CharField(max_length=200)
-    applicant_lname = models.CharField(max_length=200)
-    applicant_chinese_name = models.CharField(max_length=200, blank=True, null=True) # optional
-    applicant_email = models.EmailField()
+    applicant_fname = models.CharField(max_length=200, verbose_name="First Name")
+    applicant_lname = models.CharField(max_length=200, verbose_name="Last Name")
+    applicant_chinese_name = models.CharField(max_length=200, blank=True, null=True, verbose_name="Chinese Name") # optional
+    applicant_email = models.EmailField(verbose_name="Email")
 
-    parent1_fname = models.CharField(max_length=200)
-    parent1_lname = models.CharField(max_length=200)
+    parent1_fname = models.CharField(max_length=200, verbose_name="Primary Contact First Name")
+    parent1_lname = models.CharField(max_length=200, verbose_name="Primary Contact Last Name")
     parent1_relationship = models.CharField(
         max_length=1,
         choices=PARENT_RELATIONSHIP_CHOICES,
+        verbose_name="Primary Contact Relationship"
     )
-    parent1_phone = models.CharField(max_length=15)
-    parent1_email = models.EmailField()
-    parent1_for_POD = models.BooleanField()
+    parent1_phone = models.CharField(max_length=15, verbose_name="Primary Contact Phone")
+    parent1_email = models.EmailField(verbose_name="Primary Contact Email")
+    parent1_for_POD = models.BooleanField(verbose_name="Primary Contact as POD")
 
-    parent2_fname = models.CharField(max_length=200, blank=True, null=True) # optional
-    parent2_lname = models.CharField(max_length=200, blank=True, null=True) # optional
+    parent2_fname = models.CharField(max_length=200, blank=True, null=True, verbose_name="Secondary Contact First Name") # optional
+    parent2_lname = models.CharField(max_length=200, blank=True, null=True, verbose_name="Secondary Contact Last Name") # optional
     parent2_relationship = models.CharField(
         max_length=1,
         choices=PARENT_RELATIONSHIP_CHOICES,
-        blank=True, null=True) # optional
-    parent2_phone = models.CharField(max_length=15, blank=True, null=True) # optional
-    parent2_email = models.EmailField(blank=True, null=True) # optional
-    parent2_for_POD = models.BooleanField(blank=True, null=True) # optional
+        blank=True, null=True, verbose_name="Secondary Contact Relationship") # optional
+    parent2_phone = models.CharField(max_length=15, blank=True, null=True, verbose_name="Secondary Contact Phone") # optional
+    parent2_email = models.EmailField(blank=True, null=True, verbose_name="Secondary Contact Email") # optional
+    parent2_for_POD = models.BooleanField(blank=True, null=True, verbose_name="Secondary Contact as POD") # optional
 
-    interest_in_POD_lead = models.BooleanField()
+    interest_in_POD_lead = models.BooleanField(verbose_name="Interest in POD Lead")
 
-    additional_emergency_contact_fname = models.CharField(max_length=200, blank=True, null=True) # optional
-    additional_emergency_contact_lname = models.CharField(max_length=200, blank=True, null=True) # optional
-    additional_emergency_contact_relationship = models.CharField(max_length=200, blank=True, null=True) # optional
-    additional_emergency_contact_phone = models.CharField(max_length=15, blank=True, null=True) # optional
+    additional_emergency_contact_fname = models.CharField(max_length=200, blank=True, null=True, verbose_name="Emergency Contact First Name") # optional
+    additional_emergency_contact_lname = models.CharField(max_length=200, blank=True, null=True, verbose_name="Emergency Contact Last Name") # optional
+    additional_emergency_contact_relationship = models.CharField(max_length=200, blank=True, null=True, verbose_name="Emergency Contact Relationship") # optional
+    additional_emergency_contact_phone = models.CharField(max_length=15, blank=True, null=True, verbose_name="Emergency Contact Phone") # optional
 
-    street_address = models.CharField(max_length=200)
-    city = models.CharField(max_length=200)
-    state = models.CharField(max_length=200)
-    zip_code = models.CharField(max_length=200)
+    street_address = models.CharField(max_length=200, verbose_name="Street")
+    city = models.CharField(max_length=200, verbose_name="City")
+    state = models.CharField(max_length=200, verbose_name="State")
+    zip_code = models.CharField(max_length=200, verbose_name="Zip Code")
 
-    applicant_bday = models.DateField()
+    applicant_bday = models.DateField(verbose_name="Birthday")
     applicant_sex = models.CharField(
         max_length=1,
-        choices=SEX_CHOICES)
-    applicant_grade = models.IntegerField(validators=[MinValueValidator(0)])
+        choices=SEX_CHOICES,
+        verbose_name="Gender")
+    applicant_grade = models.IntegerField(validators=[MinValueValidator(0)], verbose_name="School Grade")
     applicant_shirt_size = models.CharField(
         max_length=2,
-        choices=SHIRT_SIZE_CHOICES)
+        choices=SHIRT_SIZE_CHOICES,
+        verbose_name="T-Shirt Size")
 
     # program data
     program = models.CharField(
         max_length=3,
         choices=PROGRAM_CHOICES,
         default="ON",
+        verbose_name="Program"
     )
     payment_received = models.BooleanField(default=False)
     payment_total = models.DecimalField(max_digits=10, decimal_places=2, default=0)
@@ -167,11 +172,10 @@ class Applicant(models.Model):
     liability_agreement = models.BooleanField(default=False)
     
     # medical data
-
-    insurance_provider = models.CharField(max_length=200, blank=True, null=True)
-    subscriber_name = models.CharField(max_length=200, blank=True, null=True)
-    primary_physician_name = models.CharField(max_length=200, blank=True, null=True)
-    primary_physician_phone = models.CharField(max_length=15, blank=True, null=True)
+    insurance_provider = models.CharField(max_length=200, blank=True, null=True, verbose_name="Health Insurance Provider")
+    subscriber_name = models.CharField(max_length=200, blank=True, null=True, verbose_name="Insurance Subscriber Name")
+    primary_physician_name = models.CharField(max_length=200, blank=True, null=True, verbose_name="Physician Name")
+    primary_physician_phone = models.CharField(max_length=15, blank=True, null=True, verbose_name="Physician Phone")
 
     # grant permission to questions - if left false contact guardian(s)
     grant_hospital_permission = models.BooleanField(default=False)
