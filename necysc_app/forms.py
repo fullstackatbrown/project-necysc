@@ -9,7 +9,7 @@ class CreateUserForm(UserCreationForm):
         model = User
         fields = ['username', 'email', 'password1', 'password2']
 
-class CreateAuthenticationForm(AuthenticationForm):
+class CreateAuthenticationForm(AuthenticationForm):    
     class Meta:
         model = User
         fields = ['username', 'password']

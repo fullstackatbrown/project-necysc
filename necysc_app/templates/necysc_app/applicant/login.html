@@ -3,34 +3,42 @@ Register {% endblock %} {% block content %}
 <link rel="stylesheet" href="{% static 'necysc_app/login.css' %}" />
 
 <div class="login_page">
-  <!-- Login Form -->
-  <div class="login_form">
-    <h1>Welcome Back!</h1>
-    <form method="POST" action="" class="login_form_body">
-      {% csrf_token %}
-      <div>{{ form.email.label }} {{ form.username }}</div>
-      <div>{{ form.password.label }} {{ form.password }}</div>
+    <!-- Login Form -->
+    <div class="login_form">
+        <h1>Welcome Back!</h1>
+        <form method="POST" action="" class="login_form_body">
+            {% csrf_token %}
+            <div>
+                {{ form.email.label }}
+                {{ form.username }}
+            </div>
+            <div>
+                {{ form.password.label }}
+                {{ form.password }}
+            </div>
 
-      <input type="submit" value="Login" name="Login User" />
-    </form>
+            <input type="submit" value="Login" name="Login User">
+        </form>
 
-    <div>{{ form.errors }}</div>
-  </div>
+        <div>
+            {{ form.errors }}
+        </div>
+    </div>
 
-  <!-- Register Form -->
-  <div class="register_form">
-    <h2>Don't Have an Account?</h2>
-    <p>Sign up and discover great amounts of opportunities!</p>
-    <a href="{% url 'necysc_app:register' %}">Sign Up</a>
-  </div>
-  <script>
-    var form_fields = document.getElementsByTagName("input");
-    form_fields[1].placeholder = "Email..";
-    form_fields[2].placeholder = "Enter password...";
-    for (var field in form_fields) {
-      form_fields[field].className += " form-control";
-    }
-  </script>
+    <!-- Register Form -->
+    <div class="register_form">
+        <h2>Don't Have an Account?</h2>
+        <p>Sign up and discover great amounts of opportunities!</p>
+        <a href="{% url 'necysc_app:register' %}">Sign Up</a>
+    </div>
+    <script>
+        var form_fields = document.getElementsByTagName('input')
+        form_fields[1].placeholder = 'Email...';
+        form_fields[2].placeholder = 'Enter password...';
+        for (var field in form_fields) {
+            form_fields[field].className += ' form-control'
+        }
+    </script>
 </div>
 
 {% endblock %}
