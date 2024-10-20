@@ -1,10 +1,44 @@
 {% extends "necysc_app/base.html" %} 
 
 {% block title %} Programs {% endblock %} 
-
+{% load static %}
 {% block content %}
-<h1>NECYSC's Programs</h1>
+<link rel="stylesheet" href="{% static 'necysc_app/programs.css' %}">
 
+    <div class="programs_page">
+        <div class="programs_hero">
+            <img src="{% static 'necysc_app/images/programs_hero.jpg' %}" class="programs_img"/>
+        </div>
+        <div class="programs_body">
+            <div class="programs_body_info">
+                <div class="programs_body_info_title">
+                    <h2>Day Camp</h2>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                </div>
+                <div class="programs_body_info_img">
+                    <img src="{% static 'necysc_app/images/image_icon.png' %}"/>
+                </div>
+            </div>
+            <div class="programs_body_info">
+                <div class="programs_body_info_title">
+                    <h2>Overnight Camp</h2>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                </div>
+                <div class="programs_body_info_img">
+                    <img src="{% static 'necysc_app/images/image_icon.png' %}"/>
+                </div>
+            </div>
+            <div class="programs_body_info">
+                <div class="programs_body_info_title">
+                    <h2>ExplorAsian</h2>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                </div>
+                <div class="programs_body_info_img">
+                    <img src="{% static 'necysc_app/images/image_icon.png' %}"/>
+                </div>
+            </div>
+        </div>
+    </div>
 <p>Programs page</p>
 
 {% endblock %}
