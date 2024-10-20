@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
-from .forms import CreateAuthenticationForm, CreateUserForm
+from .forms import CreateAuthenticationForm, CreateUserForm, ApplicationForm
 from django.contrib.auth import login as auth_login, authenticate
 
 # Website Pages
@@ -44,6 +44,8 @@ def login(request):
 def register(request):
     form = CreateUserForm()
     if request.method == 'POST':
+        email = request.POST.get('email')
+        password = request.POST.get('password1')
         form = CreateUserForm(request.POST)
         if form.is_valid():
             form.save()
@@ -61,8 +63,27 @@ def home(request):
 def new_application(request):
     if not request.user.is_authenticated:
         return redirect('necysc_app:login')
-    context = {}
+    else:
+        form = ApplicationForm()
+    
+    context = {
+        "form": form
+    }
     return render(request, 'necysc_app/applicant/new_application.html', context)
+
+def submit_application(request):
+    if not request.user.is_authenticated:
+        return redirect('necysc_app:login')
+    if request.method == 'POST':
+        form = ApplicationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('necysc_app:home')
+    else:
+        redirect('necysc_app:new_application')
+    context = {}
+    return render(request, 'necysc_app/applicant/submit_application.html', context)
+
 
 def application_status(request):
     if not request.user.is_authenticated:
