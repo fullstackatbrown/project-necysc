@@ -1,10 +1,115 @@
-{% extends "necysc_app/base.html" %} 
+{% extends "necysc_app/base.html" %}
+{% load static %}
 
-{% block title %} Staff {% endblock %} 
+{% block title %} Staff {% endblock %}
 
 {% block content %}
-<h1>NECYSC's Staff Programs</h1>
-
-<p>Staff Programs page</p>
+<link rel="stylesheet" href="{% static 'necysc_app/staff.css' %}">
+<div class="programs_page">
+    <div class="programs_page_block  program_block1">
+        <div class="programs_page_block_img">
+            <img src="{% static 'necysc_app/images/image_icon.png' %}" />
+        </div>
+        <div class="programs_page_block_info">
+            <h2>CIT</h2>
+            <div class="program_info">
+                <ul>
+                    <li>Grades: 11+</li>
+                    <li>Dates: July 17 - Aug 3, 2024</li>
+                    <li>Program Fee: $1,100</li>
+                </ul>
+            </div>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+                into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
+                release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
+                software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        </div>
+    </div>
+    <div class="programs_page_block program_block2">
+        <div class="programs_page_block_info">
+            <h2>Counselor</h2>
+            <div class="program_info">
+                <ul>
+                    <li>Age: 18+</li>
+                    <li>Dates: July 17 - Aug 3, 2024</li>
+                    <li>Paid Position</li>
+                </ul>
+            </div>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+                into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
+                release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
+                software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        </div>
+        <div class="programs_page_block_img">
+            <img src="{% static 'necysc_app/images/image_icon.png' %}" />
+        </div>
+    </div>
+    <div class="programs_page_block program_block3">
+        <div class="programs_page_block_img">
+            <img src="{% static 'necysc_app/images/image_icon.png' %}" />
+        </div>
+        <div class="programs_page_block_info">
+            <h2>Residential Advisor (RA)</h2>
+            <div class="program_info">
+                <ul>
+                    <li>Age: 18+</li>
+                    <li>Dates: July 17 - Aug 3, 2024</li>
+                    <li>Paid Position</li>
+                </ul>
+            </div>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+                into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
+                release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
+                software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        </div>
+    </div>
+    <div class="programs_page_block program_block4">
+        <div class="programs_page_block_info">
+            <h2>Operations CIT</h2>
+            <div class="program_info">
+                <ul>
+                    <li>Grades: 11+</li>
+                    <li>Dates: July 17 - Aug 3, 2024</li>
+                    <li>Program Fee: Paid</li>
+                </ul>
+            </div>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+                into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
+                release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
+                software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        </div>
+        <div class="programs_page_block_img">
+            <img src="{% static 'necysc_app/images/image_icon.png' %}" />
+        </div>
+    </div>
+    <div class="programs_page_block_commit program_block5">
+        <div class="programs_page_block_info">
+            <h2>Committee</h2>
+            <div class="program_info">
+                <ul>
+                    <li>Director</li>
+                    <li>Ass Director</li>
+                    <li>Education</li>
+                    <li>General Admin</li>
+                    <li>Medical</li>
+                    <li>Public Relations</li>
+                    <li>Registration</li>
+                    <li>Treasurer</li>
+                </ul>
+            </div>
+        </div>
+        <div class="programs_page_block_img">
+            <img src="{% static 'necysc_app/images/image_icon.png' %}" />
+        </div>
+    </div>
+</div>
 
 {% endblock %}
