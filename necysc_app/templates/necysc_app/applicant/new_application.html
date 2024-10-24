@@ -9,12 +9,12 @@
 
   <!--name inputs-->
   <div class="mb-3">
-    <label for="lastnamet" class="form-label">English Last Name</label>
-    <input type="text" class="form-control" id="lastname" name="applicant_lname">
-  </div>
-  <div class="mb-3">
     <label for="firstnamet" class="form-label">English First Name</label>
     <input type="text" class="form-control" id="firstname" name="applicant_fname">
+  </div>
+  <div class="mb-3">
+    <label for="lastnamet" class="form-label">English Last Name</label>
+    <input type="text" class="form-control" id="lastname" name="applicant_lname">
   </div>
   <div class="mb-3">
     <label for="chineseName" class="form-label">Chinese Name</label>
@@ -26,17 +26,22 @@
     <input type="email" class="form-control" id="applicantemail" name="applicant_email">
     <div class="form-text">Format xxx@xxx.xxx</div>
   </div>
+  <div class="mb-3">
+    <label for="applicantemail" class="form-label">Birthday</label>
+    <input type="email" class="form-control" id="applicantemail" name="applicant_email">
+    <div class="form-text">Format yyyy-mm-dd; e.g., 1991-01-31</div>
+  </div>
 
   <!--radio buttons for gender-->
   <label class="form-label">Gender</label>
   <div class="form-check">
-    <input class="form-check-input" type="radio" name="applicant_sex" id="male">
+    <input class="form-check-input" type="radio" name="applicant_sex" id="male" value="M">
     <label class="form-check-label" for="male">
       male
     </label>
   </div>
   <div class="form-check">
-    <input class="form-check-input" type="radio" name="applicant_sex" id="female">
+    <input class="form-check-input" type="radio" name="applicant_sex" id="female" value="F">
     <label class="form-check-label" for="female">
       female
     </label>
@@ -47,14 +52,146 @@
     <input type="email" class="form-control" id="applicantgrade" name="applicant_grade">
     <div class="form-text">Number only, in 2025 Fall semester</div>
   </div>
-  <div class="mb-3">
-    <label for="applicantemail" class="form-label">Birthday</label>
-    <input type="email" class="form-control" id="applicantemail" name="applicant_email">
-    <div class="form-text">Format yyyy-mm-dd; e.g., 1991-01-31</div>
+  
+
+  <!--Need to change the application model field to accept more than 2 letters?-->
+  <!--Camper T-Shirt Size-->
+  <label class="form-label">Camper T-Shirt Size</label>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="applicant_shirt_size" id="youthsmall" value="YS">
+    <label class="form-check-label" for="youthsmall">
+      Youth Small
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="applicant_shirt_size" id="youthmedium" value="YM">
+    <label class="form-check-label" for="youthmedium">
+      Youth Medium
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="applicant_shirt_size" id="youthlarge" value="YL">
+    <label class="form-check-label" for="youthlarge">
+      Youth Large
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="applicant_shirt_size" id="adultsmall" value="AS">
+    <label class="form-check-label" for="adultsmall">
+      Adult Small
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="applicant_shirt_size" id="adultmedium" value="AM">
+    <label class="form-check-label" for="adultmedium">
+      Adult Medium
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="applicant_shirt_size" id="adultlarge" value="AL">
+    <label class="form-check-label" for="adultlarge">
+      Adult Large
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="applicant_shirt_size" id="adultextralarge" value="AX">
+    <label class="form-check-label" for="adultextralarge">
+      Adult Extra Large
+    </label>
   </div>
 
+  <!--Program options-->
+  <label class="form-label">Program</label>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="program" id="day" value="D">
+    <label class="form-check-label" for="day">
+      Day
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="program" id="overnight" value="ON">
+    <label class="form-check-label" for="overnight">
+      Overnight
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="program" id="cit" value="CIT">
+    <label class="form-check-label" for="cit">
+      CIT
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="program" id="counselor" value="C">
+    <label class="form-check-label" for="counselor">
+      Counselor
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="program" id="ea" value="EA">
+    <label class="form-check-label" for="ea">
+      EA
+    </label>
+  </div>
 
+  <div class="mb-3">
+    <label for="streetaddress" class="form-label">Street Address</label>
+    <input type="text" class="form-control" id="streetaddress" name="street_address">
+    <div class="form-text">100 characters max.</div>
+  </div>
+  <div class="mb-3">
+    <label for="city" class="form-label">City</label>
+    <input type="text" class="form-control" id="city" name="city">
+    <div class="form-text">City/Town</div>
+  </div>
+  <div class="mb-3">
+    <label for="state" class="form-label">State</label>
+    <input type="text" class="form-control" id="state" name="state">
+    <div class="form-text">E.g., MA</div>
+  </div>
+  <div class="mb-3">
+    <label for="zipcode" class="form-label">Zip Code</label>
+    <input type="text" class="form-control" id="zipcode" name="zip_code">
+    <div class="form-text">E.g., 01719</div>
+  </div>
+
+  <!--parent/guardian/emergency contact info-->
+  <div class="mb-3">
+    <label for="parent1fname" class="form-label">Main Contact First Name</label>
+    <input type="text" class="form-control" id="parent1fname" name="parent1_fname">
+  </div>
+  <div class="mb-3">
+    <label for="parent1lname" class="form-label">Main Contact Last Name</label>
+    <input type="text" class="form-control" id="parent1lname" name="parent1_lname">
+  </div>
+
+  <!--Parent relationship choices-->
+  <label class="form-label">Main Contact Relationship</label>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="parent1_relationship" id="parent1father" value="F">
+    <label class="form-check-label" for="parent1father">
+      Father
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="parent1_relationship" id="parent1mother" value="M">
+    <label class="form-check-label" for="parent1mother">
+      Mother
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="parent1_relationship" id="parent1guardian" value="G">
+    <label class="form-check-label" for="parent1guardian">
+      Guardian
+    </label>
+  </div>
+
+  <div class="mb-3">
+    <label for="parent1phone" class="form-label">Main Contact Phone Number</label>
+    <input type="tel" class="form-control" id="parent1phone" name="parent1_phone">
+  </div>
   
+
+
 
 
   <!--old form: {{ form.as_p }}-->
