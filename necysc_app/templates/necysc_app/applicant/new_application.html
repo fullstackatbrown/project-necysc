@@ -3,6 +3,7 @@
 {% block content %}
 <h1>Start a New Application</h1>
 
+<!--this overrides the default browser validation, we need to update the validation manually-->
 <form class="needs-validation" novalidate action="{% url 'necysc_app:submit_application' %}" method="post">
   {% csrf_token %} 
 
