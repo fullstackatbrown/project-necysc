@@ -3,9 +3,62 @@
 {% block content %}
 <h1>Start a New Application</h1>
 
-<form action="{% url 'necysc_app:submit_application' %}" method="post">
-  {% csrf_token %} {{ form.as_p }}
-  <input type="submit" value="Submit" />
+<form class="needs-validation" novalidate action="{% url 'necysc_app:submit_application' %}" method="post">
+  {% csrf_token %} 
+
+  <!--name inputs-->
+  <div class="mb-3">
+    <label for="lastnamet" class="form-label">English Last Name</label>
+    <input type="text" class="form-control" id="lastname" name="applicant_lname">
+  </div>
+  <div class="mb-3">
+    <label for="firstnamet" class="form-label">English First Name</label>
+    <input type="text" class="form-control" id="firstname" name="applicant_fname">
+  </div>
+  <div class="mb-3">
+    <label for="chineseName" class="form-label">Chinese Name</label>
+    <input type="text" class="form-control" id="chineseName" name="applicant_chinese_name">
+    <div class="form-text">Use Chinese characters please.</div>
+  </div>
+  <div class="mb-3">
+    <label for="applicantemail" class="form-label">Email address</label>
+    <input type="email" class="form-control" id="applicantemail" name="applicant_email">
+    <div class="form-text">Format xxx@xxx.xxx</div>
+  </div>
+
+  <!--radio buttons for gender-->
+  <label class="form-label">Gender</label>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="applicant_sex" id="male">
+    <label class="form-check-label" for="male">
+      male
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="applicant_sex" id="female">
+    <label class="form-check-label" for="female">
+      female
+    </label>
+  </div>
+
+  <div class="mb-3">
+    <label for="applicantgrade" class="form-label">School Grade</label>
+    <input type="email" class="form-control" id="applicantgrade" name="applicant_grade">
+    <div class="form-text">Number only, in 2025 Fall semester</div>
+  </div>
+  <div class="mb-3">
+    <label for="applicantemail" class="form-label">Birthday</label>
+    <input type="email" class="form-control" id="applicantemail" name="applicant_email">
+    <div class="form-text">Format yyyy-mm-dd; e.g., 1991-01-31</div>
+  </div>
+
+
+  
+
+
+  <!--old form: {{ form.as_p }}-->
+
+  <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
 {% endblock %}
