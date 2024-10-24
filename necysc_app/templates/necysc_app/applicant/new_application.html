@@ -7,6 +7,7 @@
 <form class="needs-validation" novalidate action="{% url 'necysc_app:submit_application' %}" method="post">
   {% csrf_token %} 
 
+<h3>Camper Information</h3>
   <!--name inputs-->
   <div class="mb-3">
     <label for="firstnamet" class="form-label">English First Name</label>
@@ -37,13 +38,13 @@
   <div class="form-check">
     <input class="form-check-input" type="radio" name="applicant_sex" id="male" value="M">
     <label class="form-check-label" for="male">
-      male
+      Male
     </label>
   </div>
   <div class="form-check">
     <input class="form-check-input" type="radio" name="applicant_sex" id="female" value="F">
     <label class="form-check-label" for="female">
-      female
+      Female
     </label>
   </div>
 
@@ -155,6 +156,11 @@
   </div>
 
   <!--parent/guardian/emergency contact info-->
+<h3>Parent/Guardian/Emergency Contact Information</h3>
+<div class="form-text">
+  NOTE: Please enter as much contact information as possible in case we need to contact you for application or 
+  during the camp week. The parent's first and last name must match the legal name on government issued ID
+</div>
   <div class="mb-3">
     <label for="parent1fname" class="form-label">Main Contact First Name</label>
     <input type="text" class="form-control" id="parent1fname" name="parent1_fname">
@@ -189,7 +195,112 @@
     <label for="parent1phone" class="form-label">Main Contact Phone Number</label>
     <input type="tel" class="form-control" id="parent1phone" name="parent1_phone">
   </div>
+  <div class="mb-3">
+    <label for="parent1email" class="form-label">Main Contact Email</label>
+    <input type="email" class="form-control" id="parent1email" name="parent1_email">
+  </div>
+
+<!--Secondary Contact-->
+  <div class="mb-3">
+    <label for="parent2fname" class="form-label">Secondary Contact First Name</label>
+    <input type="text" class="form-control" id="parent2fname" name="parent2_fname">
+  </div>
+  <div class="mb-3">
+    <label for="parent2lname" class="form-label">Secondary Contact Last Name</label>
+    <input type="text" class="form-control" id="parent2lname" name="parent2_lname">
+  </div>
+
+  <label class="form-label">Secondary Contact Relationship</label>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="parent2_relationship" id="parent2father" value="F">
+    <label class="form-check-label" for="parent2father">
+      Father
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="parent2_relationship" id="parent2mother" value="M">
+    <label class="form-check-label" for="parent2mother">
+      Mother
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="parent2_relationship" id="parent2guardian" value="G">
+    <label class="form-check-label" for="parent2guardian">
+      Guardian
+    </label>
+  </div>
+
+  <div class="mb-3">
+    <label for="parent2phone" class="form-label">Secondary Contact Phone Number</label>
+    <input type="tel" class="form-control" id="parent2phone" name="parent2_phone">
+  </div>
+  <div class="mb-3">
+    <label for="parent2email" class="form-label">Secondary Contact Email</label>
+    <input type="email" class="form-control" id="parent2email" name="parent2_email">
+  </div>
+
+  <!--Emergency Contact Info-->
+  <div class="mb-3">
+    <label for="emergencyfname" class="form-label">Emergency Contact First Name</label>
+    <input type="text" class="form-control" id="emergencyfname" name="additional_emergency_contact_fname">
+  </div>
+  <div class="mb-3">
+    <label for="emergencylname" class="form-label">Emergency Contact Last Name</label>
+    <input type="text" class="form-control" id="emergencylname" name="additional_emergency_contact_lname">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label" for="emergencyrelationship">
+      Emergency Contact Relationship
+    </label>
+    <input class="form-control" type="text" name="additional_emergency_contact_relationship" id="emergencyrelationship">
+  </div>
+
+  <div class="mb-3">
+    <label for="emergencyphone" class="form-label">Emergency Contact Phone Number</label>
+    <input type="tel" class="form-control" id="emergencyphone" name="additional_emergency_contact_phone">
+  </div>
+
+
+  <!--POD Preference--set to false by default-->
+  <h3>Parent On Duty (POD) Preference</h3>
+  <div class="form-text">
+    NOTE: One shift required for each child enrolled in Overnight and ExplorAsian program. If you cannot serve POD, 
+    please select Paid Waiver. For all other program we encourage parents to help out.
+  </div>
+  <label class="form-label">POD Preference</label>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" name="parent1_for_POD" value="false" id="parent1POD">
+    <label class="form-check-label" for="parent1POD">
+      Parent #1 as POD
+    </label>
+  </div>
+  <script>
+    //change value depending on whether the checkbox is checked or not
+    document.getElementById('parent1POD').addEventListener('change', function() {
+      this.value = this.checked ? true : false;
+    });
+  </script>
   
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" name="parent2_for_POD" value="false" id="parent2POD">
+    <label class="form-check-label" for="parent2POD">
+      Parent #2 as POD
+    </label>
+  </div>
+
+<h3>Roomate Request</h3>
+  <div class="mb-3">
+    <label for="roomaterequest" class="form-label">Roomate Name</label>
+    <input type="text" class="form-control" id="preferred_roomate" name="roomaterequest">
+    <div class="form-text">
+      If no roommate name is indicated, a roommate of the same gender and age category will be assigned. 
+      Roommate request will only be considered if both campers request each other. Ask your friend to put your name as 
+      their roommate request. Group request for Overnight Campers will NOT be accepted.
+    </div>
+  </div>
+
+
 
 
 
