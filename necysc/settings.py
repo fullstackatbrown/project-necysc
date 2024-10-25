@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "debug_toolbar",
+    "solo.apps.SoloAppConfig"   # singleton for global data
 ]
 
 MIDDLEWARE = [
