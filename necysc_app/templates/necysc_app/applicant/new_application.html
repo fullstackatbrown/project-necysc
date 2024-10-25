@@ -1,6 +1,8 @@
 {% extends "necysc_app/base.html" %} {% block title %} New Application {% endblock %} 
 
 {% block content %}
+<!--Application Border Box-->
+<div class="border p-5 rounded shadow-lg">
 <h1>Start a New Application</h1>
 
 <!--this overrides the default browser validation, we need to update the validation manually-->
@@ -9,48 +11,51 @@
 
 <h3>Camper Information</h3>
   <!--name inputs-->
-  <div class="mb-3">
-    <label for="firstnamet" class="form-label">English First Name</label>
-    <input type="text" class="form-control" id="firstname" name="applicant_fname">
+  <div class="row">
+    <div class="mb-3 col-md-4">
+      <label for="firstnamet" class="form-label">English First Name</label>
+      <input type="text" class="form-control" id="firstname" name="applicant_fname" placeholder="First Name" required>
+    </div>
+    <div class="mb-3 col-md-4">
+      <label for="lastnamet" class="form-label">English Last Name</label>
+      <input type="text" class="form-control" id="lastname" name="applicant_lname" placeholder="Last Name" required>
+    </div>
+    <div class="mb-3 col-md-4">
+      <label for="chineseName" class="form-label">Chinese Name</label>
+      <input type="text" class="form-control" id="chineseName" name="applicant_chinese_name" placeholder="Chinese Name">
+      <div class="form-text">Use Chinese characters please.</div>
+    </div>
   </div>
-  <div class="mb-3">
-    <label for="lastnamet" class="form-label">English Last Name</label>
-    <input type="text" class="form-control" id="lastname" name="applicant_lname">
-  </div>
-  <div class="mb-3">
-    <label for="chineseName" class="form-label">Chinese Name</label>
-    <input type="text" class="form-control" id="chineseName" name="applicant_chinese_name">
-    <div class="form-text">Use Chinese characters please.</div>
-  </div>
-  <div class="mb-3">
-    <label for="applicantemail" class="form-label">Email address</label>
-    <input type="email" class="form-control" id="applicantemail" name="applicant_email">
-    <div class="form-text">Format xxx@xxx.xxx</div>
-  </div>
-  <div class="mb-3">
-    <label for="applicantemail" class="form-label">Birthday</label>
-    <input type="email" class="form-control" id="applicantemail" name="applicant_email">
-    <div class="form-text">Format yyyy-mm-dd; e.g., 1991-01-31</div>
+
+  <div class="row">
+    <div class="mb-3 col-md-6">
+      <label for="applicantemail" class="form-label">Email Address</label>
+      <input type="email" class="form-control" id="applicantemail" name="applicant_email" placeholder="ex. johnsmith@gmail.com">
+    </div>
+    <div class="mb-3 col-md-6">
+      <label for="applicantbirthdate" class="form-label">Birth Date</label>
+      <input type="date" class="form-control" id="applicantbirthdate" name="applicant_bday" data-date-format="yyyy/mm/dd" required>
+    </div>
   </div>
 
   <!--radio buttons for gender-->
   <label class="form-label">Gender</label>
   <div class="form-check">
-    <input class="form-check-input" type="radio" name="applicant_sex" id="male" value="M">
+    <input class="form-check-input" type="radio" name="applicant_sex" id="male" value="M" required>
     <label class="form-check-label" for="male">
       Male
     </label>
   </div>
-  <div class="form-check">
-    <input class="form-check-input" type="radio" name="applicant_sex" id="female" value="F">
+  <div class="form-check mb-3">
+    <input class="form-check-input" type="radio" name="applicant_sex" id="female" value="F" required>
     <label class="form-check-label" for="female">
       Female
     </label>
   </div>
 
-  <div class="mb-3">
+  <div class="mb-3 col-md-4">
     <label for="applicantgrade" class="form-label">School Grade</label>
-    <input type="email" class="form-control" id="applicantgrade" name="applicant_grade">
+    <input type="number" class="form-control" id="applicantgrade" name="applicant_grade" placeholder="ex. 5" step="1" required>
     <div class="form-text">Number only, in 2025 Fall semester</div>
   </div>
   
@@ -59,43 +64,43 @@
   <!--Camper T-Shirt Size-->
   <label class="form-label">Camper T-Shirt Size</label>
   <div class="form-check">
-    <input class="form-check-input" type="radio" name="applicant_shirt_size" id="youthsmall" value="YS">
+    <input class="form-check-input" type="radio" name="applicant_shirt_size" id="youthsmall" value="YS" required>
     <label class="form-check-label" for="youthsmall">
       Youth Small
     </label>
   </div>
   <div class="form-check">
-    <input class="form-check-input" type="radio" name="applicant_shirt_size" id="youthmedium" value="YM">
+    <input class="form-check-input" type="radio" name="applicant_shirt_size" id="youthmedium" value="YM" required>
     <label class="form-check-label" for="youthmedium">
       Youth Medium
     </label>
   </div>
   <div class="form-check">
-    <input class="form-check-input" type="radio" name="applicant_shirt_size" id="youthlarge" value="YL">
+    <input class="form-check-input" type="radio" name="applicant_shirt_size" id="youthlarge" value="YL" required>
     <label class="form-check-label" for="youthlarge">
       Youth Large
     </label>
   </div>
   <div class="form-check">
-    <input class="form-check-input" type="radio" name="applicant_shirt_size" id="adultsmall" value="AS">
+    <input class="form-check-input" type="radio" name="applicant_shirt_size" id="adultsmall" value="AS" required>
     <label class="form-check-label" for="adultsmall">
       Adult Small
     </label>
   </div>
   <div class="form-check">
-    <input class="form-check-input" type="radio" name="applicant_shirt_size" id="adultmedium" value="AM">
+    <input class="form-check-input" type="radio" name="applicant_shirt_size" id="adultmedium" value="AM" required>
     <label class="form-check-label" for="adultmedium">
       Adult Medium
     </label>
   </div>
   <div class="form-check">
-    <input class="form-check-input" type="radio" name="applicant_shirt_size" id="adultlarge" value="AL">
+    <input class="form-check-input" type="radio" name="applicant_shirt_size" id="adultlarge" value="AL" required>
     <label class="form-check-label" for="adultlarge">
       Adult Large
     </label>
   </div>
-  <div class="form-check">
-    <input class="form-check-input" type="radio" name="applicant_shirt_size" id="adultextralarge" value="AX">
+  <div class="form-check mb-3">
+    <input class="form-check-input" type="radio" name="applicant_shirt_size" id="adultextralarge" value="AX" required>
     <label class="form-check-label" for="adultextralarge">
       Adult Extra Large
     </label>
@@ -104,56 +109,58 @@
   <!--Program options-->
   <label class="form-label">Program</label>
   <div class="form-check">
-    <input class="form-check-input" type="radio" name="program" id="day" value="D">
+    <input class="form-check-input" type="radio" name="program" id="day" value="D" required>
     <label class="form-check-label" for="day">
       Day
     </label>
   </div>
   <div class="form-check">
-    <input class="form-check-input" type="radio" name="program" id="overnight" value="ON">
+    <input class="form-check-input" type="radio" name="program" id="overnight" value="ON" required>
     <label class="form-check-label" for="overnight">
       Overnight
     </label>
   </div>
   <div class="form-check">
-    <input class="form-check-input" type="radio" name="program" id="cit" value="CIT">
+    <input class="form-check-input" type="radio" name="program" id="cit" value="CIT" required>
     <label class="form-check-label" for="cit">
       CIT
     </label>
   </div>
   <div class="form-check">
-    <input class="form-check-input" type="radio" name="program" id="counselor" value="C">
+    <input class="form-check-input" type="radio" name="program" id="counselor" value="C" required>
     <label class="form-check-label" for="counselor">
       Counselor
     </label>
   </div>
-  <div class="form-check">
-    <input class="form-check-input" type="radio" name="program" id="ea" value="EA">
+  <div class="form-check mb-3">
+    <input class="form-check-input" type="radio" name="program" id="ea" value="EA" required>
     <label class="form-check-label" for="ea">
       EA
     </label>
   </div>
 
-  <div class="mb-3">
-    <label for="streetaddress" class="form-label">Street Address</label>
-    <input type="text" class="form-control" id="streetaddress" name="street_address">
-    <div class="form-text">100 characters max.</div>
+  <div class="row">
+    <div class="mb-3 col-md-6">
+      <label for="streetaddress" class="form-label">Street Address</label>
+      <input type="text" class="form-control" id="streetaddress" name="street_address" placeholder="Street Address" required>
+    </div>
+    <div class="mb-3 col-md-6">
+      <label for="city" class="form-label">City</label>
+      <input type="text" class="form-control" id="city" name="city" placeholder="City/Town" required>
+    </div>
   </div>
-  <div class="mb-3">
-    <label for="city" class="form-label">City</label>
-    <input type="text" class="form-control" id="city" name="city">
-    <div class="form-text">City/Town</div>
+
+  <div class="row">
+    <div class="mb-3 col-md-6">
+      <label for="state" class="form-label">State</label>
+      <input type="text" class="form-control" id="state" name="state" placeholder="ex. MA" required>
+    </div>
+    <div class="mb-3 col-md-6">
+      <label for="zipcode" class="form-label">Zip Code</label>
+      <input type="text" class="form-control" id="zipcode" name="zip_code" placeholder="ex. 01719" required>
+    </div>
   </div>
-  <div class="mb-3">
-    <label for="state" class="form-label">State</label>
-    <input type="text" class="form-control" id="state" name="state">
-    <div class="form-text">E.g., MA</div>
-  </div>
-  <div class="mb-3">
-    <label for="zipcode" class="form-label">Zip Code</label>
-    <input type="text" class="form-control" id="zipcode" name="zip_code">
-    <div class="form-text">E.g., 01719</div>
-  </div>
+
 
   <!--parent/guardian/emergency contact info-->
 <h3>Parent/Guardian/Emergency Contact Information</h3>
@@ -161,54 +168,71 @@
   NOTE: Please enter as much contact information as possible in case we need to contact you for application or 
   during the camp week. The parent's first and last name must match the legal name on government issued ID
 </div>
-  <div class="mb-3">
+
+<div class="row">
+  <div class="mb-3 col-md-6">
     <label for="parent1fname" class="form-label">Main Contact First Name</label>
-    <input type="text" class="form-control" id="parent1fname" name="parent1_fname">
+    <input type="text" class="form-control" id="parent1fname" name="parent1_fname" placeholder="First Name" required>
   </div>
-  <div class="mb-3">
+  <div class="mb-3 col-md-6">
     <label for="parent1lname" class="form-label">Main Contact Last Name</label>
-    <input type="text" class="form-control" id="parent1lname" name="parent1_lname">
+    <input type="text" class="form-control" id="parent1lname" name="parent1_lname" placeholder="Last Name" required>
   </div>
+</div>
+<div class="row">
+  <div class="mb-3 col-md-6">
+    <label for="parent1phone" class="form-label">Main Contact Phone Number</label>
+    <input type="tel" class="form-control" id="parent1phone" name="parent1_phone" placeholder="ex. 123-456-7890" required>
+  </div>
+  <div class="mb-3 col-md-6">
+    <label for="parent1email" class="form-label">Main Contact Email</label>
+    <input type="email" class="form-control" id="parent1email" name="parent1_email" placeholder="ex. johnsmith@gmail.com" required>
+  </div>
+</div>
+
 
   <!--Parent relationship choices-->
   <label class="form-label">Main Contact Relationship</label>
   <div class="form-check">
-    <input class="form-check-input" type="radio" name="parent1_relationship" id="parent1father" value="F">
+    <input class="form-check-input" type="radio" name="parent1_relationship" id="parent1father" value="F" required>
     <label class="form-check-label" for="parent1father">
       Father
     </label>
   </div>
   <div class="form-check">
-    <input class="form-check-input" type="radio" name="parent1_relationship" id="parent1mother" value="M">
+    <input class="form-check-input" type="radio" name="parent1_relationship" id="parent1mother" value="M" required>
     <label class="form-check-label" for="parent1mother">
       Mother
     </label>
   </div>
-  <div class="form-check">
-    <input class="form-check-input" type="radio" name="parent1_relationship" id="parent1guardian" value="G">
+  <div class="form-check mb-3">
+    <input class="form-check-input" type="radio" name="parent1_relationship" id="parent1guardian" value="G" required>
     <label class="form-check-label" for="parent1guardian">
       Guardian
     </label>
   </div>
 
-  <div class="mb-3">
-    <label for="parent1phone" class="form-label">Main Contact Phone Number</label>
-    <input type="tel" class="form-control" id="parent1phone" name="parent1_phone">
-  </div>
-  <div class="mb-3">
-    <label for="parent1email" class="form-label">Main Contact Email</label>
-    <input type="email" class="form-control" id="parent1email" name="parent1_email">
-  </div>
-
 <!--Secondary Contact-->
-  <div class="mb-3">
+<div class="row">
+  <div class="mb-3 col-md-6">
     <label for="parent2fname" class="form-label">Secondary Contact First Name</label>
-    <input type="text" class="form-control" id="parent2fname" name="parent2_fname">
+    <input type="text" class="form-control" id="parent2fname" name="parent2_fname" placeholder="First Name">
   </div>
-  <div class="mb-3">
+  <div class="mb-3 col-md-6">
     <label for="parent2lname" class="form-label">Secondary Contact Last Name</label>
-    <input type="text" class="form-control" id="parent2lname" name="parent2_lname">
+    <input type="text" class="form-control" id="parent2lname" name="parent2_lname" placeholder="Last Name">
   </div>
+</div>
+<div class="row">
+  <div class="mb-3 col-md-6">
+    <label for="parent2phone" class="form-label">Secondary Contact Phone Number</label>
+    <input type="tel" class="form-control" id="parent2phone" name="parent2_phone" placeholder="ex. 123-456-7890">
+  </div>
+  <div class="mb-3 col-md-6">
+    <label for="parent2email" class="form-label">Secondary Contact Email</label>
+    <input type="email" class="form-control" id="parent2email" name="parent2_email" placeholder="ex. janesmith@gmail.com">
+  </div>
+</div>
 
   <label class="form-label">Secondary Contact Relationship</label>
   <div class="form-check">
@@ -223,43 +247,41 @@
       Mother
     </label>
   </div>
-  <div class="form-check">
+  <div class="form-check mb-3">
     <input class="form-check-input" type="radio" name="parent2_relationship" id="parent2guardian" value="G">
     <label class="form-check-label" for="parent2guardian">
       Guardian
     </label>
   </div>
 
-  <div class="mb-3">
-    <label for="parent2phone" class="form-label">Secondary Contact Phone Number</label>
-    <input type="tel" class="form-control" id="parent2phone" name="parent2_phone">
-  </div>
-  <div class="mb-3">
-    <label for="parent2email" class="form-label">Secondary Contact Email</label>
-    <input type="email" class="form-control" id="parent2email" name="parent2_email">
-  </div>
+
 
   <!--Emergency Contact Info-->
-  <div class="mb-3">
-    <label for="emergencyfname" class="form-label">Emergency Contact First Name</label>
-    <input type="text" class="form-control" id="emergencyfname" name="additional_emergency_contact_fname">
-  </div>
-  <div class="mb-3">
-    <label for="emergencylname" class="form-label">Emergency Contact Last Name</label>
-    <input type="text" class="form-control" id="emergencylname" name="additional_emergency_contact_lname">
+  <div class="row">
+    <div class="mb-3 col-md-6">
+      <label for="emergencyfname" class="form-label">Emergency Contact First Name</label>
+      <input type="text" class="form-control" id="emergencyfname" name="additional_emergency_contact_fname" placeholder="First Name" required>
+    </div>
+    <div class="mb-3 col-md-6">
+      <label for="emergencylname" class="form-label">Emergency Contact Last Name</label>
+      <input type="text" class="form-control" id="emergencylname" name="additional_emergency_contact_lname" placeholder="Last Name" required>
+    </div>
   </div>
 
-  <div class="mb-3">
+<div class="row">
+  <div class="mb-3 col-md-6">
     <label class="form-label" for="emergencyrelationship">
       Emergency Contact Relationship
     </label>
-    <input class="form-control" type="text" name="additional_emergency_contact_relationship" id="emergencyrelationship">
+    <input class="form-control" type="text" name="additional_emergency_contact_relationship" id="emergencyrelationship" placeholder="ex. Grandmother">
   </div>
 
-  <div class="mb-3">
+  <div class="mb-3 col-md-6">
     <label for="emergencyphone" class="form-label">Emergency Contact Phone Number</label>
-    <input type="tel" class="form-control" id="emergencyphone" name="additional_emergency_contact_phone">
+    <input type="tel" class="form-control" id="emergencyphone" name="additional_emergency_contact_phone" placeholder="ex. 123-456-7890" required>
   </div>
+</div>
+
 
 
   <!--POD Preference--set to false by default-->
@@ -275,24 +297,23 @@
       Parent #1 as POD
     </label>
   </div>
-  <script>
-    //change value depending on whether the checkbox is checked or not
-    document.getElementById('parent1POD').addEventListener('change', function() {
-      this.value = this.checked ? true : false;
-    });
-  </script>
-  
-  <div class="form-check">
+  <div class="form-check mb-3">
     <input class="form-check-input" type="checkbox" name="parent2_for_POD" value="false" id="parent2POD">
     <label class="form-check-label" for="parent2POD">
       Parent #2 as POD
     </label>
   </div>
+  <div class="form-check mb-3">
+    <input class="form-check-input" type="checkbox" name="interest_in_POD_lead" value="false" id="PODlead">
+    <label class="form-check-label" for="PODlead">
+      I am willing to be a POD lead.
+    </label>
+  </div>
 
 <h3>Roomate Request</h3>
-  <div class="mb-3">
+  <div class="mb-3 col-md-6">
     <label for="roomaterequest" class="form-label">Roomate Name</label>
-    <input type="text" class="form-control" id="preferred_roomate" name="roomaterequest">
+    <input type="text" class="form-control" id="preferred_roomate" name="roomaterequest" placeholder="ex. Michael Li">
     <div class="form-text">
       If no roommate name is indicated, a roommate of the same gender and age category will be assigned. 
       Roommate request will only be considered if both campers request each other. Ask your friend to put your name as 
@@ -308,6 +329,26 @@
   <!--old form: {{ form.as_p }}-->
 
   <button type="submit" class="btn btn-primary">Submit</button>
-</form>
 
+  <script>
+    //change value depending on whether the checkbox is checked or not
+    document.getElementById('parent1POD').addEventListener('change', function() {
+      this.value = this.checked ? true : false;
+    });
+    document.getElementById('parent2POD').addEventListener('change', function() {
+      this.value = this.checked ? true : false;
+    });
+
+    //custom check validation on form submission
+    document.querySelector('form').addEventListener('submit', function(event) {
+        if (!this.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+        this.classList.add('was-validated');
+    });
+  </script>
+
+</form>
+</div>
 {% endblock %}
