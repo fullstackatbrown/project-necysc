@@ -1,0 +1,37 @@
+/* application_detail.css */
+
+.application-detail {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.application-detail h2, .application-detail h3 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.application-detail p {
+    margin: 5px 0;
+    color: #555;
+}
+
+.application-detail .section-title {
+    margin-top: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #444;
+}
+
+.application-detail .permissions {
+    margin-top: 20px;
+}
+
+.application-detail .permissions p {
+    margin: 5px 0;
+    color: #555;
+}
