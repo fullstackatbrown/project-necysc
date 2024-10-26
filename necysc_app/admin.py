@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Applicant
+from django.db import models
+from .models import Applicant, HealthInfo
 
 
 class ApplicantAdmin(admin.ModelAdmin):
@@ -16,6 +17,10 @@ class ApplicantAdmin(admin.ModelAdmin):
     list_filter = ['app_year', 'program', 'group_id', 'room_id', 'applicant_sex', 'app_status', 'payment_received',
                    'health_record_status', 'applicant_shirt_size', 'referrals', 'preferred_roommate']
 
+class HealthInfoAdmin(admin.ModelAdmin):
+    search_fields = ['applicant_fname', 'applicant_lname']
+    list_display = ['applicant_fname', 'applicant_lname', 'applicant_bday', 'created_at', 'program', 'applicant_sex', 'health_form_a_received', 'health_form_b_received']
 # Register your models here.
 admin.site.register(Applicant, ApplicantAdmin)
+admin.site.register(HealthInfo, HealthInfoAdmin)
 
