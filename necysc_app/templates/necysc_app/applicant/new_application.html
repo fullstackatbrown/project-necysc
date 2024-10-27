@@ -788,19 +788,13 @@
 					Apply Calamine lotion/Bacitracin/Sunscreen if needed
 				</label>
 			</div>
-			<!-- TODO: add a model field for if consent is not granted, explain?? -->
-			<!-- <div class="mb-3 col-md-4">
-				<label for="doctorphone" class="form-label"
-					>Primary Physician's Phone</label
+			<div class="form-text mb-3">
+				NOTE: If consent is not granted for any of the above, please
+				email us at
+				<a href="mailto: registration@necysc.org"
+					>registration@necysc.org</a
 				>
-				<input
-					type="text"
-					class="form-control"
-					id="doctorphone"
-					name="primary_physician_phone"
-					placeholder="Doctor's Phone"
-				/>
-			</div> -->
+			</div>
 
 			<div class="row">
 				<div class="col-md-6">
@@ -835,9 +829,9 @@
 
 				<div class="mb-3 col-md-6">
 					<label for="allergieslist" class="form-label"
-						>If yes, to what?</label
+						>If yes, to what? Please describe reaction and
+						treatment.</label
 					>
-					<!-- <div class="col-md-4"> -->
 					<input
 						type="text"
 						class="form-control"
@@ -845,23 +839,8 @@
 						name="allergies_description"
 						placeholder="List allergies"
 					/>
-					<!-- </div> -->
 				</div>
 			</div>
-
-			<!-- TODO: add model field for allregy treatment? -->
-			<!-- <div class="mb-3 col-md-4">
-				<label for="allergytreatment" class="form-label"
-					>Reaction and tretment for allergies</label
-				>
-				<input
-					type="text"
-					class="form-control"
-					id="allergytreatment"
-					name="allergy_treatment"
-					placeholder="List allergies"
-				/>
-			</div> -->
 
 			<div class="mb-3">
 				<label for="initialforallergytreatment" class="form-label"
@@ -883,6 +862,12 @@
 				>Does your Physician's Health Form list an Epi-Pen as medication
 				prescribed?</label
 			>
+			<div class="form-text mb-3">
+				If yes, do you understand that you MUST bring two Epi-Pens so
+				that your child can attend camp? You must also fill out the
+				NECYSC Medication Permission Slip for the Epi-Pens and submit
+				along with other application forms.
+			</div>
 			<div class="form-check">
 				<input
 					class="form-check-input"
@@ -904,71 +889,21 @@
 				<label class="form-check-label" for="epipenno"> No </label>
 			</div>
 
-			<!-- TODO: add this to model? -->
-			<!-- <label class="form-label"
-				>If yes, do you understand that you MUST bring two Epi-Pens so
-				that your child can attend camp?
-			</label>
-			<div class="form-check">
-				<input
-					class="form-check-input"
-					type="radio"
-					name="epi_pen_prescribed"
-					id="epipenyes"
-					value="false"
-				/>
-				<label class="form-check-label" for="epipenyes"> Yes </label>
-			</div>
-			<div class="form-check mb-3">
-				<input
-					class="form-check-input"
-					type="radio"
-					name="epi_pen_prescribed"
-					id="epipenno"
-					value="false"
-				/>
-				<label class="form-check-label" for="epipenno"> No </label>
-			</div> -->
-
-			<div class="text mb-3">
-				If yes, you must also fill out the NECYSC Medication Permission
-				Slip for the Epi-Pens and submit along with other application
-				forms.
-			</div>
-
-			<label class="form-label"
-				>Does your child have any social/emotional concerns we should be
-				aware of?</label
-			>
-			<div class="form-check">
-				<input
-					class="form-check-input"
-					type="radio"
-					name="social_emotional_concerns"
-					id="socialemotionalconcernsyes"
-					value="false"
-				/>
-				<label
-					class="form-check-label"
-					for="socialemotionalconcernsyes"
+			<div class="mb-3">
+				<label for="socialemotionalconcerns" class="form-label"
+					>Does your child have any social/emotional concerns we
+					should be aware of? If yes, please elaborate.</label
 				>
-					Yes
-				</label>
+				<div class="col-md-4">
+					<input
+						type="text"
+						class="form-control"
+						id="socialemotionalconcerns"
+						name="social_emotional_concerns"
+						placeholder="Yes/no, please describe"
+					/>
+				</div>
 			</div>
-			<div class="form-check mb-3">
-				<input
-					class="form-check-input"
-					type="radio"
-					name="social_emotional_concerns"
-					id="socialemotionalconcernsno"
-					value="false"
-				/>
-				<label class="form-check-label" for="socialemotionalconcernsno">
-					No
-				</label>
-			</div>
-
-			<!-- TODO: add to model if yes, please elaborate -->
 
 			<label class="form-label"
 				>Does your child wear any of the following:</label
@@ -1041,28 +976,36 @@
 					</div>
 				</div>
 
-				<!-- TODO: add field for if yes will camp need to administer it? -->
-
 				<div class="mb-3 col-md-6">
 					<label for="medicationdescription" class="form-label"
-						>If yes, please explain dose/frequency/other note; If
-						no, please explain why medication is not needed at
-						camp.</label
+						>If yes, will the camp need to administer the medication
+						to your child during camp? Please explain
+						dose/frequency/other note; If no, please explain why
+						medication is not needed at camp</label
 					>
 					<input
 						type="text"
 						class="form-control"
 						id="medicationdescription"
 						name="medication_description"
-						placeholder="Description"
+						placeholder="Yes/no, please describe"
 					/>
 				</div>
 			</div>
 
-			<!-- TODO: activites that child should not take part in (y/n), if yes elaborate
-			make questions consistent with model (currently only has opt out activites description) -->
-
-			<!-- Same for medical comments -->
+			<div class="mb-3 col-md-6">
+				<label for="optoutactivity" class="form-label"
+					>Are there any activities your child should not take part
+					in? If yes, please elaborate.</label
+				>
+				<input
+					type="text"
+					class="form-control"
+					id="optoutactivity"
+					name="opt_out_activities"
+					placeholder="Yes/no, please describe"
+				/>
+			</div>
 
 			<div class="text mb-3">
 				In case of medical emergency: I understand every effort will be
@@ -1195,20 +1138,6 @@
 					for the TOTAL field.
 				</label>
 			</div>
-
-			<!-- TODO: add field for this? -->
-			<!-- <div class="form-check">
-				<input
-					class="form-check-input"
-					type="checkbox"
-					name="listing_on_weekbook"
-					value="false"
-					id="listonweekbook"
-				/>
-				<label class="form-check-label" for="listonweekbook">
-					I do not wish my name to be listed with my donation
-				</label>
-			</div> -->
 		</div>
 
 		<h3>Additional Information</h3>
@@ -1227,7 +1156,7 @@
 				</label>
 			</div>
 
-			<div class="form-check mb-3">
+			<div class="form-check">
 				<input
 					class="form-check-input"
 					type="checkbox"
@@ -1241,34 +1170,33 @@
 				</label>
 			</div>
 
-			<!-- TODO: figure out which fields in model correspond to these? -->
-			<!-- <div class="form-check">
+			<div class="form-check">
 				<input
 					class="form-check-input"
 					type="checkbox"
-					name="interest_in_wkbook_ads"
+					name="available_for_carpool"
 					value="false"
-					id="weekbookads"
+					id="carpoollist"
 				/>
-				<label class="form-check-label" for="weekbookads">
+				<label class="form-check-label" for="carpoollist">
 					Check if you want to publish name/city/phone in day camp car
 					pool list
 				</label>
 			</div>
 
-			<div class="form-check">
+			<div class="form-check mb-3">
 				<input
 					class="form-check-input"
 					type="checkbox"
-					name="interest_in_wkbook_ads"
+					name="interest_in_committee"
 					value="false"
-					id="weekbookads"
+					id="committeeinterest"
 				/>
-				<label class="form-check-label" for="weekbookads">
+				<label class="form-check-label" for="committeeinterest">
 					Check if you want to be added in next year camp Committee
 					candidate list
 				</label>
-			</div> -->
+			</div>
 
 			<div class="mb-3 col-md-4">
 				<label for="heardfrom" class="form-label"
@@ -1282,7 +1210,9 @@
 				/>
 			</div>
 			<div class="mb-3 col-md-4">
-				<label for="referrals" class="form-label">Referrals</label>
+				<label for="referrals" class="form-label"
+					>Were you referred by anyone?</label
+				>
 				<input
 					type="text"
 					class="form-control"
