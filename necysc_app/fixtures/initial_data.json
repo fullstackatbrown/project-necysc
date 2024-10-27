@@ -3,7 +3,7 @@
         "model": "auth.user",
         "pk": 1,
         "fields": {
-            "username": "alice",
+            "username": "alice@example.com",
             "password": "alice_password",
             "is_superuser": false,
             "is_staff": false,
@@ -15,7 +15,7 @@
         "model": "auth.user",
         "pk": 2,
         "fields": {
-            "username": "bob",
+            "username": "bob@example.com",
             "password": "bob_password",
             "is_superuser": false,
             "is_staff": false,
@@ -27,7 +27,7 @@
         "model": "auth.user",
         "pk": 3,
         "fields": {
-            "username": "brownie",
+            "username": "brownie@example.com",
             "password": "brownie_password",
             "is_superuser": false,
             "is_staff": false,
@@ -215,7 +215,7 @@
             "allergies_description": "Peanuts",
             "initial_for_allergy_treatment": "SK",
             "epi_pen_prescribed": true,
-            "social_emotional_concerns": "",
+            "social_emotional_concerns": "Child does not like working with other people.",
             "wear_glasses": true,
             "wear_contacts": false,
             "wear_hearing_aids": false,
