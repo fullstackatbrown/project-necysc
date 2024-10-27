@@ -5,91 +5,6 @@ import datetime
 from django.core.validators import MinValueValidator
 
 
-# TODO: should we make this a forms.ModelForm?
-class HealthInfo(models.Model):
-    HEALTH_RECORD_STATUS_CHOICES = {
-        "NC": "Not checked",
-        "FU": "Needs follow up",
-        "A": "Approved",
-    }
-    SEX_CHOICES = {
-        "M": "Male",
-        "F": "Female",
-        "O": "Other",
-    }
-    PROGRAM_CHOICES={
-        "D": "Day",
-        "ON": "Overnight",
-        "CIT": "CIT",
-        "C": "Counselor",
-        "EA": "EA",
-    }
-    HEALTH_FORM_RECEIVED_CHOICES={
-        "NS": "Not Submitted",
-        "P": "Pending",
-        "A": "Approved",
-    }
-    
-    applicant = models.ForeignKey('Applicant', on_delete=models.CASCADE, default=None)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
-
-    applicant_fname = models.CharField(max_length=200, verbose_name="First Name")
-    applicant_lname = models.CharField(max_length=200, verbose_name="Last Name")
-    program = models.CharField(
-        max_length=3,
-        choices=PROGRAM_CHOICES,
-        default="ON",
-        verbose_name="Program"
-    )
-    created_at = models.DateTimeField(auto_now_add=True)
-    health_record_status = models.CharField(
-        max_length=2,
-        choices=HEALTH_RECORD_STATUS_CHOICES,
-        default="NC",
-    )
-    applicant_bday = models.DateField(verbose_name="Birthday")
-    applicant_sex = models.CharField(
-        max_length=1,
-        choices=SEX_CHOICES,
-        verbose_name="Gender")
-    health_form_a_received = models.CharField(
-        max_length=10,
-        choices=HEALTH_FORM_RECEIVED_CHOICES,
-        default="NS",
-    )
-    health_form_b_received = models.BooleanField(default=False)
-    medication_slip_received = models.BooleanField(default=False)
-
-    insurance_provider = models.CharField(max_length=200, verbose_name="Health Insurance Provider", default="")
-    subscriber_name = models.CharField(max_length=200, verbose_name="Insurance Subscriber Name", default="")
-    primary_physician_name = models.CharField(max_length=200, verbose_name="Physician Name", default="")
-    primary_physician_phone = models.CharField(max_length=15, verbose_name="Physician Phone", default="")
-
-    # grant permission to questions - if left false contact guardian(s)
-    grant_hospital_permission = models.BooleanField(default=False)
-    grant_medical_treatment_permission = models.BooleanField(default=False)
-    grant_first_aid_permission = models.BooleanField(default=False)
-    grant_meds_permission = models.BooleanField(default=False)
-    grant_bug_spray_permission = models.BooleanField(default=False)
-    grant_skin_treatment_permission = models.BooleanField(default=False)
-
-    allergies = models.BooleanField(default=False)
-    allergies_description = models.CharField(max_length=200, default="")
-    initial_for_allergy_treatment = models.CharField(max_length=200, default="")    
-    epi_pen_prescribed = models.BooleanField(default=False)
-    
-    social_emotional_concerns = models.CharField(max_length=200, default="")
-    
-    wear_glasses = models.BooleanField(default=False)
-    wear_contacts = models.BooleanField(default=False)
-    wear_hearing_aids = models.BooleanField(default=False)
-
-    medication = models.BooleanField(default=False)
-    medication_description = models.CharField(max_length=200, default = "")
-
-    opt_out_activities = models.CharField(max_length=200, default="")
-    medical_comments = models.CharField(max_length=200, default="")
-
 class Applicant(models.Model):
     # choices for application status
     APP_STATUS_CHOICES = {
@@ -295,3 +210,10 @@ class Applicant(models.Model):
     group_id = models.CharField(max_length=200, blank=True, null=True, default="0")
     room_id = models.CharField(max_length=200, blank=True, null=True)
     internal_comments = models.CharField(max_length=200, blank=True, null=True)
+
+
+class ApplicantHealth(Applicant):
+    class Meta:
+        proxy = True
+        app_label = Applicant._meta.app_label
+        verbose_name = "Applicant Health Info"
