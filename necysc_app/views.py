@@ -58,9 +58,9 @@ def register(request):
 def home(request):
     if not request.user.is_authenticated:
         return redirect('necysc_app:login')
-
-    applications = Applicant.objects.filter(user=request.user)
     
+    applications = Applicant.objects.filter(user=request.user)
+
     context = {'applications': applications}
     return render(request, 'necysc_app/applicant/index.html', context)
 
@@ -87,7 +87,7 @@ def edit_application(request, application_id):
 
 def new_application(request):
     if not request.user.is_authenticated:
-        return redirect('necysc_app:login')
+        return redirect('necysc_app:login')            
     else:
         form = ApplicationForm()
     
@@ -102,6 +102,10 @@ def submit_application(request):
     if request.method == 'POST':
         form = ApplicationForm(request.POST)
         if form.is_valid():
+            application = form.save(commit=False)  # Create instance but don't save yet
+            application.user = request.user        # Assign the current user
+            application.save()                     # Now save the instance
+
             form.save()
             return redirect('necysc_app:home')
     else:
