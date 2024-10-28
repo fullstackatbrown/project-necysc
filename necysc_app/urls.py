@@ -19,4 +19,6 @@ urlpatterns = [
     path("applicant/submit_application/", views.submit_application, name="submit_application"),
     path("applicant/application_status/", views.application_status, name="application_status"),
     path("applicant/application_review/", views.application_review, name="application_review"),
+    path("applicant/application_review/<int:application_id>/", views.application_detail, name="application_detail"),
+    path("applicant/edit_application/<int:application_id>/", views.edit_application, name="edit_application"),
 ]

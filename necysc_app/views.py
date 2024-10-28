@@ -62,7 +62,28 @@ def home(request):
     applications = Applicant.objects.filter(user=request.user)
 
     context = {'applications': applications}
-    return render(request, 'necysc_app/applicant/index.html', context)   
+    return render(request, 'necysc_app/applicant/index.html', context)
+
+# show each application
+def application_detail(request, application_id):
+    if not request.user.is_authenticated:
+        return redirect('necysc_app:login')
+    application = Applicant.objects.get(id=application_id)
+    context = {'application': application}
+    return render(request, 'necysc_app/applicant/application_detail.html', context)
+def edit_application(request, application_id):
+    if not request.user.is_authenticated:
+        return redirect('necysc_app:login')
+    application = Applicant.objects.get(id=application_id, user=request.user)
+    if request.method == 'POST':
+        form = ApplicationForm(request.POST, instance=application)
+        if form.is_valid():
+            form.save()
+            return redirect('necysc_app:application_detail', application_id=application.id)
+    else:
+        form = ApplicationForm(instance=application)
+    context = {'form': form, 'application': application}
+    return render(request, 'necysc_app/applicant/edit_application.html', context)
 
 def new_application(request):
     if not request.user.is_authenticated:
