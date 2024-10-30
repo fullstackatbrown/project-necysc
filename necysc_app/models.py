@@ -219,6 +219,7 @@ class GlobalData(SingletonModel):
     ON_camp_cost = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     EA_camp_cost = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     CIT_camp_cost = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    # refers to both counselor and ra cost
     RA_camp_cost = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     OPs_camp_cost = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     POD_camp_cost = models.DecimalField(max_digits=10, decimal_places=2, default=0)
