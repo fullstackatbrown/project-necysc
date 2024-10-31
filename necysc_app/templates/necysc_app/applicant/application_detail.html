@@ -1,0 +1,74 @@
+{% extends "necysc_app/base.html" %}
+{% load static %}
+
+{% block title %} Application Details {% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'necysc_app/application_detail.css' %}">
+
+<h1>Application Details</h1>
+
+<div class="application-detail">
+    <div class="application-detail-header">
+        <h2>Name: {{ application.applicant_fname }} {{ application.applicant_lname }}</h2>
+        <a href="{% url 'necysc_app:edit_application' application.id %}" class="btn">Edit Application</a>
+    </div>
+    {% if application.applicant_chinese_name %}
+        <h3>Chinese Name: {{ application.applicant_chinese_name }}</h3>
+    {% endif %}
+    <p>Email: {{ application.applicant_email }}</p>
+    <p>Birthday: {{ application.applicant_bday }}</p>
+    <p>Sex: {{ application.applicant_sex }}</p>
+    <p>Grade: {{ application.applicant_grade }}</p>
+    <p>Shirt Size: {{ application.applicant_shirt_size }}</p>
+    <p>Program: {{ application.program }}</p>
+    <p>Address: {{ application.street_address }}, {{ application.city }}, {{ application.state }} {{ application.zip_code }}</p>
+    
+    <h3 class="section-title">Parent/Guardian Information</h3>
+    <p>Parent 1: {{ application.parent1_fname }} {{ application.parent1_lname }} ({{ application.parent1_relationship }})</p>
+    <p>Phone: {{ application.parent1_phone }}</p>
+    <p>Email: {{ application.parent1_email }}</p>
+    <p>Parent 2: {{ application.parent2_fname }} {{ application.parent2_lname }} ({{ application.parent2_relationship }})</p>
+    <p>Phone: {{ application.parent2_phone }}</p>
+    <p>Email: {{ application.parent2_email }}</p>
+    
+    <h3 class="section-title">Emergency Contact</h3>
+    <p>Phone: {{ application.additional_emergency_contact_phone }}</p>
+    
+    <h3 class="section-title">Medical Information</h3>
+    <p>Insurance Provider: {{ application.insurance_provider }}</p>
+    <p>Subscriber Name: {{ application.subscriber_name }}</p>
+    <p>Primary Physician: {{ application.primary_physician_name }}</p>
+    <p>Phone: {{ application.primary_physician_phone }}</p>
+    <p>Allergies: {{ application.allergies }}</p>
+    <p>Allergies Description: {{ application.allergies_description }}</p>
+    <p>Medications: {{ application.medication }}</p>
+    <p>Medications Description: {{ application.medication_description }}</p>
+    
+    <h3 class="section-title permissions">Permissions</h3>
+    <p>Grant Hospital Permission: {{ application.grant_hospital_permission }}</p>
+    <p>Grant Medical Treatment Permission: {{ application.grant_medical_treatment_permission }}</p>
+    <p>Grant First Aid Permission: {{ application.grant_first_aid_permission }}</p>
+    <p>Grant Meds Permission: {{ application.grant_meds_permission }}</p>
+    <p>Grant Bug Spray Permission: {{ application.grant_bug_spray_permission }}</p>
+    <p>Grant Skin Treatment Permission: {{ application.grant_skin_treatment_permission }}</p>
+    
+    <h3 class="section-title">Additional Information</h3>
+    <p>Signature: {{ application.signature }}</p>
+    <p>Allowed Pickup Persons: {{ application.allowed_pickup_persons }}</p>
+    <p>Available for Carpool: {{ application.available_for_carpool }}</p>
+    <p>Payment Camp: {{ application.payment_camp }}</p>
+    <p>Payment POD: {{ application.payment_pod }}</p>
+    <p>Payment Donation: {{ application.payment_donation }}</p>
+    <p>Payment Total: {{ application.payment_total }}</p>
+    <p>Financial Aid Requested: {{ application.financial_aid_requested }}</p>
+    <p>Listing on Weekbook: {{ application.listing_on_weekbook }}</p>
+    <p>Camper Contact Email: {{ application.camper_contact_email }}</p>
+    <p>Interest in Committee: {{ application.interest_in_committee }}</p>
+    <p>Interest in Weekbook Ads: {{ application.interest_in_wkbook_ads }}</p>
+    <p>Referrals: {{ application.referrals }}</p>
+    <p>Heard From: {{ application.heard_from }}</p>
+    <p>Camp Rule Agreement: {{ application.camp_rule_agreement }}</p>
+    <p>Liability Agreement: {{ application.liability_agreement }}</p>
+</div>
+{% endblock %}

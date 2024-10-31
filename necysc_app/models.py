@@ -3,6 +3,8 @@ from django.db import models
 from django.contrib.auth.models import User
 import datetime
 from django.core.validators import MinValueValidator
+from solo.models import SingletonModel
+
 
 
 class Applicant(models.Model):
@@ -211,9 +213,25 @@ class Applicant(models.Model):
     room_id = models.CharField(max_length=200, blank=True, null=True)
     internal_comments = models.CharField(max_length=200, blank=True, null=True)
 
-
 class ApplicantHealth(Applicant):
     class Meta:
         proxy = True
         app_label = Applicant._meta.app_label
         verbose_name = "Applicant Health Info"
+
+class GlobalData(SingletonModel):
+    day_camp_cost = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    ON_camp_cost = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    EA_camp_cost = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    CIT_camp_cost = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    # refers to both counselor and ra cost
+    RA_camp_cost = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    OPs_camp_cost = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    POD_camp_cost = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+
+    def __str__(self):
+        return "Global Data Settings"
+    
+    class Meta:
+        verbose_name = "Global Data"
+        verbose_name_plural = "Global Data"

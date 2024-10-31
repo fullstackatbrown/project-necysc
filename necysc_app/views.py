@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
-from .models import Applicant
+from .models import Applicant, GlobalData
 from .forms import CreateAuthenticationForm, CreateUserForm, ApplicationForm
 from django.contrib.auth import login as auth_login, authenticate
 
@@ -58,20 +58,49 @@ def register(request):
 def home(request):
     if not request.user.is_authenticated:
         return redirect('necysc_app:login')
-
-    applications = Applicant.objects.filter(user=request.user)
     
+    applications = Applicant.objects.filter(user=request.user)
+
     context = {'applications': applications}
-    return render(request, 'necysc_app/applicant/index.html', context)   
+    return render(request, 'necysc_app/applicant/index.html', context)
+
+# show each application
+def application_detail(request, application_id):
+    if not request.user.is_authenticated:
+        return redirect('necysc_app:login')
+    application = Applicant.objects.get(id=application_id)
+    context = {'application': application}
+    return render(request, 'necysc_app/applicant/application_detail.html', context)
+def edit_application(request, application_id):
+    if not request.user.is_authenticated:
+        return redirect('necysc_app:login')
+    application = Applicant.objects.get(id=application_id, user=request.user)
+    if request.method == 'POST':
+        form = ApplicationForm(request.POST, instance=application)
+        if form.is_valid():
+            form.save()
+            return redirect('necysc_app:application_detail', application_id=application.id)
+    else:
+        form = ApplicationForm(instance=application)
+    context = {'form': form, 'application': application}
+    return render(request, 'necysc_app/applicant/edit_application.html', context)
 
 def new_application(request):
     if not request.user.is_authenticated:
-        return redirect('necysc_app:login')
+        return redirect('necysc_app:login')            
     else:
         form = ApplicationForm()
     
+    globaldata = GlobalData.get_solo()
+
     context = {
-        "form": form
+        "form": form,
+        "globaldata": globaldata,
+     #   "day_camp_cost": globaldata.day_camp_cost,
+      #  "ON_camp_cost": globaldata.ON_camp_cost,
+       # "CIT_camp_cost": globaldata.CIT_camp_cost,
+    #    "RA_camp_cost": globaldata.RA_camp_cost,
+    #    "EA_camp_cost": globaldata.EA_camp_cost,
     }
     return render(request, 'necysc_app/applicant/new_application.html', context)
 
@@ -81,6 +110,10 @@ def submit_application(request):
     if request.method == 'POST':
         form = ApplicationForm(request.POST)
         if form.is_valid():
+            application = form.save(commit=False)  # Create instance but don't save yet
+            application.user = request.user        # Assign the current user
+            application.save()                     # Now save the instance
+
             form.save()
             return redirect('necysc_app:home')
     else:

@@ -4,6 +4,11 @@
     gap: 20px;
 }
 
+.application-card-link {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit text color */
+}
+
 .application-card {
     display: flex;
     flex-direction: column;
@@ -15,6 +20,11 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     background-color: #fff;
     position: relative;
+    transition: transform 0.2s;
+}
+
+.application-card:hover {
+    transform: scale(1.02);
 }
 
 .application-card h2 {

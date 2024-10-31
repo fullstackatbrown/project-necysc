@@ -1,0 +1,16 @@
+{% extends "necysc_app/base.html" %}
+{% load static %}
+
+{% block title %} Edit Application {% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'necysc_app/application_detail.css' %}">
+
+<h1>Edit Application</h1>
+
+<form action="{% url 'necysc_app:edit_application' application.id %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Save Changes" />
+</form>
+{% endblock %}
