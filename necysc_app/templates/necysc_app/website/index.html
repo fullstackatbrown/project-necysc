@@ -1,10 +1,131 @@
-{% extends "necysc_app/base.html" %} 
+{% extends "necysc_app/base.html" %} {% load static %}
 
 {% block title %} Home {% endblock %} 
 
 {% block content %}
-<h1>Welcome to the NECYSC</h1>
 
-<p>Home page</p>
+<div class="container-fluid p-0  mb-5">
+    <img src="{% static 'necysc_app/images/necyscbannerimage.png' %}" alt="NECYSC Banner Image" class="img-fluid w-100">
+</div>
+<h1 class="ps-5 mb-3">Welcome to the NECYSC Home Page</h1>
+<div class="row ps-5 pe-5 mb-3"">
+    <p class="col-md-6">Established in 1986, the New England Chinese Youth Summer Camp (NECYSC) is a non-profit organization 
+        run by dedicated parents and volunteers. Hosted at Brandeis University, our week-long summer camp is designed 
+        for youth aged 6 to 15. A range of programs - including Day, Overnight, and ExplorAsian - are provided, with 
+        the primary goal of nurturing cultural appreciation and fostering a strong community spirit.
+    </p>
+    <a href="/applicant/register" class="col-md-4 mt-4 offset-2 btn btn-dark" style="height: 35px">
+        REGISTER FOR THE SUMMER!
+    </a>
+</div>
+<div class="ms-5 me-5 mb-5 bg-dark" style="height: 2px;"></div>
+<div class="row ms-5 me-5">
+    <div class="ratio ratio-1x1 mb-5" style="width: 25%">
+        <img src="{% static 'necysc_app/images/waterballoons.png' %}" alt="Water Balloons Image" class="img-fluid" style="object-fit: cover;">
+    </div>
+    <div class="ratio ratio-1x1 mb-5" style="width: 25%">
+        <img src="{% static 'necysc_app/images/indoors.png' %}" alt="Water Balloons Image" class="img-fluid" style="object-fit: cover;">
+    </div>
+    <div class="ratio ratio-1x1 mb-5" style="width: 25%">
+        <img src="{% static 'necysc_app/images/pose.png' %}" alt="Water Balloons Image" class="img-fluid" style="object-fit: cover;">
+    </div>
+    <div class="ratio ratio-1x1 mb-5" style="width: 25%">
+        <img src="{% static 'necysc_app/images/filming.png' %}" alt="Water Balloons Image" class="img-fluid" style="object-fit: cover;">
+    </div>
+</div>
+<div class="ms-5 me-5 mb-5 bg-dark" style="height: 2px;"></div>
+
+
+<div class="fansparallax mobileparallax mb-5"></div>
+<div class="ms-5 me-5 mb-5 bg-dark" style="height: 2px;"></div>
+
+<div class="row ps-5 pe-5 mb-3"">
+    <h2 class="offset-3 col-md-6">
+        Camp Activities
+    </h2>
+    <p class="offset-3 col-md-6">Our campers actively participate in cultural activities like Chinese Yo-yo, Kung-fu, 
+        and Calligraphy throughout the day. These are complemented by counselor-led events such as 
+        Carnival, Fun In The Sun, Talent Show, End-of-the-Week Dance, and the eagerly-awaited CIT Dress Up. 
+        Campers create life-long memories and friendships that go beyond the ordinary camp setting. As the week concludes, 
+        each group performs skills they learned during their time at NECYSC for friends and family members.
+    </p>
+</div>
+
+
+<div class="ms-5 me-5 mb-5 bg-dark" style="height: 2px;"></div>
+<div class="row ms-5 me-5">
+    <div class="ratio ratio-1x1 mb-5" style="width: 25%">
+        <img src="{% static 'necysc_app/images/lunch.png' %}" alt="Water Balloons Image" class="img-fluid" style="object-fit: cover;">
+    </div>
+    <div class="ratio ratio-1x1 mb-5" style="width: 25%">
+        <img src="{% static 'necysc_app/images/swim.png' %}" alt="Water Balloons Image" class="img-fluid" style="object-fit: cover;">
+    </div>
+    <div class="ratio ratio-1x1 mb-5" style="width: 25%">
+        <img src="{% static 'necysc_app/images/flags.png' %}" alt="Water Balloons Image" class="img-fluid" style="object-fit: cover;">
+    </div>
+    <div class="ratio ratio-1x1 mb-5" style="width: 25%">
+        <img src="{% static 'necysc_app/images/instrument.png' %}" alt="Water Balloons Image" class="img-fluid" style="object-fit: cover;">
+    </div>
+</div>
+<div class="ms-5 me-5 mb-5 bg-dark" style="height: 2px;"></div>
+
+<div class="volleyballparallax mobileparallax mb-5"></div>
+<div class="ms-5 me-5 mb-5 bg-dark" style="height: 2px;"></div>
+<div class="row ps-5 pe-5 mb-3"">
+    <h2 class="offset-3 col-md-6">
+        Sample Schedule
+    </h2>
+    <div class="offset-3 col-md-6">
+        <p>8:30 - 9:00 - Check-in</p>
+        <p>9:25 - 10:25 - Folk Dance</p>
+        <p>10:45 - 11:45 - Dough Figures</p>
+        <p>11:45 - 1:00 - Lunch</p>
+        <p>1:00 - 2:00 - Bead Art</p>
+        <p>2:00 - 2:20 - Break</p>
+        <p>2:20 - 3:20 - Big Flag Activity</p>
+        <p>3:20 - 3:45 - Snack</p>
+        <p>3:45 - 4:45 - Intergroup Time</p>
+        <p>5:00 - 5:30 - Check-out</p>
+    </div>
+</div>
+
+<div class="ms-5 me-5 mb-5 bg-dark" style="height: 2px;"></div>
+
+
+
+<!--parallax with fan activity image-->
+<style>
+    .fansparallax {
+      background-image: url("{% static 'necysc_app/images/fans.png' %}");
+    
+      min-height: 500px;
+    
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .volleyballparallax {
+      background-image: url("{% static 'necysc_app/images/volleyball.png' %}");
+    
+      min-height: 500px;
+    
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+        /* Turn off parallax scrolling for tablets and phones. Increase the pixels if needed */
+    @media only screen and (max-device-width: 1366px) {
+        .mobileparallax {
+            background-attachment: scroll;
+        }
+    }
+</style>
+
+
+
 
 {% endblock %}
