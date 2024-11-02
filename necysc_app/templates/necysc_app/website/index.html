@@ -14,7 +14,7 @@
         for youth aged 6 to 15. A range of programs - including Day, Overnight, and ExplorAsian - are provided, with 
         the primary goal of nurturing cultural appreciation and fostering a strong community spirit.
     </p>
-    <a href="/applicant/register" class="col-md-4 mt-4 offset-2 btn btn-dark" style="height: 35px">
+    <a href="/applicant/register" class="col-md-3 mt-4 offset-2 btn btn-dark rounded-pill" style="height: 35px;">
         REGISTER FOR THE SUMMER!
     </a>
 </div>
@@ -117,21 +117,27 @@
         position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%); /* Center the overlay */
-        width: 70%; /* Control width of the text box */
-        max-width: 600px; /* Optional: set a max width */
+        transform: translate(-50%, -50%);
+        width: 70%;
+        max-width: 600px;
         padding: 33px;
-        background-color: rgba(255, 255, 255); /* Semi-transparent background */
-        border: 1px solid black; /* Add border style, color, and width */
-        text-align: center; /* Center text */
+        background-color: rgba(255, 255, 255);
+        border: 1px solid black;
+        text-align: center;
     }
 
-        /* Turn off parallax scrolling for tablets and phones. Increase the pixels if needed */
+    /* turn off parallax scrolling for mobile*/
     @media only screen and (max-device-width: 1366px) {
         .mobileparallax {
             background-attachment: scroll;
         }
     }
+
+    .btn-dark:hover {
+        background-color: #5a6268;
+        color: white;
+    }
+
 </style>
 
 
