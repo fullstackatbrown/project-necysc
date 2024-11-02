@@ -24,13 +24,13 @@
         <img src="{% static 'necysc_app/images/waterballoons.png' %}" alt="Water Balloons Image" class="img-fluid" style="object-fit: cover;">
     </div>
     <div class="ratio ratio-1x1 mb-5" style="width: 25%">
-        <img src="{% static 'necysc_app/images/indoors.png' %}" alt="Water Balloons Image" class="img-fluid" style="object-fit: cover;">
+        <img src="{% static 'necysc_app/images/indoors.png' %}" alt="Indoors Image" class="img-fluid" style="object-fit: cover;">
     </div>
     <div class="ratio ratio-1x1 mb-5" style="width: 25%">
-        <img src="{% static 'necysc_app/images/pose.png' %}" alt="Water Balloons Image" class="img-fluid" style="object-fit: cover;">
+        <img src="{% static 'necysc_app/images/pose.png' %}" alt="Pose Image" class="img-fluid" style="object-fit: cover;">
     </div>
     <div class="ratio ratio-1x1 mb-5" style="width: 25%">
-        <img src="{% static 'necysc_app/images/filming.png' %}" alt="Water Balloons Image" class="img-fluid" style="object-fit: cover;">
+        <img src="{% static 'necysc_app/images/filming.png' %}" alt="Filming Image" class="img-fluid" style="object-fit: cover;">
     </div>
 </div>
 <div class="ms-5 me-5 mb-5 bg-dark" style="height: 2px;"></div>
@@ -55,27 +55,25 @@
 <div class="ms-5 me-5 mb-5 bg-dark" style="height: 2px;"></div>
 <div class="row ms-5 me-5">
     <div class="ratio ratio-1x1 mb-5" style="width: 25%">
-        <img src="{% static 'necysc_app/images/lunch.png' %}" alt="Water Balloons Image" class="img-fluid" style="object-fit: cover;">
+        <img src="{% static 'necysc_app/images/lunch.png' %}" alt="Lunch Image" class="img-fluid" style="object-fit: cover;">
     </div>
     <div class="ratio ratio-1x1 mb-5" style="width: 25%">
-        <img src="{% static 'necysc_app/images/swim.png' %}" alt="Water Balloons Image" class="img-fluid" style="object-fit: cover;">
+        <img src="{% static 'necysc_app/images/swim.png' %}" alt="Swim Image" class="img-fluid" style="object-fit: cover;">
     </div>
     <div class="ratio ratio-1x1 mb-5" style="width: 25%">
-        <img src="{% static 'necysc_app/images/flags.png' %}" alt="Water Balloons Image" class="img-fluid" style="object-fit: cover;">
+        <img src="{% static 'necysc_app/images/flags.png' %}" alt="Flags Image" class="img-fluid" style="object-fit: cover;">
     </div>
     <div class="ratio ratio-1x1 mb-5" style="width: 25%">
-        <img src="{% static 'necysc_app/images/instrument.png' %}" alt="Water Balloons Image" class="img-fluid" style="object-fit: cover;">
+        <img src="{% static 'necysc_app/images/instrument.png' %}" alt="Instrument Image" class="img-fluid" style="object-fit: cover;">
     </div>
 </div>
 <div class="ms-5 me-5 mb-5 bg-dark" style="height: 2px;"></div>
 
-<div class="volleyballparallax mobileparallax mb-5"></div>
-<div class="ms-5 me-5 mb-5 bg-dark" style="height: 2px;"></div>
-<div class="row ps-5 pe-5 mb-3"">
-    <h2 class="offset-3 col-md-6">
-        Sample Schedule
-    </h2>
-    <div class="offset-3 col-md-6">
+<div class="volleyballparallax mobileparallax mb-5">
+    <div class="overlay">
+        <h2 class="offset-3 col-md-6 text-center mb-3">
+            Sample Schedule
+        </h2>
         <p>8:30 - 9:00 - Check-in</p>
         <p>9:25 - 10:25 - Folk Dance</p>
         <p>10:45 - 11:45 - Dough Figures</p>
@@ -90,8 +88,6 @@
 </div>
 
 <div class="ms-5 me-5 mb-5 bg-dark" style="height: 2px;"></div>
-
-
 
 <!--parallax with fan activity image-->
 <style>
@@ -110,11 +106,24 @@
       background-image: url("{% static 'necysc_app/images/volleyball.png' %}");
     
       min-height: 500px;
-    
+      position: relative;
       background-attachment: fixed;
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
+    }
+
+    .overlay {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%); /* Center the overlay */
+        width: 70%; /* Control width of the text box */
+        max-width: 600px; /* Optional: set a max width */
+        padding: 33px;
+        background-color: rgba(255, 255, 255); /* Semi-transparent background */
+        border: 1px solid black; /* Add border style, color, and width */
+        text-align: center; /* Center text */
     }
 
         /* Turn off parallax scrolling for tablets and phones. Increase the pixels if needed */
