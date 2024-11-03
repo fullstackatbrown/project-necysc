@@ -8,15 +8,16 @@ Register {% endblock %} {% block content %}
         <h1>Welcome Back!</h1>
         <form method="POST" action="" class="login_form_body">
             {% csrf_token %}
-            <div>
-                {{ form.email.label }}
-                {{ form.username }}
-            </div>
-            <div>
-                {{ form.password.label }}
-                {{ form.password }}
-            </div>
 
+            <!--name="username" because django authentication by default refers to username-->
+            <div>
+                <label for="id_email">Email</label>
+                <input type="email" name="username" id="id_email" required>
+            </div>
+            <div>
+                <label for="id_password">Password</label>
+                <input type="password" name="password" id="id_password" required>
+            </div>
             <input type="submit" value="Login" name="Login User">
         </form>
 
@@ -28,7 +29,7 @@ Register {% endblock %} {% block content %}
     <!-- Register Form -->
     <div class="register_form">
         <h2>Don't Have an Account?</h2>
-        <p>Sign up and discover great amounts of opportunities!</p>
+        <p>Sign up for the summer!</p>
         <a href="{% url 'necysc_app:register' %}">Sign Up</a>
     </div>
     <script>

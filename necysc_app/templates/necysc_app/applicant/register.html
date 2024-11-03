@@ -13,7 +13,7 @@
         <form method="POST" action="" class="register_form_body">
             {% csrf_token %}
             <div>
-                {{ form.email.label }}
+                {{ form.username.label }}
                 {{ form.username }}
             </div>
             <div>
@@ -39,15 +39,15 @@
     </div>
     <div class="login_redirect">
        <h2>Already have an account? </h2> 
-       <p>Login to keep updated with latest content!</p>
+       <p>Login to view your application!</p>
         <a href="{% url 'necysc_app:login' %}">Login</a>
     </div>
 </div>
 
 <script>
     var form_fields = document.getElementsByTagName('input');
-    form_fields[1].placeholder = 'Email...';
-    form_fields[2].placeholder = 'Re-enter email...';
+    form_fields[1].placeholder = 'Username...';
+    form_fields[2].placeholder = 'Email...';
     form_fields[3].placeholder = 'Enter password...';
     form_fields[4].placeholder = 'Re-enter password...';
 

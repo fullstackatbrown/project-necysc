@@ -5,7 +5,6 @@
     align-items: center;
     width: 100%;
     flex-direction: row-reverse;
-    font-family: Roboto Mono, sans-serif;
     height: 90vh;
 }
 
@@ -69,7 +68,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    background-image: url("./images/stars.jpg");
+    background-image: url("./images/night.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
