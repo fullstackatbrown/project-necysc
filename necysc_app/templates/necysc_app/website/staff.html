@@ -1,115 +1,178 @@
-{% extends "necysc_app/base.html" %}
-{% load static %}
-
-{% block title %} Staff {% endblock %}
-
-{% block content %}
-<link rel="stylesheet" href="{% static 'necysc_app/staff.css' %}">
+{% extends "necysc_app/base.html" %} {% load static %} {% block title %} Staff
+{% endblock %} {% block content %}
+<link rel="stylesheet" href="{% static 'necysc_app/staff.css' %}" />
 <div class="programs_page">
-    <div class="programs_page_block  program_block1">
-        <div class="programs_page_block_img">
-            <img src="{% static 'necysc_app/images/image_icon.png' %}" />
-        </div>
-        <div class="programs_page_block_info">
-            <h2>CIT</h2>
-            <div class="program_info">
-                <ul>
-                    <li>Grades: 11+</li>
-                    <li>Dates: July 17 - Aug 3, 2024</li>
-                    <li>Program Fee: $1,100</li>
-                </ul>
-            </div>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
-                into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
-                release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
-                software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-        </div>
-    </div>
-    <div class="programs_page_block program_block2">
-        <div class="programs_page_block_info">
-            <h2>Counselor</h2>
-            <div class="program_info">
-                <ul>
-                    <li>Age: 18+</li>
-                    <li>Dates: July 17 - Aug 3, 2024</li>
-                    <li>Paid Position</li>
-                </ul>
-            </div>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
-                into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
-                release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
-                software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-        </div>
-        <div class="programs_page_block_img">
-            <img src="{% static 'necysc_app/images/image_icon.png' %}" />
-        </div>
-    </div>
-    <div class="programs_page_block program_block3">
-        <div class="programs_page_block_img">
-            <img src="{% static 'necysc_app/images/image_icon.png' %}" />
-        </div>
-        <div class="programs_page_block_info">
-            <h2>Residential Advisor (RA)</h2>
-            <div class="program_info">
-                <ul>
-                    <li>Age: 18+</li>
-                    <li>Dates: July 17 - Aug 3, 2024</li>
-                    <li>Paid Position</li>
-                </ul>
-            </div>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
-                into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
-                release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
-                software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-        </div>
-    </div>
-    <div class="programs_page_block program_block4">
-        <div class="programs_page_block_info">
-            <h2>Operations CIT</h2>
-            <div class="program_info">
-                <ul>
-                    <li>Grades: 11+</li>
-                    <li>Dates: July 17 - Aug 3, 2024</li>
-                    <li>Program Fee: Paid</li>
-                </ul>
-            </div>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
-                into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
-                release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
-                software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-        </div>
-        <div class="programs_page_block_img">
-            <img src="{% static 'necysc_app/images/image_icon.png' %}" />
-        </div>
-    </div>
-    <div class="programs_page_block_commit program_block5">
-        <div class="programs_page_block_info">
-            <h2>Committee</h2>
-            <div class="program_info">
-                <ul>
-                    <li>Director</li>
-                    <li>Ass Director</li>
-                    <li>Education</li>
-                    <li>General Admin</li>
-                    <li>Medical</li>
-                    <li>Public Relations</li>
-                    <li>Registration</li>
-                    <li>Treasurer</li>
-                </ul>
-            </div>
-        </div>
-        <div class="programs_page_block_img">
-            <img src="{% static 'necysc_app/images/image_icon.png' %}" />
-        </div>
-    </div>
+	<div class="programs_page_block program_block1">
+		<div class="programs_page_block_img">
+			<img src="{% static 'necysc_app/images/image_icon.png' %}" />
+		</div>
+		<div class="programs_page_block_info">
+			<h2>CIT</h2>
+			<div class="program_info">
+				<ul>
+					<li><strong>Grades:</strong> 11+</li>
+					<li><strong>Dates:</strong> July 17 - Aug 3, 2024</li>
+					<li><strong>Program Fee:</strong> $1,100</li>
+				</ul>
+				<p>
+					The Counselor in Training (CIT) program provides the
+					opportunity for responsible teens to gain valuable
+					leadership experience. We are looking for dedicated,
+					responsible, and passionate Counselors-In-Training to lead
+					campers in daily activities.
+				</p>
+				<p>
+					Learn more about the CIT role and apply through the link
+					below!
+				</p>
+				<a href="/#">CIT Application</a>
+			</div>
+		</div>
+	</div>
+	<div class="programs_page_block program_block2">
+		<div class="programs_page_block_info">
+			<h2>Counselor</h2>
+			<div class="program_info">
+				<ul>
+					<li><strong>Age:</strong> 18+</li>
+					<li><strong>Dates:</strong> July 17 - Aug 3, 2024</li>
+					<li><strong>Paid Position</strong></li>
+				</ul>
+				<p>
+					Counselors are at the frontlines of daily activities. They
+					generally oversee most of the day to day aspects of the
+					camp. A counselor or team of two counselors are responsible
+					for a group of around twenty similarly aged campers. We are
+					looking for dedicated, responsible, and passionate
+					Counselors to lead campers in daily activities.
+				</p>
+				<p>
+					Learn more about the Counselor role and apply through the
+					link below!
+				</p>
+				<a href="/#">Counselor Application</a>
+			</div>
+		</div>
+		<div class="programs_page_block_img">
+			<img src="{% static 'necysc_app/images/image_icon.png' %}" />
+		</div>
+	</div>
+	<div class="programs_page_block program_block3">
+		<div class="programs_page_block_img">
+			<img src="{% static 'necysc_app/images/image_icon.png' %}" />
+		</div>
+		<div class="programs_page_block_info">
+			<h2>Residential Advisor (RA)</h2>
+			<div class="program_info">
+				<ul>
+					<li><strong>Age:</strong> 18+</li>
+					<li><strong>Dates:</strong> July 17 - Aug 3, 2024</li>
+					<li><strong>Paid Position</strong></li>
+				</ul>
+				<p>
+					The Residential Advisor (RA) position leads the
+					<a href="/#">ExplorAsian program</a> and is a unique
+					leadership role ideal for college students interested in
+					education, youth mentoring, cultural involvement, and
+					community service.
+				</p>
+				<p>
+					Learn more about the RA role and apply through the link
+					below!
+				</p>
+				<a href="/#">RA Application</a>
+			</div>
+		</div>
+	</div>
+	<div class="programs_page_block program_block4">
+		<div class="programs_page_block_info">
+			<h2>Operations CIT</h2>
+			<div class="program_info">
+				<ul>
+					<li><strong>Grades:</strong> 11+</li>
+					<li><strong>Dates:</strong> July 17 - Aug 3, 2024</li>
+					<li><strong>Program Fee: Paid</strong></li>
+				</ul>
+				<p>
+					The Operations CIT (OPs) position conducts day-to-day
+					logistical operations planning responsibilities for the Day
+					and Overnight programs. The OPs team (3-5 members) are
+					tasked with set-up and planning various parts of camp to
+					make everything go as smoothly as possible.
+				</p>
+				<p>
+					Learn more about the OPs role and apply through the link
+					below!
+				</p>
+				<a href="/#">OPs Application</a>
+			</div>
+		</div>
+		<div class="programs_page_block_img">
+			<img src="{% static 'necysc_app/images/image_icon.png' %}" />
+		</div>
+	</div>
+	<div class="programs_page_block_commit program_block5">
+		<div class="programs_page_block_info">
+			<h2>Committee</h2>
+			<div class="program_info">
+				<table>
+					<tbody>
+						<tr>
+							<td>
+								<strong>Director</strong>
+							</td>
+							<td>john doe</td>
+						</tr>
+						<tr>
+							<td>
+								<strong>Asst Director</strong>
+							</td>
+							<td>john doe</td>
+						</tr>
+						<tr>
+							<td>
+								<strong>Education</strong>
+							</td>
+							<td>john doe</td>
+						</tr>
+						<tr>
+							<td>
+								<strong>General Admin</strong>
+							</td>
+							<td>john doe</td>
+						</tr>
+						<tr>
+							<td>
+								<strong>Medical</strong>
+							</td>
+							<td>john doe</td>
+						</tr>
+						<tr>
+							<td>
+								<strong>Public Relations</strong>
+							</td>
+							<td>john doe</td>
+						</tr>
+						<tr>
+							<td>
+								<strong>Registration</strong>
+							</td>
+							<td>john doe</td>
+						</tr>
+						<tr>
+							<td>
+								<strong>Treasurer</strong>
+							</td>
+							<td>john doe</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="programs_page_block_img">
+			<img src="{% static 'necysc_app/images/image_icon.png' %}" />
+		</div>
+	</div>
 </div>
 
 {% endblock %}
