@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
-from .models import Applicant
+from .models import Applicant, GlobalData
 from .forms import CreateAuthenticationForm, CreateUserForm, ApplicationForm
 from django.contrib.auth import login as auth_login, authenticate
 
@@ -91,8 +91,16 @@ def new_application(request):
     else:
         form = ApplicationForm()
     
+    globaldata = GlobalData.get_solo()
+
     context = {
-        "form": form
+        "form": form,
+        "globaldata": globaldata,
+     #   "day_camp_cost": globaldata.day_camp_cost,
+      #  "ON_camp_cost": globaldata.ON_camp_cost,
+       # "CIT_camp_cost": globaldata.CIT_camp_cost,
+    #    "RA_camp_cost": globaldata.RA_camp_cost,
+    #    "EA_camp_cost": globaldata.EA_camp_cost,
     }
     return render(request, 'necysc_app/applicant/new_application.html', context)
 

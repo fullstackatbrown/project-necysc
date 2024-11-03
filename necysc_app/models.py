@@ -7,7 +7,6 @@ from solo.models import SingletonModel
 
 
 
-# TODO: should we make this a forms.ModelForm?
 class Applicant(models.Model):
     # choices for application status
     APP_STATUS_CHOICES = {
@@ -213,11 +212,18 @@ class Applicant(models.Model):
     room_id = models.CharField(max_length=200, blank=True, null=True)
     internal_comments = models.CharField(max_length=200, blank=True, null=True)
 
+class ApplicantHealth(Applicant):
+    class Meta:
+        proxy = True
+        app_label = Applicant._meta.app_label
+        verbose_name = "Applicant Health Info"
+
 class GlobalData(SingletonModel):
     day_camp_cost = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     ON_camp_cost = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     EA_camp_cost = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     CIT_camp_cost = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    # refers to both counselor and ra cost
     RA_camp_cost = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     OPs_camp_cost = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     POD_camp_cost = models.DecimalField(max_digits=10, decimal_places=2, default=0)
