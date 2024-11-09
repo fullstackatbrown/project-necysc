@@ -234,3 +234,5 @@ class GlobalData(SingletonModel):
     class Meta:
         verbose_name = "Global Data"
         verbose_name_plural = "Global Data"
+
+

@@ -13,6 +13,7 @@
         <h2>Name: {{ application.applicant_fname }} {{ application.applicant_lname }}</h2>
         <a href="{% url 'necysc_app:edit_application' application.id %}" class="btn">Edit Application</a>
     </div>
+
     {% if application.applicant_chinese_name %}
         <h3>Chinese Name: {{ application.applicant_chinese_name }}</h3>
     {% endif %}
