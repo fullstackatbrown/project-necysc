@@ -4,6 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import Applicant, GlobalData
 from .forms import CreateAuthenticationForm, CreateUserForm, ApplicationForm
 from django.contrib.auth import login as auth_login, authenticate
+from django.contrib.auth.decorators import login_required
 
 # Website Pages
 def index(request):
@@ -55,25 +56,22 @@ def register(request):
     context = {'form': form}
     return render(request, 'necysc_app/applicant/register.html', context)
 
+@login_required
 def home(request):
-    if not request.user.is_authenticated:
-        return redirect('necysc_app:login')
-    
     applications = Applicant.objects.filter(user=request.user)
 
     context = {'applications': applications}
     return render(request, 'necysc_app/applicant/index.html', context)
 
 # show each application
+@login_required
 def application_detail(request, application_id):
-    if not request.user.is_authenticated:
-        return redirect('necysc_app:login')
     application = Applicant.objects.get(id=application_id)
     context = {'application': application}
     return render(request, 'necysc_app/applicant/application_detail.html', context)
+
+@login_required
 def edit_application(request, application_id):
-    if not request.user.is_authenticated:
-        return redirect('necysc_app:login')
     application = Applicant.objects.get(id=application_id, user=request.user)
     if request.method == 'POST':
         form = ApplicationForm(request.POST, instance=application)
@@ -85,11 +83,9 @@ def edit_application(request, application_id):
     context = {'form': form, 'application': application}
     return render(request, 'necysc_app/applicant/edit_application.html', context)
 
+@login_required
 def new_application(request):
-    if not request.user.is_authenticated:
-        return redirect('necysc_app:login')            
-    else:
-        form = ApplicationForm()
+    form = ApplicationForm()
     
     globaldata = GlobalData.get_solo()
 
@@ -104,9 +100,8 @@ def new_application(request):
     }
     return render(request, 'necysc_app/applicant/new_application.html', context)
 
+@login_required
 def submit_application(request):
-    if not request.user.is_authenticated:
-        return redirect('necysc_app:login')
     if request.method == 'POST':
         form = ApplicationForm(request.POST)
         if form.is_valid():
@@ -121,16 +116,13 @@ def submit_application(request):
     context = {}
     return render(request, 'necysc_app/applicant/submit_application.html', context)
 
-
+@login_required
 def application_status(request):
-    if not request.user.is_authenticated:
-        return redirect('necysc_app:login')
     context = {}
     return render(request, 'necysc_app/applicant/application_status.html', context)
 
+@login_required
 def application_review(request):
-    if not request.user.is_authenticated:
-        return redirect('necysc_app:login')
     # for reviewing and editing a single application
     context = {}
     return render(request, 'necysc_app/applicant/read_application.html', context)   
