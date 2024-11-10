@@ -89,7 +89,7 @@ LOGIN_URL = 'necysc_app:login'
 
 # Email validation 
 AUTHENTICATION_BACKENDS = [
-    'accounts.backends.EmailBackend',
+    'necysc_app.backends.EmailBackend',
     'django.contrib.auth.backends.ModelBackend',
 ]
 
