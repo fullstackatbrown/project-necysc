@@ -85,7 +85,7 @@ DATABASES = {
 }
 
 # login URL
-LOGIN_URL = reverse('necysc_app:login')
+LOGIN_URL = 'necysc_app:login'
 
 # Email validation 
 AUTHENTICATION_BACKENDS = [
