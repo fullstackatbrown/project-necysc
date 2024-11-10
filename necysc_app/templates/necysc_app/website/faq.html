@@ -4,12 +4,11 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'necysc_app/staff.css' %}" />
 
-<h1>FAQ</h1>
+<h1 class="text-center my-5" style="font-size: 2.5rem; color: #512da8;">Frequently Asked Questions</h1>
 
-<div class="accordion" id="faqAccordion">
-    <!-- Registration Section -->
-    <h2 class="faq-subtitle">Registration</h2>
-    <div class="accordion-item">
+<div class="accordion container my-5 p-4 shadow rounded-3" id="faqAccordion" style="max-width: 800px; background-color: #f8f9fa;">
+    <h2 class="faq-subtitle text-primary mt-4 mb-3" style="font-size: 1.75rem;">Registration</h2>
+    <div class="accordion-item mb-3">
         <h2 class="accordion-header" id="headingOne">
             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                 What is the mailing address for forms and payment?
@@ -18,12 +17,12 @@
         <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
             <div class="accordion-body">
                 For 2024, the mailing address is:<br>
-                NECYSC<br>P.O. Box 615<br>Weston, MA 02493
+                <strong>NECYSC</strong><br>P.O. Box 615<br>Weston, MA 02493
             </div>
         </div>
     </div>
 
-    <div class="accordion-item">
+    <div class="accordion-item mb-3">
         <h2 class="accordion-header" id="headingTwo">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                 Why do I need to submit all forms and payment during registration?
@@ -31,12 +30,12 @@
         </h2>
         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
             <div class="accordion-body">
-                With more than 350 campers and CITs, our staff of volunteers must review every form before camp begins. That is why we require all forms to be sent with payment during registration. Campers will not be accepted until all required forms and payment are received. If you have difficulty meeting the deadline due to special reasons, please contact <a href="mailto:registration@necysc.org">registration@necysc.org</a>.
+                With over 350 campers and CITs, our volunteer staff must review every form before camp begins. Therefore, all forms and payment are required during registration. Campers will not be accepted until all required forms and payment are received. If you need an extension due to special circumstances, please contact <a href="mailto:registration@necysc.org">registration@necysc.org</a>.
             </div>
         </div>
     </div>
 
-    <div class="accordion-item">
+    <div class="accordion-item mb-3">
         <h2 class="accordion-header" id="headingThree">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                 Why can't you simply accept everyone who applies for camp?
@@ -44,15 +43,13 @@
         </h2>
         <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
             <div class="accordion-body">
-                There are many factors that affect the size of the camp, such as room availability, staff-to-camper ratio, and the number of campers our license permits us to have.
+                Factors like room availability, staff-to-camper ratio, and licensing restrictions limit the number of campers we can accept each year.
             </div>
         </div>
     </div>
 
-    <!-- Additional questions continue in a similar format -->
-    <!-- Leaving Camp Section -->
-    <h2 class="faq-subtitle">Leaving Camp, Early Check-out, Visits</h2>
-    <div class="accordion-item">
+    <h2 class="faq-subtitle text-primary mt-4 mb-3" style="font-size: 1.75rem;">Leaving Camp, Early Check-out, Visits</h2>
+    <div class="accordion-item mb-3">
         <h2 class="accordion-header" id="headingFour">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                 Will campers be allowed to leave camp during the camp week?
@@ -60,12 +57,12 @@
         </h2>
         <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
             <div class="accordion-body">
-                Campers will NOT be allowed to leave camp during the week. This includes routine doctor's visits, sports practices, rehearsals, etc. All routine/non-emergency appointments should be scheduled outside of camp week. Should an unforeseen situation arise, please advise the camp director(s) who will make a case-by-case judgment.
+                Campers are not allowed to leave during the camp week for non-emergency appointments (e.g., doctor’s visits, sports practices). Exceptions for unforeseen situations can be discussed with the camp director.
             </div>
         </div>
     </div>
 
-    <div class="accordion-item">
+    <div class="accordion-item mb-3">
         <h2 class="accordion-header" id="headingFive">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
                 Can I check out my child early?
@@ -73,12 +70,66 @@
         </h2>
         <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion">
             <div class="accordion-body">
-                We encourage campers to stay for the full week and participate with their groups in the Closing Ceremonies. However, under extenuating circumstances, prior to the start of camp, parents can complete the Request for Early Check-Out form from Registration. Parents will be expected to complete the check-out procedure within the designated early check-out hour on Friday (Day Camp).
+                Early check-out is discouraged to ensure full participation in closing ceremonies. If necessary, a Request for Early Check-Out form can be completed prior to camp for a designated early check-out time.
             </div>
         </div>
     </div>
 
-    <!-- Add more FAQ sections as needed in similar format -->
+    <h2 class="faq-subtitle text-primary mt-4 mb-3" style="font-size: 1.75rem;">Health and Safety</h2>
+    <div class="accordion-item mb-3">
+        <h2 class="accordion-header" id="headingSix">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                Are there medical staff on-site at camp?
+            </button>
+        </h2>
+        <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+                Yes, trained medical staff are available on-site throughout the camp week to handle any medical issues or emergencies.
+            </div>
+        </div>
+    </div>
+
+    <div class="accordion-item mb-3">
+        <h2 class="accordion-header" id="headingSeven">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                What happens if my child becomes ill during camp?
+            </button>
+        </h2>
+        <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+                If a camper becomes ill, they will be evaluated by medical staff. Parents may be contacted based on the severity of the illness.
+            </div>
+        </div>
+    </div>
+
+    <h2 class="faq-subtitle text-primary mt-4 mb-3" style="font-size: 1.75rem;">Packing and Preparation</h2>
+    <div class="accordion-item mb-3">
+        <h2 class="accordion-header" id="headingEight">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                What should my child bring to camp?
+            </button>
+        </h2>
+        <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+                Campers should bring essentials like clothing, toiletries, a water bottle, and any necessary medication. A detailed packing list will be provided upon registration.
+            </div>
+        </div>
+    </div>
+
+    <div class="accordion-item mb-3">
+        <h2 class="accordion-header" id="headingNine">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                Are electronic devices allowed at camp?
+            </button>
+        </h2>
+        <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+                We encourage campers to leave electronic devices at home to fully immerse in the camp experience. If brought, devices will be collected and securely stored until the end of camp.
+            </div>
+        </div>
+    </div>
 </div>
+
+
 
 {% endblock %}
