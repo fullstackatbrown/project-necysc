@@ -1,0 +1,189 @@
+<!--this is distinct from register.html-->
+{% extends "necysc_app/base.html" %}
+
+{% block title %} Programs {% endblock %}
+{% load static %}
+
+{% block content %}
+
+<!DOCTYPE html> 
+<html> 
+<head> 
+	<link href= 
+'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'> 
+
+	<script src= 
+'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'> 
+	</script> 
+
+	<script src= 
+'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'> 
+	</script> 
+
+<link rel="stylesheet" href="{% static 'necysc_app/registration.css' %}">
+</head> 
+
+<body> 
+	<div id="registrationprocess" class="container"> 
+		<div class="row justify-content-center"> 
+			<div class="col-11 col-sm-9 col-md-7 
+				col-lg-6 col-xl-5 text-center p-0 mt-3 mb-2"> 
+				<div class="px-0 pt-4 pb-0 mt-3 mb-3"> 
+					<form id="form"> 
+						<ul id="progressbar"> 
+							<li class="active" id="step1"> 
+								<strong>Step 1</strong> 
+							</li> 
+							<li id="step2"><strong>Step 2</strong></li> 
+							<li id="step3"><strong>Step 3</strong></li> 
+							<li id="step4"><strong>Step 4</strong></li> 
+						</ul> 
+						<div class="progress"> 
+							<div class="progress-bar"></div> 
+						</div> <br> 
+						<fieldset> 
+							<h2>Welcome To GFG Step 1</h2> 
+							<input type="button" name="next-step"
+								class="next-step rounded-pill" value="Next Step" /> 
+						</fieldset> 
+						<fieldset> 
+							<h2>Welcome To GFG Step 2</h2> 
+							<input type="button" name="next-step"
+								class="next-step rounded-pill" value="Next Step" /> 
+							<input type="button" name="previous-step"
+								class="previous-step rounded-pill"
+								value="Previous Step" /> 
+						</fieldset> 
+						<fieldset> 
+							<h2>Welcome To GFG Step 3</h2> 
+							<input type="button" name="next-step"
+								class="next-step rounded-pill" value="Final Step" /> 
+							<input type="button" name="previous-step"
+								class="previous-step rounded-pill"
+								value="Previous Step" /> 
+						</fieldset> 
+						<fieldset> 
+							<div class="finish"> 
+								<h2 class="text text-center"> 
+									<strong>FINISHED</strong> 
+								</h2> 
+							</div> 
+							<input type="button" name="previous-step"
+								class="previous-step rounded-pill"
+								value="Previous Step" /> 
+						</fieldset> 
+					</form> 
+				</div> 
+			</div> 
+		</div> 
+	</div> 
+
+
+    <h2 id="financialaid" class="mb-3">Financial Aid</h2>
+    <p>We try our best to make our programs affordable for everyone. Financial Aid is available and is based solely on need. 
+        Families who qualify are encouraged to apply as soon as possible. It is essential that you provide support document 
+        to demonstrate your need. Our goal is to offer an opportunity to families who may otherwise not be able to 
+        afford the program to share our camp experience.
+    </p>
+    <p>
+        The Financial Aid application is strictly confidential. Financial Aid is a separate process from program acceptance 
+        and is awarded after program acceptance. Please complete both the Camper/CIT program application form (indicating 
+        that you are applying for Financial Aid) and the Financial Aid application form. Please also note that it is 
+        required that you send in a 50% deposit with your financial application.
+    </p>
+    <p>
+        Our data is based on the Federal Poverty Guidelines, which are released each year.
+    </p>
+    <p>
+        Financial Aid information available upon request. See Financial Aid Application Form for details.
+    </p>
+    <p>
+        Please mail the following documents to NECYSC, P.O. Box 615, Weston, MA, 02493
+    </p>
+    <p>
+        Required documents for verification of income with rest of registration forms (Submit at Time of Registration 
+        or Before May 1, 2024):
+    </p>
+    <ul>
+        <li>Financial Aid Application Form</li>
+        <li>2022 family tax return copy (IRS 1040 form)</li>
+        <li>Exemption approval of the School Lunch Program, or other relevant documents</li>
+        <li>Cover letter explaining your situation.</li>
+    </ul>
+</body> 
+<script>
+    $(document).ready(function () { 
+        var currentGfgStep, nextGfgStep, previousGfgStep; 
+        var opacity; 
+        var current = 1; 
+        var steps = $("fieldset").length; 
+
+        setProgressBar(current); 
+
+        $(".next-step").click(function () { 
+
+            currentGfgStep = $(this).parent(); 
+            nextGfgStep = $(this).parent().next(); 
+
+            $("#progressbar li").eq($("fieldset") 
+                .index(nextGfgStep)).addClass("active"); 
+
+            nextGfgStep.show(); 
+            currentGfgStep.animate({ opacity: 0 }, { 
+                step: function (now) { 
+                    opacity = 1 - now; 
+
+                    currentGfgStep.css({ 
+                        'display': 'none', 
+                        'position': 'relative'
+                    }); 
+                    nextGfgStep.css({ 'opacity': opacity }); 
+                }, 
+                duration: 500 
+            }); 
+            setProgressBar(++current); 
+        }); 
+
+        $(".previous-step").click(function () { 
+
+            currentGfgStep = $(this).parent(); 
+            previousGfgStep = $(this).parent().prev(); 
+
+            $("#progressbar li").eq($("fieldset") 
+                .index(currentGfgStep)).removeClass("active"); 
+
+            previousGfgStep.show(); 
+
+            currentGfgStep.animate({ opacity: 0 }, { 
+                step: function (now) { 
+                    opacity = 1 - now; 
+
+                    currentGfgStep.css({ 
+                        'display': 'none', 
+                        'position': 'relative'
+                    }); 
+                    previousGfgStep.css({ 'opacity': opacity }); 
+                }, 
+                duration: 500 
+            }); 
+            setProgressBar(--current); 
+        }); 
+
+        function setProgressBar(currentStep) { 
+            var percent = parseFloat(100 / steps) * current; 
+            percent = percent.toFixed(); 
+            $(".progress-bar") 
+                .css("width", percent + "%") 
+        } 
+
+        $(".submit").click(function () { 
+            return false; 
+        }) 
+    }); 
+</script> 
+</html> 
+
+
+
+
+{% endblock %}
