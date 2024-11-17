@@ -1,6 +1,6 @@
 # admin.py
 from django.contrib import admin
-from .models import Applicant, ApplicantHealth, GlobalData
+from .models import Applicant, ApplicantHealth, GlobalData, CampDirectory, POD, CarpoolApplicant
 from solo.admin import SingletonModelAdmin
 from django.http import HttpResponse
 import csv
@@ -33,8 +33,27 @@ class HealthInfoAdmin(admin.ModelAdmin):
     
     list_display = ['applicant_fname', 'applicant_lname', 'applicant_bday', 'created_at', 
                     'program', 'applicant_sex', 'health_form_a_received', 'health_form_b_received']
+class CampDirectoryAdmin(admin.ModelAdmin):
+    search_fields = ['applicant_fname', 'applicant_lname']
+    # Last Name, First Name, Address, Gender, Camper Email, Parent Email, Parent Tel, Program, Group
+    list_display = ['applicant_fname', 'applicant_lname', 'street_address', 'applicant_email', 
+                    'parent1_email', 'parent1_phone', 'program', 'group_id']
+    list_filter = ['program']
+class PODAdmin(admin.ModelAdmin):
+    search_fields = ['applicant_fname', 'applicant_lname']
+    # Last Name, First Name
+    list_display = ['parent1_for_POD', 'parent2_for_POD','parent1_cori_status','parent1_sori_status','parent1_id_status', 'parent2_cori_status','parent2_sori_status','parent2_id_status']
+class CarpoolApplicantAdmin(admin.ModelAdmin):
+    search_fields = ['applicant_fname', 'applicant_lname']
+    list_display = ['applicant_fname', 'applicant_lname']
+    def get_queryset(self, request):
+        queryset = super().get_queryset(request)
+        return queryset.filter(available_for_carpool=True)
 
 # Register the base model, proxy model, and global data model
 admin.site.register(Applicant, ApplicantAdmin)
 admin.site.register(ApplicantHealth, HealthInfoAdmin)
 admin.site.register(GlobalData, SingletonModelAdmin)
+admin.site.register(CampDirectory, CampDirectoryAdmin)
+admin.site.register(POD, PODAdmin)
+admin.site.register(CarpoolApplicant, CarpoolApplicantAdmin)
