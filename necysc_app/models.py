@@ -233,6 +233,16 @@ class CarpoolApplicant(Applicant):
         proxy = True
         app_label = Applicant._meta.app_label
         verbose_name = "Carpool Directory"
+class CamperReferral(Applicant):
+    class Meta:
+        proxy = True
+        app_label = Applicant._meta.app_label
+        verbose_name = "Camper Referral"
+class RoomateRequest(Applicant):
+    class Meta:
+        proxy = True
+        app_label = Applicant._meta.app_label
+        verbose_name = "Roomate Request"
 
 class GlobalData(SingletonModel):
     day_camp_cost = models.DecimalField(max_digits=10, decimal_places=2, default=0)
