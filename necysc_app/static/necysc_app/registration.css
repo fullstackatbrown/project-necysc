@@ -27,10 +27,6 @@ h2{
 	position: relative
 } 
 
-.finish { 
-	text-align: center
-} 
-
 #form fieldset:not(:first-of-type) { 
 	display: none
 } 
@@ -71,9 +67,13 @@ h2{
 } 
 
 #progressbar { 
-	margin-bottom: 30px; 
-	overflow: hidden; 
-	color: lightgrey 
+	display: flex;
+	justify-content: space-between;
+	margin: 0 auto; 
+	padding: 0;
+	color: lightgrey ;
+	width: 90%;
+	position: relative;
 } 
 
 #progressbar .active { 
@@ -83,26 +83,33 @@ h2{
 #progressbar li { 
 	list-style-type: none; 
 	font-size: 15px; 
-	width: 25%; 
-	float: left; 
+	flex: 1;
 	position: relative; 
 	font-weight: 400
 } 
 
-#progressbar #step1:before { 
+#progressbar #jan:before { 
 	content: "1"
 } 
 
-#progressbar #step2:before { 
+#progressbar #feb:before { 
 	content: "2"
 } 
 
-#progressbar #step3:before { 
+#progressbar #mar:before { 
 	content: "3"
 } 
 
-#progressbar #step4:before { 
+#progressbar #jun:before { 
 	content: "4"
+} 
+
+#progressbar #jul:before { 
+	content: "5"
+} 
+
+#progressbar #aug:before { 
+	content: "6"
 } 
 
 #progressbar li:before { 
