@@ -1,178 +1,130 @@
 {% extends "necysc_app/base.html" %} {% load static %} {% block title %} Staff
 {% endblock %} {% block content %}
 <link rel="stylesheet" href="{% static 'necysc_app/staff.css' %}" />
-<div class="programs_page">
-	<div class="programs_page_block program_block1">
-		<div class="programs_page_block_img">
-			<img src="{% static 'necysc_app/images/image_icon.png' %}" />
-		</div>
-		<div class="programs_page_block_info">
-			<h2>CIT</h2>
-			<div class="program_info">
-				<ul>
-					<li><strong>Grades:</strong> 11+</li>
-					<li><strong>Dates:</strong> July 17 - Aug 3, 2024</li>
-					<li><strong>Program Fee:</strong> $1,100</li>
-				</ul>
-				<p>
-					The Counselor in Training (CIT) program provides the
-					opportunity for responsible teens to gain valuable
-					leadership experience. We are looking for dedicated,
-					responsible, and passionate Counselors-In-Training to lead
-					campers in daily activities.
-				</p>
-				<p>
-					Learn more about the CIT role and apply through the link
-					below!
-				</p>
-				<a href="/#">CIT Application</a>
-			</div>
-		</div>
-	</div>
-	<div class="programs_page_block program_block2">
-		<div class="programs_page_block_info">
-			<h2>Counselor</h2>
-			<div class="program_info">
-				<ul>
-					<li><strong>Age:</strong> 18+</li>
-					<li><strong>Dates:</strong> July 17 - Aug 3, 2024</li>
-					<li><strong>Paid Position</strong></li>
-				</ul>
-				<p>
-					Counselors are at the frontlines of daily activities. They
-					generally oversee most of the day to day aspects of the
-					camp. A counselor or team of two counselors are responsible
-					for a group of around twenty similarly aged campers. We are
-					looking for dedicated, responsible, and passionate
-					Counselors to lead campers in daily activities.
-				</p>
-				<p>
-					Learn more about the Counselor role and apply through the
-					link below!
-				</p>
-				<a href="/#">Counselor Application</a>
-			</div>
-		</div>
-		<div class="programs_page_block_img">
-			<img src="{% static 'necysc_app/images/image_icon.png' %}" />
-		</div>
-	</div>
-	<div class="programs_page_block program_block3">
-		<div class="programs_page_block_img">
-			<img src="{% static 'necysc_app/images/image_icon.png' %}" />
-		</div>
-		<div class="programs_page_block_info">
-			<h2>Residential Advisor (RA)</h2>
-			<div class="program_info">
-				<ul>
-					<li><strong>Age:</strong> 18+</li>
-					<li><strong>Dates:</strong> July 17 - Aug 3, 2024</li>
-					<li><strong>Paid Position</strong></li>
-				</ul>
-				<p>
-					The Residential Advisor (RA) position leads the
-					<a href="/#">ExplorAsian program</a> and is a unique
-					leadership role ideal for college students interested in
-					education, youth mentoring, cultural involvement, and
-					community service.
-				</p>
-				<p>
-					Learn more about the RA role and apply through the link
-					below!
-				</p>
-				<a href="/#">RA Application</a>
-			</div>
-		</div>
-	</div>
-	<div class="programs_page_block program_block4">
-		<div class="programs_page_block_info">
-			<h2>Operations CIT</h2>
-			<div class="program_info">
-				<ul>
-					<li><strong>Grades:</strong> 11+</li>
-					<li><strong>Dates:</strong> July 17 - Aug 3, 2024</li>
-					<li><strong>Program Fee: Paid</strong></li>
-				</ul>
-				<p>
-					The Operations CIT (OPs) position conducts day-to-day
-					logistical operations planning responsibilities for the Day
-					and Overnight programs. The OPs team (3-5 members) are
-					tasked with set-up and planning various parts of camp to
-					make everything go as smoothly as possible.
-				</p>
-				<p>
-					Learn more about the OPs role and apply through the link
-					below!
-				</p>
-				<a href="/#">OPs Application</a>
-			</div>
-		</div>
-		<div class="programs_page_block_img">
-			<img src="{% static 'necysc_app/images/image_icon.png' %}" />
-		</div>
-	</div>
-	<div class="programs_page_block_commit program_block5">
-		<div class="programs_page_block_info">
-			<h2>Committee</h2>
-			<div class="program_info">
-				<table>
-					<tbody>
-						<tr>
-							<td>
-								<strong>Director</strong>
-							</td>
-							<td>john doe</td>
-						</tr>
-						<tr>
-							<td>
-								<strong>Asst Director</strong>
-							</td>
-							<td>john doe</td>
-						</tr>
-						<tr>
-							<td>
-								<strong>Education</strong>
-							</td>
-							<td>john doe</td>
-						</tr>
-						<tr>
-							<td>
-								<strong>General Admin</strong>
-							</td>
-							<td>john doe</td>
-						</tr>
-						<tr>
-							<td>
-								<strong>Medical</strong>
-							</td>
-							<td>john doe</td>
-						</tr>
-						<tr>
-							<td>
-								<strong>Public Relations</strong>
-							</td>
-							<td>john doe</td>
-						</tr>
-						<tr>
-							<td>
-								<strong>Registration</strong>
-							</td>
-							<td>john doe</td>
-						</tr>
-						<tr>
-							<td>
-								<strong>Treasurer</strong>
-							</td>
-							<td>john doe</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</div>
-		<div class="programs_page_block_img">
-			<img src="{% static 'necysc_app/images/image_icon.png' %}" />
-		</div>
-	</div>
+<div class="staff-section position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+    <div class="overlay"></div>
+    <div class="col-md-6 p-lg-5 mx-auto my-5 position-relative">
+        <h1 class="display-3 fw-bold text-white">Staffs & Applications</h1>
+        <h3 class="fw-normal text-light mb-4">Apply to Become a Staff Member!</h3>
+    </div>
 </div>
+
+
+<div class="row flex-lg-row-reverse align-items-center g-5 pt-5 my-5 border rounded-3 shadow-lg">
+    <div class="col-10 col-sm-8 col-lg-6">
+        <img src="{% static 'necysc_app/images/pose.png' %}" class="d-block mx-lg-auto img-fluid" alt="Program Image" width="700" height="500" loading="lazy">
+    </div>
+    <div class="col-lg-6">
+        <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3" style="color: #7b1fa2;">
+			→ CIT
+        </h1>
+        <ul class="list-unstyled mb-3">
+            <li><strong>Grades:</strong> 11+</li>
+            <li><strong>Dates:</strong> July 27 - August 3, 2024</li>
+            <li><strong>Program Fee:</strong> $1,100</li>
+        </ul>
+        <p class="lead">
+            The Counselor in Training (CIT) program provides the opportunity for responsible teens to gain valuable leadership experience. We are looking for dedicated, responsible, and passionate Counselors-In-Training to lead campers in daily activities.
+        </p>
+        <p>
+            Learn more about the CIT role and apply through the link below!
+        </p>
+        <a href="#" class="btn btn-primary fw-bold" style="color: #fff;">CIT Application</a>
+    </div>
+</div>
+
+<div class="row align-items-center g-5 pt-5 my-5 border rounded-3 shadow-lg">
+    <div class="col-10 col-sm-8 col-lg-6">
+        <img src="{% static 'necysc_app/images/waterballoons.png' %}" class="d-block mx-lg-auto img-fluid shadow-lg" alt="Counselor Image" width="700" height="500" loading="lazy">
+    </div>
+    <div class="col-lg-6">
+        <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3" style="color: #7b1fa2;">
+            Counselor ←
+        </h1>
+        <ul class="list-unstyled mb-3">
+            <li><strong>Ages:</strong> 18+</li>
+            <li><strong>Dates:</strong> July 27 - August 3, 2024</li>
+            <li><strong>Paid Position</strong></li>
+        </ul>
+        <p class="lead">
+            Counselors are at the frontlines of daily activities. They generally oversee most of the day-to-day aspects of the camp. A counselor or team of two counselors is responsible for a group of around twenty similarly aged campers. We are looking for dedicated, responsible, and passionate Counselors to lead campers in daily activities.
+        </p>
+        <p>
+            Learn more about the Counselor role and apply through the link below!
+        </p>
+        <a href="#" class="btn btn-primary fw-bold" style="color: #fff;">Counselor Application</a>
+    </div>
+</div>
+
+<div class="row flex-lg-row-reverse align-items-center g-5 pt-5 my-5 border rounded-3 shadow-lg">
+    <div class="col-10 col-sm-8 col-lg-6">
+        <img src="{% static 'necysc_app/images/volleyball.png' %}" class="d-block mx-lg-auto img-fluid" alt="Program Image" width="700" height="500" loading="lazy">
+    </div>
+    <div class="col-lg-6">
+        <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3" style="color: #7b1fa2;">
+			→ Residential Advisor (RA)
+        </h1>
+        <ul class="list-unstyled mb-3">
+            <li><strong>Ages:</strong> 18+</li>
+            <li><strong>Dates:</strong> July 27 - August 3, 2024</li>
+            <li><strong>Paid Position</strong></li>
+        </ul>
+        <p class="lead">
+			The Residential Advisor (RA) position leads the ExplorAsian program and is a unique leadership role ideal for college students interested in education, youth mentoring, cultural involvement, and community service.        </p>
+        <p>
+			Learn more about the RA role and apply through the link below!</p>
+        <a href="#" class="btn btn-primary fw-bold" style="color: #fff;">RA Application</a>
+    </div>
+</div>
+
+<div class="row align-items-center g-5 pt-5 my-5 border rounded-3 shadow-lg">
+    <div class="col-10 col-sm-8 col-lg-6">
+        <img src="{% static 'necysc_app/images/king.png' %}" class="d-block mx-lg-auto img-fluid shadow-lg" alt="Counselor Image" width="700" height="500" loading="lazy">
+    </div>
+    <div class="col-lg-6">
+        <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3" style="color: #7b1fa2;">
+            Operations CIT ←
+        </h1>
+        <ul class="list-unstyled mb-3">
+            <li><strong>Grades:</strong> 11+</li>
+            <li><strong>Dates:</strong> July 27 - August 3, 2024</li>
+            <li><strong>Paid Position</strong></li>
+        </ul>
+        <p class="lead">
+			The Operations CIT (OPs) position conducts day-to-day logistical operations planning responsibilities for the Day and Overnight programs. The OPs team (3-5 members) are tasked with set-up and planning various parts of camp to make everything go as smoothly as possible.        </p>
+        <p>
+			Learn more about the OPs role and apply through the link below!
+
+        </p>
+        <a href="#" class="btn btn-primary fw-bold" style="color: #fff;">OPs Application</a>
+    </div>
+</div>
+
+<div class="centered-section px-4 pt-5 my-5 text-center border rounded-3 shadow-lg">
+    <div class="overlay"></div>
+    <h1 class="display-4 fw-bold position-relative" style="color: #7b1fa2; font-size: 3rem;">
+        <span style="font-size: 2rem;">→</span> Committee 2024 <span style="font-size: 2rem;">←</span>
+    </h1>
+    <div class="col-lg-8 mx-auto position-relative">
+        <ul class="list-unstyled">
+            <li><strong>Director:</strong> TBD</li>
+            <li><strong>Asst Director:</strong> TBD</li>
+            <li><strong>Education:</strong> TBD</li>
+            <li><strong>General Admin:</strong> TBD</li>
+            <li><strong>Medical:</strong> TBD</li>
+            <li><strong>Public Relations:</strong> TBD</li>
+            <li><strong>Registration:</strong> TBD</li>
+            <li><strong>Treasurer:</strong> TBD</li>
+        </ul>
+    </div>
+    <div class="overflow-hidden" style="max-height: 30vh;">
+        <div class="container px-5">
+            <img src="{% static 'necysc_app/images/necyscbannerimage.png' %}" class="img-fluid border rounded-3 shadow-lg mb-4"
+                alt="Example image" width="700" height="500" loading="lazy">
+        </div>
+    </div>
+</div>
+
+
 
 {% endblock %}
