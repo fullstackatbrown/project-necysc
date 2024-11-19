@@ -23,6 +23,10 @@ def staff(request):
     context = {}
     return render(request, 'necysc_app/website/staff.html', context)
 
+def registration(request):
+    context = {}
+    return render(request, 'necysc_app/website/registration.html', context)
+
 def faq(request):
     context = {}
     return render(request, 'necysc_app/website/faq.html', context)
