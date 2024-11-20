@@ -7,6 +7,13 @@
 		a {
 			font-weight: bold;
 		}
+        .active {
+          color: white;
+          background-color: #5a6268;
+          border-radius: 5px;
+          padding: 5px 10px;
+          text-decoration: none;
+        }
         /* Dropdown styles */
         .dropdown {
             position: relative;
@@ -57,7 +64,9 @@
     </div>
 
     <div class="dropdown col-auto d-flex align-items-center">
-        <a href="/#" class="text-decoration-none" style="color: black">Home</a>
+        <a href="{% url 'necysc_app:index' %}"
+           class="text-decoration-none {% if request.path == '/' %}active{% endif %}"
+           style="color: black">Home</a>
         <div class="dropdown-content">
             <a href="/#aboutus">About Us</a>
             <a>Sponsors</a>
@@ -66,7 +75,9 @@
     </div>
 
     <div class="dropdown col-auto d-flex align-items-center">
-        <a href="/programs" class="text-decoration-none" style="color: black">Programs</a>
+        <a href="{% url 'necysc_app:programs' %}"
+           class="text-decoration-none {% if request.path == '/programs/' %}active{% endif %}"
+           style="color: black">Programs</a>
         <div class="dropdown-content">
             <a href="/programs#daycamp">Day Camp</a>
             <a href="/programs#overnightcamp">Overnight Camp</a>
@@ -75,7 +86,9 @@
     </div>
 
     <div class="dropdown col-auto d-flex align-items-center">
-        <a href="/staff" class="text-decoration-none" style="color: black">Staff</a>
+        <a href="{% url 'necysc_app:staff' %}"
+           class="text-decoration-none {% if request.path == '/staff/' %}active{% endif %}"
+           style="color: black">Staff</a>
         <div class="dropdown-content">
             <a href="/staff#citapp">CIT</a>
             <a href="/staff#counselor">Counselor</a>
@@ -86,7 +99,9 @@
     </div>
 
     <div class="dropdown col-auto d-flex align-items-center">
-        <a href="/registration" class="text-decoration-none" style="color: black">Registration</a>
+        <a href="{% url 'necysc_app:registration' %}"
+           class="text-decoration-none {% if request.path == '/registration/' %}active{% endif %}"
+           style="color: black">Registration</a>
         <div class="dropdown-content">
             <a href="/registration#registrationprocess">Registration Process</a>
             <a href="/applicant/application_status">Application Status</a>
@@ -95,7 +110,9 @@
     </div>
 
     <div class="dropdown col-auto d-flex align-items-center">
-        <a href="/faq" class="text-decoration-none" style="color: black">FAQ</a>
+        <a href="{% url 'necysc_app:faq' %}"
+           class="text-decoration-none  {% if request.path == '/faq/' %}active{% endif %}"
+           style="color: black">FAQ</a>
         <div class="dropdown-content">
             <a href="/faq#faqregistration">Registration</a>
             <a href="/faq#faqleavingcamp">Leaves and Visits</a>
