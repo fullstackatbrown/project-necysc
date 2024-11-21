@@ -1,6 +1,7 @@
 {% extends "necysc_app/base.html" %} {% block title %} About Us {% endblock %}
 {% block content %}
 
+<section class="ms-5 me-5 mb-5 ">
 <div id="aboutus" class="overlay">
 	<h1 class="textleft"><i class="icon-right-circled"></i>About Us</h1>
 	<p>
@@ -21,37 +22,46 @@
 		they learned during their time at NECYSC for friends and family members.
 	</p>
 
+	<div class="bg-dark" style="height: 2px;"></div>
+</section>
+
+	<section class="ps-5 pe-5 mb-3 ">
 	<h1 class="textleft" id="sponsors" >Sponsors</h1>
 
-	<p> TODO: Add sponsors here </p>
+	<div class="row">
+		<h4 class="col-md-6">
+			A Huge "THANK YOU" to All Sponsors!
+		</h4>
+		<ul class="col-md-6 text-left">
+			<li>
+				<a href="http://overseas.ocac.gov.tw/ocac/subsites/home.aspx?site=d51f7216-fecb-471d-a66e-0a4863f5343f" style="color: black; font-weight: normal;">Cultural Center of TECO</a>
+			</li>
+			<li>
+				<a href="http://www.roc-taiwan.org/usbos_en/index.html" style="color: black; font-weight: normal;">Taipei Economic and Cultural Office in Boston (TECO)</a>
+	
+			</li>
+			<li>
+				<a href="http://www.gbcca.org/" style="color: black; font-weight: normal;">Huaxin Chinese School at Greater Boston Chinese Cultural Association (GBCCA)</a>
+			</li>            
+			<li>
+				<a href="" style="color: black; font-weight: normal;">Freedom Crossing Film Festival</a>
+			</li>            
+			<!--links to be added later-->
+			<li>
+				<a href="" style="color: black; font-weight: normal;">Taiker Recreation</a>
+			</li>
+			<li>
+				<a href="" style="color: black; font-weight: normal;">Summer Star Foundation for Nature, Art, and Humanity</a>
+			</li>   
+		</ul>
+	</div>
+</section>
 
-	<h1 class="textleft" id="contact">Contact Us</h1>
+	<section class="ps-5 pe-5 mb-3">
+	<h1 class="textleft " id="contact">Contact Us</h1>
 
 	<p> TODO: Add contact info here </p>
-
-	<!-- <a href="http://www.facebook.com/NECYSC"><img src="images2/facebook-logo.png" alt="Facebook "
-						style="width: 35px; height: 35px; float: left;"></a>
-				<div style="float: left; margin-left: 10px; margin-top: 5px">
-					NECYSC has a <a href="https://www.facebook.com/NECYSC" target="_blank">Facebook</a> page!
-				</div>
-				<div class="fb-like" data-href="https://www.facebook.com/NECYSC/" data-layout="button"
-					data-action="like" data-size="large" data-show-faces="false" data-share="true"
-					style="margin-top: 5px;"></div> -->
-
-	<!-- Add font awesome icons -->
-	<p>Check out our socials! Be sure to like and follow for updates!</p>
-	<!-- <p style="text-align: center">
-		<a
-			href="https://www.facebook.com/NECYSC"
-			target="_blank"
-			class="fa fa-facebook"
-		></a>
-		<a
-			href="https://www.instagram.com/NECYSC"
-			target="_blank"
-			class="fa fa-instagram"
-		></a>
-	</p> -->
+	</section>
 </div>
 
 {% endblock %}
