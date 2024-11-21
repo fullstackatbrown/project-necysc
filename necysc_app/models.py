@@ -49,6 +49,7 @@ class Applicant(models.Model):
         "ON": "Overnight",
         "CIT": "CIT",
         "C": "Counselor",
+        "OPS": "OPS",
         "EA": "EA",
     }
 
@@ -153,11 +154,7 @@ class Applicant(models.Model):
     preferred_roommate = models.CharField(max_length=200, blank=True, null=True)
 
     # forms
-    health_form_a_received = models.CharField(
-        max_length=10,
-        choices=HEALTH_FORM_RECEIVED_CHOICES,
-        default="NS",
-    )
+    health_form_a_received = models.BooleanField(default=False)
     health_form_b_received = models.BooleanField(default=False)
     medication_slip_received = models.BooleanField(default=False)
     parent1_cori_status = models.CharField(max_length=10, blank=True, null=True)
@@ -201,6 +198,8 @@ class Applicant(models.Model):
     medication_description = models.CharField(max_length=200, blank=True, null=True)
 
     opt_out_activities = models.CharField(max_length=200, blank=True, null=True)
+    
+    # hidden in form
     medical_comments = models.CharField(max_length=200, blank=True, null=True)
 
     signature = models.CharField(max_length=200, blank=True, null=True)
