@@ -28,7 +28,6 @@ def staff(request):
     context = {}
     return render(request, 'necysc_app/website/staff.html', context)
 
-
 def faq(request):
     context = {}
     return render(request, 'necysc_app/website/faq.html', context)
