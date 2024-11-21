@@ -64,6 +64,12 @@
     </div>
 
     <div class="dropdown col-auto d-flex align-items-center">
+        
+        {% if request.user.is_authenticated %}
+        <a href="{% url 'necysc_app:home' %}"
+           class="text-decoration-none"
+           style="color: black">Applicant Home</a>
+        {% else %}
         <a href="{% url 'necysc_app:index' %}"
            class="text-decoration-none {% if request.path == '/' %}active{% endif %}"
            style="color: black">Home</a>
@@ -72,6 +78,7 @@
             <a>Sponsors</a>
             <a>Contact Us</a>
         </div>
+        {% endif %}
     </div>
 
     <div class="dropdown col-auto d-flex align-items-center">
@@ -124,9 +131,15 @@
     </div>
 
     <div class="col-auto">
-        <a href="/applicant/register" class="btn btn-dark rounded-pill text-decoration-none d-flex align-items-center" style="height: 35px; color: white;">
+        {% if request.user.is_authenticated %}
+        <a href="{% url 'necysc_app:logout' %}" class="btn btn-dark rounded-pill text-decoration-none d-flex align-items-center" style="height: 35px; color: white;">
+            Logout
+        </a>
+        {% else %}
+        <a href="{% url 'necysc_app:login' %}" class="btn btn-dark rounded-pill text-decoration-none d-flex align-items-center" style="height: 35px; color: white;">
             Login/Register
         </a>
+        {% endif %}
     </div>
 </div>
 
