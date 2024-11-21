@@ -7,34 +7,45 @@ from django.contrib.auth import login as auth_login, authenticate
 from django.contrib.auth.decorators import login_required
 
 # Website Pages
+
+
 def index(request):
     context = {}
     return render(request, 'necysc_app/website/index.html', context)
+
 
 def about(request):
     context = {}
     return render(request, 'necysc_app/website/about.html', context)
 
+
 def programs(request):
     context = {}
     return render(request, 'necysc_app/website/programs.html', context)
 
+
 def staff(request):
     context = {}
     return render(request, 'necysc_app/website/staff.html', context)
+
 
 def faq(request):
     context = {}
     return render(request, 'necysc_app/website/faq.html', context)
 
 # Applicant Portal
+
+
 def login(request):
+    # check if user is already logged in
+    if request.user.is_authenticated:
+        return redirect('necysc_app:home')
     if request.method == 'POST':
-        form = CreateAuthenticationForm(request, data = request.POST)
+        form = CreateAuthenticationForm(request, data=request.POST)
         if form.is_valid():
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
-            user = authenticate(request, username = username, password = password)
+            user = authenticate(request, username=username, password=password)
             if user is not None:
                 auth_login(request, user)
                 return redirect('necysc_app:home')
@@ -43,7 +54,12 @@ def login(request):
     context = {'form': form}
     return render(request, 'necysc_app/applicant/login.html', context)
 
+
 def register(request):
+    # check if user is already logged in
+    if request.user.is_authenticated:
+        return redirect('necysc_app:home')
+    
     form = CreateUserForm()
     if request.method == 'POST':
         email = request.POST.get('email')
@@ -51,10 +67,11 @@ def register(request):
         form = CreateUserForm(request.POST)
         if form.is_valid():
             form.save()
-            #fix
+            # fix
             return redirect('necysc_app:login')
     context = {'form': form}
     return render(request, 'necysc_app/applicant/register.html', context)
+
 
 @login_required
 def home(request):
@@ -64,11 +81,14 @@ def home(request):
     return render(request, 'necysc_app/applicant/index.html', context)
 
 # show each application
+
+
 @login_required
 def application_detail(request, application_id):
     application = Applicant.objects.get(id=application_id)
     context = {'application': application}
     return render(request, 'necysc_app/applicant/application_detail.html', context)
+
 
 @login_required
 def edit_application(request, application_id):
@@ -83,29 +103,32 @@ def edit_application(request, application_id):
     context = {'form': form, 'application': application}
     return render(request, 'necysc_app/applicant/edit_application.html', context)
 
+
 @login_required
 def new_application(request):
     form = ApplicationForm()
-    
+
     globaldata = GlobalData.get_solo()
 
     context = {
         "form": form,
         "globaldata": globaldata,
-     #   "day_camp_cost": globaldata.day_camp_cost,
-      #  "ON_camp_cost": globaldata.ON_camp_cost,
-       # "CIT_camp_cost": globaldata.CIT_camp_cost,
-    #    "RA_camp_cost": globaldata.RA_camp_cost,
-    #    "EA_camp_cost": globaldata.EA_camp_cost,
+        #   "day_camp_cost": globaldata.day_camp_cost,
+        #  "ON_camp_cost": globaldata.ON_camp_cost,
+        # "CIT_camp_cost": globaldata.CIT_camp_cost,
+        #    "RA_camp_cost": globaldata.RA_camp_cost,
+        #    "EA_camp_cost": globaldata.EA_camp_cost,
     }
     return render(request, 'necysc_app/applicant/new_application.html', context)
+
 
 @login_required
 def submit_application(request):
     if request.method == 'POST':
         form = ApplicationForm(request.POST)
         if form.is_valid():
-            application = form.save(commit=False)  # Create instance but don't save yet
+            # Create instance but don't save yet
+            application = form.save(commit=False)
             application.user = request.user        # Assign the current user
             application.save()                     # Now save the instance
 
@@ -116,13 +139,15 @@ def submit_application(request):
     context = {}
     return render(request, 'necysc_app/applicant/submit_application.html', context)
 
+
 @login_required
 def application_status(request):
     context = {}
     return render(request, 'necysc_app/applicant/application_status.html', context)
 
+
 @login_required
 def application_review(request):
     # for reviewing and editing a single application
     context = {}
-    return render(request, 'necysc_app/applicant/read_application.html', context)   
+    return render(request, 'necysc_app/applicant/read_application.html', context)

@@ -5,33 +5,45 @@
 <link rel="stylesheet" href="{% static 'necysc_app/applicant_home.css' %}">
 <h1>Welcome!</h1>
 {% if applications %}
-    <div class="dashboard">
+    <div class="container mb-4">
         {% for application in applications %}
+        <div class="card col-4 glow">
             <a href="{% url 'necysc_app:application_detail' application.id %}" class="application-card-link">
-                <div class="application-card">
-                    <h2>{{ application.applicant_fname }} {{ application.applicant_lname }}</h2>
-                    {% if application.applicant_chinese_name %}
-                        <h3>{{ application.applicant_chinese_name }}</h3>
-                    {% endif %}
-                    <div>
-                        <p>Created: {{ application.created_at|date:"F j, Y" }}</p>
-                        <p>Updated: {{ application.last_updated_at|date:"F j, Y" }}</p>
-                    </div>
-                    <p class="status {{ application.app_status|lower }}">
+                <div class="card-body">
+                    <h5 class="card-title"><span>{{ application.applicant_fname }} 
+                        {{ application.applicant_lname }}</span>                                                 
                         {% if application.app_status == 'A' %}
-                            Accepted
+                        <span class="badge bg-success float-end">Accepted </span>
                         {% elif application.app_status == 'P' %}
-                            Pending
+                        <span class="badge bg-secondary float-end">Pending</span>
                         {% else %}
-                            Rejected
+                        <span class="badge bg-danger float-end">Rejected</span>
                         {% endif %}
-                    </p>
+                                        
+                    </h5>
+                    <!-- horizontal line-->
+                    <hr>
+                    <p class="card-text fw-light">Year: {{application.app_year}}</p>
+                    <p class="card-text m-0 fw-light">Health Status: {{application.health_record_status}}</p>
                 </div>
+                    
             </a>
+        </div>
         {% endfor %}
     </div>
 {% endif %}
 
-<button type="button" onclick="window.location.href='{% url 'necysc_app:new_application'%}'">Create new camper application</button>
+<div class="container mt-4 pt-4">
+<button type="button" class="btn btn-primary" href="{% url 'necysc_app:new_application'%}'">Create new camper application</button>
+</div>
 
+<style>
+.glow {
+    transition: box-shadow 0.3s ease-in-out;
+    }
+    
+.glow:hover {
+box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.15); /* Adjust the glow effect */
+}
+</style>
 {% endblock %}
