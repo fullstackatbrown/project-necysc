@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 from .models import Applicant, GlobalData
 from .forms import CreateAuthenticationForm, CreateUserForm, ApplicationForm
-from django.contrib.auth import login as auth_login, authenticate
+from django.contrib.auth import login as auth_login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 
 # Website Pages
@@ -28,6 +28,10 @@ def staff(request):
     context = {}
     return render(request, 'necysc_app/website/staff.html', context)
 
+def registration(request):
+    context = {}
+    return render(request, 'necysc_app/website/registration.html', context)
+
 def faq(request):
     context = {}
     return render(request, 'necysc_app/website/faq.html', context)
@@ -40,6 +44,9 @@ def registrationinfo(request):
 
 
 def login(request):
+    # check if user is already logged in
+    if request.user.is_authenticated:
+        return redirect('necysc_app:home')
     if request.method == 'POST':
         form = CreateAuthenticationForm(request, data=request.POST)
         if form.is_valid():
@@ -56,6 +63,10 @@ def login(request):
 
 
 def register(request):
+    # check if user is already logged in
+    if request.user.is_authenticated:
+        return redirect('necysc_app:home')
+    
     form = CreateUserForm()
     if request.method == 'POST':
         email = request.POST.get('email')
@@ -68,6 +79,11 @@ def register(request):
     context = {'form': form}
     return render(request, 'necysc_app/applicant/register.html', context)
 
+
+@login_required
+def logout_view(request):
+    logout(request)
+    return redirect('necysc_app:index')
 
 @login_required
 def home(request):
@@ -87,6 +103,7 @@ def application_detail(request, application_id):
         return render(request, 'necysc_app/applicant/application_detail.html', context)
     else:
         return redirect('necysc_app:home')
+
 
 
 @login_required
@@ -129,10 +146,10 @@ def submit_application(request):
             if not Applicant.objects.filter(user=request.user).exists():
                 application.user = request.user        # Assign the current user
                 application.save()                     # Now save the instance
+               
             form.save()
             return redirect('necysc_app:home')
     else:
         redirect('necysc_app:new_application')
-    context = {}
+    context = {"form": form}
     return render(request, 'necysc_app/applicant/submit_application.html', context)
-
