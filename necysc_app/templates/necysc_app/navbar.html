@@ -3,11 +3,12 @@
 <head>
     <title>Your Page Title</title>
     <style>
+        /* General Styles */
         a {
             font-weight: bold;
-            text-decoration: none; /* Removes underlining */
+            text-decoration: none;
         }
-
+ 
         /* Dropdown styles */
         .dropdown {
             position: relative;
@@ -51,7 +52,7 @@
         }
 
         .active {
-            color: #F9C784 !important; /* Highlight active link */
+            color: #F9C784 !important;
         }
 
         .btn-login {
@@ -70,7 +71,7 @@
 <div class="row mt-2 mb-3 d-flex ms-4 align-items-center gap-3">
     <!-- NECYSC logo -->
     <div class="col-auto d-flex align-items-center">
-        <a href="/" id="logo-link">
+        <a href="/" id="home-logo-link">
             <img src="https://www.necysc.org/v2/images/logo2.png" alt="Your Image Description" style="height: 100px;" />
         </a>
     </div>
@@ -133,10 +134,8 @@
 </div>
 
 <script>
-    // Normalize the path by removing trailing slashes
-    const currentPath = window.location.pathname.replace(/\/$/, "") || "/";
+    let currentPath = window.location.pathname.replace(/\/$/, "") || "/";
 
-    // Map the paths to their respective IDs
     const pageLinks = {
         "/": "home-link",
         "/about": "about-link",
@@ -146,9 +145,10 @@
         "/faq": "faq-link"
     };
 
-    // Highlight the active link
     if (pageLinks[currentPath]) {
         document.getElementById(pageLinks[currentPath]).classList.add("active");
+    } else if (currentPath === "/") {
+        document.getElementById("home-link").classList.add("active");
     }
 </script>
 
