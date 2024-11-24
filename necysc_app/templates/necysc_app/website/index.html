@@ -11,12 +11,12 @@
 <p class="ps-5 pe-5 mb-4 col-md-6">Established in 1986, the New England Chinese Youth Summer Camp (NECYSC) is a non-profit organization 
     run by dedicated parents and volunteers. Hosted at Brandeis University, our week-long summer camp is designed 
     for youth aged 6 to 15. 
-    <a class="programslink" href="programs" style="color: black;">A range of programs - including Day, Overnight, and ExplorAsian</a> - are provided, with 
+    <a class="programslink" href="{% url 'necysc_app:programs' %}" style="color: black;">A range of programs - including Day, Overnight, and ExplorAsian</a> - are provided, with 
     the primary goal of nurturing cultural appreciation and fostering a strong community spirit.
 </p>
 <div class="ps-5 mb-4">
-    <a href="/applicant/register" class="col-md-3 btn btn-dark rounded-pill" style="height: 35px;">
-        REGISTER FOR THE SUMMER!
+    <a href="{% url 'necysc_app:register' %}" class="col-md-3 btn btn-dark rounded-pill fw-bold">
+        Register today!
     </a>
 </div>
 
@@ -41,7 +41,7 @@
 <div class="fansparallax mobileparallax mb-5"></div>
 <div class="ms-5 me-5 mb-5 bg-dark" style="height: 2px;"></div>
 
-<div class="row ps-5 pe-5 mb-3"">
+<div class="row ps-5 pe-5 mb-3">
     <h2 class="offset-3 col-md-6">
         Camp Activities
     </h2>
@@ -72,10 +72,10 @@
 <div class="ms-5 me-5 mb-5 bg-dark" style="height: 2px;"></div>
 
 <div class="volleyballparallax mobileparallax mb-5">
-    <div class="overlay">
-        <h2 class="offset-3 col-md-6 text-center mb-3">
+    <div class="overlay row">
+        <h3 class="text-center mb-3 pb-3">
             Sample Schedule
-        </h2>
+        </h3>
         <p>8:30 - 9:00 - Check-in</p>
         <p>9:25 - 10:25 - Folk Dance</p>
         <p>10:45 - 11:45 - Dough Figures</p>
@@ -89,37 +89,7 @@
     </div>
 </div>
 
-<div class="ms-5 me-5 mb-5 bg-dark" style="height: 2px;"></div>
 
-<div class="row ps-5 pe-5 mb-3"">
-    <h2 class="offset-3 col-md-6">
-        A Big "THANK YOU" to All Our Sponsors!
-    </h2>
-    <ul class="offset-3 col-md-6 text-left">
-        <li>
-            <a href="http://overseas.ocac.gov.tw/ocac/subsites/home.aspx?site=d51f7216-fecb-471d-a66e-0a4863f5343f" style="color: black; font-weight: normal;">Cultural Center of TECO</a>
-        </li>
-        <li>
-            <a href="http://www.roc-taiwan.org/usbos_en/index.html" style="color: black; font-weight: normal;">Taipei Economic and Cultural Office in Boston (TECO)</a>
-
-        </li>
-        <li>
-            <a href="http://www.gbcca.org/" style="color: black; font-weight: normal;">Huaxin Chinese School at Greater Boston Chinese Cultural Association (GBCCA)</a>
-        </li>            
-        <li>
-            <a href="" style="color: black; font-weight: normal;">Freedom Crossing Film Festival</a>
-        </li>            
-        <!--links to be added later-->
-        <li>
-            <a href="" style="color: black; font-weight: normal;">Taiker Recreation</a>
-        </li>
-        <li>
-            <a href="" style="color: black; font-weight: normal;">Summer Star Foundation for Nature, Art, and Humanity</a>
-        </li>   
-    </ul>
-</div>
-
-<div class="ms-5 me-5 mb-5 bg-dark" style="height: 2px;"></div>
 
 <!--parallax with fan activity image-->
 <style>
