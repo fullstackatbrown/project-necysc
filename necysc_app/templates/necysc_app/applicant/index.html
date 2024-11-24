@@ -4,6 +4,7 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'necysc_app/applicant_home.css' %}">
 <h1>Welcome!</h1>
+<a href="{% url 'logout' %}" class="btn-logout">Logout</a> 
 {% if applications %}
     <div class="container mb-4">
         {% for application in applications %}

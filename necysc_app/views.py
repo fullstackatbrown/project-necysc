@@ -144,5 +144,5 @@ def submit_application(request):
             return redirect('necysc_app:home')
     else:
         redirect('necysc_app:new_application')
-    context = {}
+    context = {"form": form}
     return render(request, 'necysc_app/applicant/submit_application.html', context)

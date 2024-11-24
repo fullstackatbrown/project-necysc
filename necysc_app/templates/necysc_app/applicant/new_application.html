@@ -1307,6 +1307,15 @@
 
 		<button type="submit" class="btn btn-primary">Submit</button>
 
+		{{ % if form.errors % }}
+		<div>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Oops!</strong> There was an error processing your form. Please check the form for any errors and try again.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+        </div>
+		{% endif %}
+
 		<script>
 			//change value depending on whether the checkbox is checked or not
 			document

@@ -41,6 +41,7 @@
   margin: 5px 0;
 }
 
+
 .status {
   border-radius: 5px;
   color: #fff;
@@ -74,4 +75,21 @@
 
 .glow:hover {
   box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.15); /* Adjust the glow effect */
+}
+
+.btn-logout {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: #ff4444;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+.btn-logout:hover {
+    background-color: #cc0000;
 }
