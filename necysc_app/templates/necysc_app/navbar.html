@@ -3,15 +3,16 @@
 <head>
     <title>Your Page Title</title>
     <style>
-
-		a {
-			font-weight: bold;
-		}
+        /* General Styles */
+        a {
+            font-weight: bold;
+            text-decoration: none;
+        }
+ 
         /* Dropdown styles */
         .dropdown {
             position: relative;
             display: inline-block;
-
         }
 
         .dropdown-content {
@@ -25,24 +26,43 @@
         }
 
         .dropdown-content a {
-            color: black;
+            color: #4e598c;
             padding: 12px 16px;
             text-decoration: none;
             display: block;
+            transition: color 0.3s ease, background-color 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #4e598c;
+            color: #F9C784;
         }
 
         .dropdown:hover .dropdown-content {
             display: block;
         }
 
-        .dropdown > a:hover {
-            color: #5a6268 !important;
-            text-decoration: none;
+        .navbar-link {
+            color: #4e598c;
+            transition: color 0.3s ease;
         }
 
-        .btn-dark:hover {
-            background-color: #5a6268;
-            color: white;
+        .navbar-link:hover {
+            color: #F9C784;
+        }
+
+        .active {
+            color: #F9C784 !important;
+        }
+
+        .btn-login {
+            background-color: #4e598c;
+            color: #F9C784;
+            transition: all 0.3s ease;
+        }
+
+        .btn-login:hover {
+            color: #FFFFFF;
         }
     </style>
 </head>
@@ -51,54 +71,53 @@
 <div class="row mt-2 mb-3 d-flex ms-4 align-items-center gap-3">
     <!-- NECYSC logo -->
     <div class="col-auto d-flex align-items-center">
-        <a href="/#">
-            <img src="https://www.necysc.org/v2/images/logo2.png" alt="Your Image Description" style="height: 100px;"/>
+        <a href="/" id="home-logo-link">
+            <img src="https://www.necysc.org/v2/images/logo2.png" alt="Your Image Description" style="height: 100px;" />
         </a>
     </div>
 
     <div class="dropdown col-auto d-flex align-items-center">
-        <a href="/#" class="text-decoration-none" style="color: black">Home</a>
+        <a href="/" class="navbar-link" id="home-link">Home</a>
     </div>
 
     <div class="dropdown col-auto d-flex align-items-center">
-        <a href="{% url 'necysc_app:about' %}" class="text-decoration-none" style="color: black">About</a>
+        <a href="/about" class="navbar-link" id="about-link">About</a>
         <div class="dropdown-content">
-            <a href="{% url 'necysc_app:about' %}#sponsors" >Sponsors</a>
-            <a href="{% url 'necysc_app:about' %}#contact">Contact Us</a>
-        </div>
-    </div>
-   
-    <div class="dropdown col-auto d-flex align-items-center">
-        <a href="{% url 'necysc_app:programs' %}" class="text-decoration-none" style="color: black">Programs</a>
-        <div class="dropdown-content">
-            <a href="{% url 'necysc_app:programs' %}#day">Day Camp</a>
-            <a href="{% url 'necysc_app:programs' %}#on">Overnight Camp</a>
-            <a href="{% url 'necysc_app:programs' %}#ea">ExplorAsian</a>
+            <a href="/about#sponsors">Sponsors</a>
+            <a href="/about#contact">Contact Us</a>
         </div>
     </div>
 
     <div class="dropdown col-auto d-flex align-items-center">
-        <a href="{% url 'necysc_app:staff' %}" class="text-decoration-none" style="color: black">Staff</a>
+        <a href="/programs" class="navbar-link" id="programs-link">Programs</a>
         <div class="dropdown-content">
-            <a href="{% url 'necysc_app:staff' %}#cit">CIT</a>
-            <a href="{% url 'necysc_app:staff' %}#counselor">Counselor</a>
-            <a href="{% url 'necysc_app:staff' %}#ra">RA</a>
-            <a href="{% url 'necysc_app:staff' %}#ops">OPs</a>
-            <a href="{% url 'necysc_app:staff' %}#committee">Committee</a>
+            <a href="/programs#day">Day Camp</a>
+            <a href="/programs#on">Overnight Camp</a>
+            <a href="/programs#ea">ExplorAsian</a>
         </div>
     </div>
 
     <div class="dropdown col-auto d-flex align-items-center">
-        <a href="{% url 'necysc_app:registrationinfo' %}" class="text-decoration-none" style="color: black">Registration</a>
+        <a href="/staff" class="navbar-link" id="staff-link">Staff</a>
+        <div class="dropdown-content">
+            <a href="/staff#cit">CIT</a>
+            <a href="/staff#counselor">Counselor</a>
+            <a href="/staff#ra">RA</a>
+            <a href="/staff#ops">OPs</a>
+            <a href="/staff#committee">Committee</a>
+        </div>
+    </div>
+
+    <div class="dropdown col-auto d-flex align-items-center">
+        <a href="/registrationinfo" class="navbar-link" id="registration-link">Registration</a>
         <div class="dropdown-content">
             <a href="/registrationinfo#importantdates">2025 Important Dates</a>
-            <a>Registration Process</a>
             <a href="/registrationinfo#financialaid">Financial Aid</a>
         </div>
     </div>
 
     <div class="dropdown col-auto d-flex align-items-center">
-        <a href="{% url 'necysc_app:faq' %}" class="text-decoration-none" style="color: black">FAQ</a>
+        <a href="/faq" class="navbar-link" id="faq-link">FAQ</a>
         <div class="dropdown-content">
             <a href="/faq#faqregistration">Registration</a>
             <a href="/faq#faqleavingcamp">Leaves and Visits</a>
@@ -110,11 +129,28 @@
     </div>
 
     <div class="col-auto">
-        <a href="/applicant/register" class="btn btn-dark rounded-pill text-decoration-none d-flex align-items-center" style="height: 35px; color: white;">
-            Login/Register
-        </a>
+        <a href="/applicant/register" class="btn btn-login rounded-pill">Login/Register</a>
     </div>
 </div>
+
+<script>
+    let currentPath = window.location.pathname.replace(/\/$/, "") || "/";
+
+    const pageLinks = {
+        "/": "home-link",
+        "/about": "about-link",
+        "/programs": "programs-link",
+        "/staff": "staff-link",
+        "/registrationinfo": "registration-link",
+        "/faq": "faq-link"
+    };
+
+    if (pageLinks[currentPath]) {
+        document.getElementById(pageLinks[currentPath]).classList.add("active");
+    } else if (currentPath === "/") {
+        document.getElementById("home-link").classList.add("active");
+    }
+</script>
 
 </body>
 </html>
