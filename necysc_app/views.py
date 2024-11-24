@@ -41,6 +41,9 @@ def registrationinfo(request):
 
 
 def login(request):
+    # check if user is already logged in
+    if request.user.is_authenticated:
+        return redirect('necysc_app:home')
     if request.method == 'POST':
         form = CreateAuthenticationForm(request, data=request.POST)
         if form.is_valid():
@@ -57,6 +60,10 @@ def login(request):
 
 
 def register(request):
+    # check if user is already logged in
+    if request.user.is_authenticated:
+        return redirect('necysc_app:home')
+    
     form = CreateUserForm()
     if request.method == 'POST':
         email = request.POST.get('email')
@@ -88,6 +95,7 @@ def application_detail(request, application_id):
         return render(request, 'necysc_app/applicant/application_detail.html', context)
     else:
         return redirect('necysc_app:home')
+
 
 
 @login_required
@@ -126,10 +134,12 @@ def submit_application(request):
         if form.is_valid():
             # Create instance but don't save yet
             application = form.save(commit=False)
+
             # check if application exists
             if not Applicant.objects.filter(user=request.user).exists():
                 application.user = request.user        # Assign the current user
                 application.save()                     # Now save the instance
+               
             form.save()
             return redirect('necysc_app:home')
     else:

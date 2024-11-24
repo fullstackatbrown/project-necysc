@@ -1,0 +1,119 @@
+/* Register Page Container */
+.register_page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-direction: row-reverse;
+    height: 90vh;
+}
+
+/* Register Form Section */
+.register_form {
+    width: 50%;
+    height: 100%;
+    padding-left: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.register_form h1 {
+    font-size: 50px;
+}
+
+.register_form_body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+    flex-direction: column;
+    width: 100%;
+}
+
+.register_form_body #id_username, 
+.register_form_body #id_email, 
+.register_form_body #id_password1, 
+.register_form_body #id_password2 {
+    width: 300px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.register_form_body input[type="submit"] {
+    background-color: #2E6D9E;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    width: 50%;
+    border-radius: 50px;
+}
+
+.register_form_body input[type="submit"]:hover {
+    transition: 0.3s;
+    background-color: #4E2498;
+}
+
+/* Login Redirect Section with Triangle */
+.login_redirect {
+    width: 50%;
+    height: 100%;
+    padding: 60px;
+    padding-right: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-image: url("./images/night.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+    color: white;
+    flex-direction: column;
+    gap: 50px;
+    text-align: center;
+    clip-path: polygon(0 0, 80% 0, 100% 100%, 0% 100%); /* Triangle shape */
+}
+
+.login_redirect h2 {
+    font-size: 35px;
+}
+
+.login_redirect p {
+    font-size: 15px;
+}
+
+.login_redirect a {
+    border: 1px solid white;
+    padding: 10px 20px;
+    color: white;
+    background-color: transparent;
+    text-decoration: none;
+    width: 350px;
+    font-size: 15px;
+    border-radius: 50px;
+    transition: background-color 0.3s ease;
+}
+
+.login_redirect a:hover {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Dark overlay on the image to ensure text readability */
+.login_redirect::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.35);
+    z-index: -1;
+    clip-path: polygon(0 0, 80% 0, 100% 100%, 0% 100%); /* Ensures overlay follows the triangle shape */
+}
