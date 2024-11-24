@@ -19,10 +19,12 @@ from django.contrib import admin
 from django.urls import include, path
 from django.contrib.staticfiles.storage import staticfiles_storage
 from django.views.generic.base import RedirectView
+from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
     path("", include("necysc_app.urls")),
     path("admin/", admin.site.urls),
     path("__debug__/", include("debug_toolbar.urls")),
     path('favicon.ico', RedirectView.as_view(url=staticfiles_storage.url('images/favicon.ico'))),
+    path('logout/', LogoutView.as_view(next_page='/'), name='logout'),
 ]
