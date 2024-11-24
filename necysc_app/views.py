@@ -32,6 +32,10 @@ def faq(request):
     context = {}
     return render(request, 'necysc_app/website/faq.html', context)
 
+def registrationinfo(request):
+    context = {}
+    return render(request, 'necysc_app/website/registration.html', context)
+
 # Applicant Portal
 
 

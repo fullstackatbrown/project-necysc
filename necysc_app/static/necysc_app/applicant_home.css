@@ -25,7 +25,6 @@
 
 .application-card:hover {
     transform: scale(1.02);
-    box-shadow: inset;
 }
 
 .application-card h2 {

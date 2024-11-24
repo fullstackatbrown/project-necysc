@@ -10,6 +10,7 @@ urlpatterns = [
     path("programs/", views.programs, name="programs"),
     path("staff/", views.staff, name="staff"),
     path("faq/", views.faq, name="faq"),
+    path("registrationinfo/", views.registrationinfo, name="registrationinfo"),
     # Applicant Portal Pages
     path("applicant/login/", views.login, name="login"),
     path("applicant/register/", views.register, name="register"),
