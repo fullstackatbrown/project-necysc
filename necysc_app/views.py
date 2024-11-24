@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 from .models import Applicant, GlobalData
 from .forms import CreateAuthenticationForm, CreateUserForm, ApplicationForm
-from django.contrib.auth import login as auth_login, authenticate
+from django.contrib.auth import login as auth_login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 
 # Website Pages
@@ -28,6 +28,9 @@ def staff(request):
     context = {}
     return render(request, 'necysc_app/website/staff.html', context)
 
+def registration(request):
+    context = {}
+    return render(request, 'necysc_app/website/registration.html', context)
 
 def faq(request):
     context = {}
@@ -76,6 +79,11 @@ def register(request):
     context = {'form': form}
     return render(request, 'necysc_app/applicant/register.html', context)
 
+
+@login_required
+def logout_view(request):
+    logout(request)
+    return redirect('necysc_app:index')
 
 @login_required
 def home(request):
@@ -134,7 +142,6 @@ def submit_application(request):
         if form.is_valid():
             # Create instance but don't save yet
             application = form.save(commit=False)
-
             # check if application exists
             if not Applicant.objects.filter(user=request.user).exists():
                 application.user = request.user        # Assign the current user

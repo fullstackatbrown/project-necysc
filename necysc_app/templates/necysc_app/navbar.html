@@ -7,6 +7,13 @@
 		a {
 			font-weight: bold;
 		}
+        .active {
+          color: white;
+          background-color: #5a6268;
+          border-radius: 5px;
+          padding: 5px 10px;
+          text-decoration: none;
+        }
         /* Dropdown styles */
         .dropdown {
             position: relative;
@@ -57,7 +64,15 @@
     </div>
 
     <div class="dropdown col-auto d-flex align-items-center">
-        <a href="/#" class="text-decoration-none" style="color: black">Home</a>
+        
+        {% if request.user.is_authenticated %}
+        <a href="{% url 'necysc_app:home' %}"
+           class="text-decoration-none"
+           style="color: black">Applicant Home</a>
+        {% else %}
+        <a href="{% url 'necysc_app:index' %}"
+           class="text-decoration-none {% if request.path == '/' %}active{% endif %}"
+           style="color: black">Home</a>
     </div>
 
     <div class="dropdown col-auto d-flex align-items-center">
@@ -66,10 +81,13 @@
             <a href="{% url 'necysc_app:about' %}#sponsors" >Sponsors</a>
             <a href="{% url 'necysc_app:about' %}#contact">Contact Us</a>
         </div>
+        {% endif %}
     </div>
    
     <div class="dropdown col-auto d-flex align-items-center">
-        <a href="{% url 'necysc_app:programs' %}" class="text-decoration-none" style="color: black">Programs</a>
+        <a href="{% url 'necysc_app:programs' %}"
+           class="text-decoration-none {% if request.path == '/programs/' %}active{% endif %}"
+           style="color: black">Programs</a>
         <div class="dropdown-content">
             <a href="{% url 'necysc_app:programs' %}#day">Day Camp</a>
             <a href="{% url 'necysc_app:programs' %}#on">Overnight Camp</a>
@@ -78,7 +96,9 @@
     </div>
 
     <div class="dropdown col-auto d-flex align-items-center">
-        <a href="{% url 'necysc_app:staff' %}" class="text-decoration-none" style="color: black">Staff</a>
+        <a href="{% url 'necysc_app:staff' %}"
+           class="text-decoration-none {% if request.path == '/staff/' %}active{% endif %}"
+           style="color: black">Staff</a>
         <div class="dropdown-content">
             <a href="{% url 'necysc_app:staff' %}#cit">CIT</a>
             <a href="{% url 'necysc_app:staff' %}#counselor">Counselor</a>
@@ -89,7 +109,9 @@
     </div>
 
     <div class="dropdown col-auto d-flex align-items-center">
-        <a href="{% url 'necysc_app:registrationinfo' %}" class="text-decoration-none" style="color: black">Registration</a>
+        <a href="{% url 'necysc_app:registration' %}"
+           class="text-decoration-none {% if request.path == '/registration/' %}active{% endif %}"
+           style="color: black">Registration</a>
         <div class="dropdown-content">
             <a href="/registrationinfo#importantdates">2025 Important Dates</a>
             <a>Registration Process</a>
@@ -98,7 +120,9 @@
     </div>
 
     <div class="dropdown col-auto d-flex align-items-center">
-        <a href="{% url 'necysc_app:faq' %}" class="text-decoration-none" style="color: black">FAQ</a>
+        <a href="{% url 'necysc_app:faq' %}"
+           class="text-decoration-none  {% if request.path == '/faq/' %}active{% endif %}"
+           style="color: black">FAQ</a>
         <div class="dropdown-content">
             <a href="/faq#faqregistration">Registration</a>
             <a href="/faq#faqleavingcamp">Leaves and Visits</a>
@@ -110,9 +134,15 @@
     </div>
 
     <div class="col-auto">
-        <a href="/applicant/register" class="btn btn-dark rounded-pill text-decoration-none d-flex align-items-center" style="height: 35px; color: white;">
+        {% if request.user.is_authenticated %}
+        <a href="{% url 'necysc_app:logout' %}" class="btn btn-dark rounded-pill text-decoration-none d-flex align-items-center" style="height: 35px; color: white;">
+            Logout
+        </a>
+        {% else %}
+        <a href="{% url 'necysc_app:login' %}" class="btn btn-dark rounded-pill text-decoration-none d-flex align-items-center" style="height: 35px; color: white;">
             Login/Register
         </a>
+        {% endif %}
     </div>
 </div>
 
