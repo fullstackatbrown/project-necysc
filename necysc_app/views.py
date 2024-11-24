@@ -28,15 +28,17 @@ def staff(request):
     context = {}
     return render(request, 'necysc_app/website/staff.html', context)
 
-
 def registration(request):
     context = {}
     return render(request, 'necysc_app/website/registration.html', context)
 
-
 def faq(request):
     context = {}
     return render(request, 'necysc_app/website/faq.html', context)
+
+def registrationinfo(request):
+    context = {}
+    return render(request, 'necysc_app/website/registration.html', context)
 
 # Applicant Portal
 
@@ -76,7 +78,6 @@ def logout_view(request):
     logout(request)
     return redirect('necysc_app:index')
 
-
 @login_required
 def home(request):
     applications = Applicant.objects.filter(user=request.user)
@@ -91,12 +92,18 @@ def home(request):
 def application_detail(request, application_id):
     application = Applicant.objects.get(id=application_id)
     context = {'application': application}
-    return render(request, 'necysc_app/applicant/application_detail.html', context)
+    if application.user == request.user:
+        return render(request, 'necysc_app/applicant/application_detail.html', context)
+    else:
+        return redirect('necysc_app:home')
+
 
 
 @login_required
 def edit_application(request, application_id):
     application = Applicant.objects.get(id=application_id, user=request.user)
+    if not application.user == request.user:
+        return redirect('necysc_app:home')
     if request.method == 'POST':
         form = ApplicationForm(request.POST, instance=application)
         if form.is_valid():
@@ -117,11 +124,6 @@ def new_application(request):
     context = {
         "form": form,
         "globaldata": globaldata,
-        #   "day_camp_cost": globaldata.day_camp_cost,
-        #  "ON_camp_cost": globaldata.ON_camp_cost,
-        # "CIT_camp_cost": globaldata.CIT_camp_cost,
-        #    "RA_camp_cost": globaldata.RA_camp_cost,
-        #    "EA_camp_cost": globaldata.EA_camp_cost,
     }
     return render(request, 'necysc_app/applicant/new_application.html', context)
 
@@ -133,25 +135,12 @@ def submit_application(request):
         if form.is_valid():
             # Create instance but don't save yet
             application = form.save(commit=False)
-            application.user = request.user        # Assign the current user
-            application.save()                     # Now save the instance
-
+            if not Applicant.objects.filter(user=request.user).exists():
+                application.user = request.user        # Assign the current user
+                application.save()                     # Now save the instance
             form.save()
             return redirect('necysc_app:home')
     else:
         redirect('necysc_app:new_application')
     context = {}
     return render(request, 'necysc_app/applicant/submit_application.html', context)
-
-
-@login_required
-def application_status(request):
-    context = {}
-    return render(request, 'necysc_app/applicant/application_status.html', context)
-
-
-@login_required
-def application_review(request):
-    # for reviewing and editing a single application
-    context = {}
-    return render(request, 'necysc_app/applicant/read_application.html', context)

@@ -73,22 +73,25 @@
         <a href="{% url 'necysc_app:index' %}"
            class="text-decoration-none {% if request.path == '/' %}active{% endif %}"
            style="color: black">Home</a>
+    </div>
+
+    <div class="dropdown col-auto d-flex align-items-center">
+        <a href="{% url 'necysc_app:about' %}" class="text-decoration-none" style="color: black">About</a>
         <div class="dropdown-content">
-            <a href="/#aboutus">About Us</a>
-            <a>Sponsors</a>
-            <a>Contact Us</a>
+            <a href="{% url 'necysc_app:about' %}#sponsors" >Sponsors</a>
+            <a href="{% url 'necysc_app:about' %}#contact">Contact Us</a>
         </div>
         {% endif %}
     </div>
-
+   
     <div class="dropdown col-auto d-flex align-items-center">
         <a href="{% url 'necysc_app:programs' %}"
            class="text-decoration-none {% if request.path == '/programs/' %}active{% endif %}"
            style="color: black">Programs</a>
         <div class="dropdown-content">
-            <a href="/programs#daycamp">Day Camp</a>
-            <a href="/programs#overnightcamp">Overnight Camp</a>
-            <a href="/programs#explorasian">ExplorAsian</a>
+            <a href="{% url 'necysc_app:programs' %}#day">Day Camp</a>
+            <a href="{% url 'necysc_app:programs' %}#on">Overnight Camp</a>
+            <a href="{% url 'necysc_app:programs' %}#ea">ExplorAsian</a>
         </div>
     </div>
 
@@ -97,11 +100,11 @@
            class="text-decoration-none {% if request.path == '/staff/' %}active{% endif %}"
            style="color: black">Staff</a>
         <div class="dropdown-content">
-            <a href="/staff#citapp">CIT</a>
-            <a href="/staff#counselor">Counselor</a>
-            <a href="/staff#RAapp">RA</a>
-            <a href="/staff#OPapp">OPs</a>
-            <a href="/staff#committee">Committee</a>
+            <a href="{% url 'necysc_app:staff' %}#cit">CIT</a>
+            <a href="{% url 'necysc_app:staff' %}#counselor">Counselor</a>
+            <a href="{% url 'necysc_app:staff' %}#ra">RA</a>
+            <a href="{% url 'necysc_app:staff' %}#ops">OPs</a>
+            <a href="{% url 'necysc_app:staff' %}#committee">Committee</a>
         </div>
     </div>
 
@@ -110,9 +113,9 @@
            class="text-decoration-none {% if request.path == '/registration/' %}active{% endif %}"
            style="color: black">Registration</a>
         <div class="dropdown-content">
-            <a href="/registration#registrationprocess">Registration Process</a>
-            <a href="/applicant/application_status">Application Status</a>
-            <a href="/registration#financialaid">Financial Aid</a>
+            <a href="/registrationinfo#importantdates">2025 Important Dates</a>
+            <a>Registration Process</a>
+            <a href="/registrationinfo#financialaid">Financial Aid</a>
         </div>
     </div>
 
