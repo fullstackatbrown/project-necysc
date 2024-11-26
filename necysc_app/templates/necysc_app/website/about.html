@@ -1,7 +1,20 @@
 {% extends "necysc_app/base.html" %} {% block title %} About Us {% endblock %}
+{% load static %}
+
 {% block content %}
 
-<section class="ms-5 me-5 mb-5 ">
+<link rel="stylesheet" href="{% static 'necysc_app/about.css' %}">
+
+<section>
+<div class="hero-section position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+    <div class="overlay"></div>
+    <div class="col-md-6 p-lg-5 mx-auto my-5 position-relative">
+        <h1 class="display-3 fw-bold text-white">About Us</h1>
+    </div>
+</div>
+</section>
+
+<section class="ms-5 me-5 mb-5 mt-5">
 <div id="aboutus" class="overlay">
 	<h1 class="textleft"><i class="icon-right-circled"></i>About Us</h1>
 	<p>
