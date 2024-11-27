@@ -1,0 +1,150 @@
+* { 
+	margin: 0; 
+	padding: 0
+} 
+
+html { 
+	height: 100%
+} 
+
+h2{ 
+	color: black; 
+} 
+#form { 
+	text-align: center; 
+	position: relative; 
+	margin-top: 20px
+} 
+
+#form fieldset { 
+	background: white; 
+	border: 0 none; 
+	border-radius: 0.5rem; 
+	box-sizing: border-box; 
+	width: 100%; 
+	margin: 0; 
+	padding-bottom: 20px; 
+	position: relative
+} 
+
+#form fieldset:not(:first-of-type) { 
+	display: none
+} 
+
+#form .previous-step, .next-step { 
+	width: 100px; 
+	font-weight: bold; 
+	color: white; 
+	border: 0 none; 
+	border-radius: 0px; 
+	cursor: pointer; 
+	padding: 10px 5px; 
+	margin: 10px 5px 10px 0px; 
+	float: right
+} 
+
+.form, .previous-step { 
+	background: #616161; 
+} 
+
+.form, .next-step { 
+	background: black; 
+} 
+
+#form .previous-step:hover, 
+#form .previous-step:focus { 
+	background-color: #000000
+} 
+
+#form .next-step:hover, 
+#form .next-step:focus { 
+	background-color: black
+} 
+
+.text { 
+	color: black; 
+	font-weight: normal
+} 
+
+#progressbar { 
+	display: flex;
+	justify-content: space-between;
+	margin: 0 auto; 
+	padding: 0;
+	color: lightgrey ;
+	width: 90%;
+	position: relative;
+} 
+
+#progressbar .active { 
+	color: black
+} 
+
+#progressbar li { 
+	list-style-type: none; 
+	font-size: 15px; 
+	flex: 1;
+	position: relative; 
+	font-weight: 400
+} 
+
+#progressbar #jan:before { 
+	content: "1"
+} 
+
+#progressbar #feb:before { 
+	content: "2"
+} 
+
+#progressbar #mar:before { 
+	content: "3"
+} 
+
+#progressbar #jun:before { 
+	content: "4"
+} 
+
+#progressbar #jul:before { 
+	content: "5"
+} 
+
+#progressbar #aug:before { 
+	content: "6"
+} 
+
+#progressbar li:before { 
+	width: 50px; 
+	height: 50px; 
+	line-height: 45px; 
+	display: block; 
+	font-size: 20px; 
+	color: #ffffff; 
+	background: lightgray; 
+	border-radius: 50%; 
+	margin: 0 auto 10px auto; 
+	padding: 2px
+} 
+
+#progressbar li:after { 
+	content: ''; 
+	width: 100%; 
+	height: 2px; 
+	background: lightgray; 
+	position: absolute; 
+	left: 0; 
+	top: 25px; 
+	z-index: -1
+} 
+
+#progressbar li.active:before, 
+#progressbar li.active:after { 
+	background: black
+} 
+
+.progress { 
+	height: 20px
+} 
+
+.progress-bar { 
+	background-color: black
+}
