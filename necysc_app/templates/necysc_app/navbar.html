@@ -102,11 +102,13 @@
     <div class="dropdown col-auto">
         {% if request.user.is_authenticated %}
         <a href="{% url 'necysc_app:home' %}" class="navbar-link {% if request.path == '/' %}active{% endif %}">Applicant Home</a>
+        <a href="{% url 'necysc_app:home' %}" class="navbar-link {% if request.path == '/' %}active{% endif %}">Applicant Home</a>
         {% else %}
         <a href="{% url 'necysc_app:index' %}" class="navbar-link {% if request.path == '/' %}active{% endif %}">Home</a>
         {% endif %}
     </div>
 
+    {% if not request.user.is_authenticated %}
     {% if not request.user.is_authenticated %}
     <div class="dropdown col-auto">
         <a href="{% url 'necysc_app:about' %}" class="navbar-link {% if request.path == '/about/' %}active{% endif %}">About</a>
