@@ -26,6 +26,11 @@ def programs(request):
 
 def staff(request):
     context = {}
+    globaldata = GlobalData.get_solo()
+    context = {
+        "globaldata": globaldata,
+    }
+    print(globaldata)
     return render(request, 'necysc_app/website/staff.html', context)
 
 
