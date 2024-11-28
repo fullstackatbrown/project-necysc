@@ -24,3 +24,21 @@
 .hero-section .position-relative {
   z-index: 2;
 }
+
+.btn-purple {
+  background-color: #4e598c;
+  color: #f9c784;
+  transition: all 0.3s ease;
+  padding: 10px 20px;
+  border-radius: 20px;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  border: none;
+}
+
+.btn-purple:hover {
+  background-color: #f9c784;
+  color: #ffffff;
+}

@@ -18,7 +18,11 @@ Register {% endblock %} {% block content %}
                 <label for="id_password">Password</label>
                 <input type="password" name="password" id="id_password" required>
             </div>
-            <input type="submit" value="Login" name="Login User">
+            <input style="background-color: #4e598c; color: #f9c784; transition: all 0.3s ease; padding: 10px 20px;
+                            border-radius: 20px;
+                            display: inline-block;
+                            text-align: center;" 
+                    class="fw-bold" type="submit" value="Login" name="Login User">
         </form>
         
         {% if form.errors %}
@@ -35,7 +39,7 @@ Register {% endblock %} {% block content %}
     <div class="register_form">
         <h2>Don't Have an Account?</h2>
         <p>Sign up for the summer!</p>
-        <a href="{% url 'necysc_app:register' %}">Sign Up</a>
+        <a class="" href="{% url 'necysc_app:register' %}">Sign Up</a>
     </div>
     <script>
         var form_fields = document.getElementsByTagName('input')

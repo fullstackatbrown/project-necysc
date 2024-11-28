@@ -4,10 +4,21 @@
 
 {% block content %}
 
-<div class="container-fluid p-0  mb-5">
-    <img src="{% static 'necysc_app/images/necyscbannerimage.jpg' %}" alt="NECYSC Banner Image" class="img-fluid w-100">
-</div>
-<h1 class="ps-5 mb-3" id="aboutus">About Us</h1>
+<style>
+.hero-section { 
+    background-image: url("{% static 'necysc_app/images/necyscbannerimage.jpg' %}");
+}
+</style>
+
+<section>
+    <div class="hero-section position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+        <div class="col-md-6 p-lg-5 mx-auto my-5 position-relative container">
+            <h1 class="display-3 fw-bold text-white" id="importantdates">New England Chinese Youth Summer Camp</h1>
+        </div>
+    </div>
+</section>
+
+<h1 class="ps-5 mb-3 pt-3" id="aboutus">About Us</h1>
 <p class="ps-5 pe-5 mb-4 col-md-6">Established in 1986, the New England Chinese Youth Summer Camp (NECYSC) is a non-profit organization 
     run by dedicated parents and volunteers. Hosted at Brandeis University, our week-long summer camp is designed 
     for youth aged 6 to 15. 
@@ -15,7 +26,7 @@
     the primary goal of nurturing cultural appreciation and fostering a strong community spirit.
 </p>
 <div class="ps-5 mb-4">
-    <a href="{% url 'necysc_app:register' %}" class="col-md-3 btn btn-dark rounded-pill fw-bold">
+    <a href="{% url 'necysc_app:register' %}" class="col-md-3 btn-purple rounded-pill fw-bold">
         Register today!
     </a>
 </div>
@@ -41,7 +52,7 @@
 <div class="fansparallax mobileparallax mb-5"></div>
 <div class="ms-5 me-5 mb-5 bg-dark" style="height: 2px;"></div>
 
-<div class="ps-5 pe-5 mb-3 justify-content-center align-items-center">
+<div class="ps-5 pe-5 pb-4 mb-3 justify-content-center align-items-center">
     <h2 class="text-center">
         Camp Activities
     </h2>
