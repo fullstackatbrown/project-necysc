@@ -5,26 +5,29 @@
 {% load static %}
 
 {% block content %}
+<style>
+.hero-section {
+    background-image: url("{% static 'necysc_app/images/registration_banner.jpg' %}");
+}
 
-<!DOCTYPE html> 
-<html> 
-<head> 
-	<link href= 
-'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'> 
-
-	<script src= 
-'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'> 
-	</script> 
-
-	<script src= 
-'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'> 
-	</script> 
-
+.a {
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+}
+</style>
 <link rel="stylesheet" href="{% static 'necysc_app/registration.css' %}">
-</head> 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<body> 
-    <h2 id="registrationprocess">Registration Process</h2>
+<section>
+    <div class="hero-section position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+        <div class="overlay"></div>
+        <div class="col-md-6 p-lg-5 mx-auto my-5 position-relative container">
+            <h1 class="display-3 fw-bold text-white" id="importantdates">Registration Process</h1>
+        </div>
+    </div>
+</section>
+
 	<div class="container-fluid"> 
 		<div class="row justify-content-center"> 
 			<div class="text-center p-0 mt-3 mb-2"> 
@@ -45,16 +48,15 @@
 						</div> <br> 
 						<fieldset> 
 							<h2>January</h2> 
-                            <p>Jan 7 - Counselors application begins</p>
-                            <p>Jan 14 - CIT, OPs, RA application begins</p>
+                            <p><strong>Early January</strong> - CIT, OPs, RA, Counselors 
+                                        <a href="{% url 'necysc_app:staff' %}">application</a> begins</p>
 							<input type="button" name="next-step"
 								class="next-step rounded-pill" value="Next" /> 
 						</fieldset> 
 						<fieldset> 
 							<h2>Feburary</h2> 
-                            <p>Feb 4 - Counselors application due 11:59pm</p>
-                            <p>Feb 11 - CIT, OPs, RA application due 11:59pm</p>
-                            <p>Feb 1 - Camper (Day/ON/EA) registration begins + Early Bird discount</p>
+                            <p><strong>End of February</strong> - All staff applications due</p>
+                            <p><strong>Mid-February</strong>- Camper (Day/ON/EA) <a href="{% url 'necysc_app:registration' %}">registration</a> begins + Early Bird discount</p>
 							<input type="button" name="next-step"
 								class="next-step rounded-pill" value="Next" /> 
 							<input type="button" name="previous-step"
@@ -63,7 +65,7 @@
 						</fieldset> 
                         <fieldset> 
 							<h2>March</h2> 
-                            <p>Mar 15 - Camper (Day/ON/EA) Early Bird discount ends</p>
+                            <p><strong>Mid-March</strong>- Camper (Day/ON/EA) Early Bird discount ends</p>
 							<input type="button" name="next-step"
 								class="next-step rounded-pill" value="Next" /> 
 							<input type="button" name="previous-step"
@@ -72,8 +74,8 @@
 						</fieldset> 
                         <fieldset> 
 							<h2>June</h2> 
-                            <p>Jun 15 - Overnight and EA camper registration due</p>
-                            <p>Jun 30 - Day camper registration due</p>
+                            <p><strong>Mid-June</strong> - Overnight and EA camper <a href="{% url 'necysc_app:registration' %}">registration</a> due</p>
+                            <p><strong>End of June</strong> - Day camper <a href="{% url 'necysc_app:registration' %}">registration</a> due</p>
 							<input type="button" name="next-step"
 								class="next-step rounded-pill" value="Next" /> 
 							<input type="button" name="previous-step"
@@ -82,9 +84,9 @@
 						</fieldset> 
 						<fieldset> 
 							<h2>July</h2> 
-                            <p>Jul 15 - Final Camp information package email to accepted campers</p>
-                            <p>Jul 28 - Overnight and ExplorAsian camper check-in</p>
-                            <p>Jul 29 - Day camper check-in</p>
+                            <p><strong>Mid-July</strong> - Final Camp information package email to accepted campers</p>
+                            <p><strong>End Of July</strong> - Overnight and ExplorAsian camper check-in</p>
+                            <p><strong>End of July</strong> - Day camper check-in</p>
 							<input type="button" name="next-step"
 								class="next-step rounded-pill" value="Next" /> 
 							<input type="button" name="previous-step"
@@ -93,8 +95,8 @@
 						</fieldset> 
 						<fieldset> 
                             <h2>August</h2>
-                            <p>Aug 2 - Day camper program ends</p>
-                            <p>Aug 3 - Overnight and ExplorAsian camper program ends</p>
+                            <p><strong>Begining of August</strong> - Day camper program ends</p>
+                            <p><strong>Begining of August</strong> - Overnight and ExplorAsian camper program ends</p>
 							<input type="button" name="previous-step"
 								class="previous-step rounded-pill"
 								value="Previous" /> 
@@ -107,14 +109,15 @@
 
 
     <h2 id="financialaid" class="mb-3">Financial Aid</h2>
-    <p>We try our best to make our programs affordable for everyone. Financial Aid is available and is based solely on need. 
+    <p><strong>We try our best to make our programs affordable for everyone.</strong> Financial Aid is available and is based solely on need. 
         Families who qualify are encouraged to apply as soon as possible. It is essential that you provide support document 
         to demonstrate your need. Our goal is to offer an opportunity to families who may otherwise not be able to 
         afford the program to share our camp experience.
     </p>
     <p>
         The Financial Aid application is strictly confidential. Financial Aid is a separate process from program acceptance 
-        and is awarded after program acceptance. Please complete both the Camper/CIT program application form (indicating 
+        and is awarded after program acceptance. Please complete both the Camper/CIT program 
+        <a href="https://www.necysc.org/v2/files/Financial_Aid_form.pdf" target="_blank">application form</a> (indicating 
         that you are applying for Financial Aid) and the Financial Aid application form. Please also note that it is 
         required that you send in a 50% deposit with your financial application.
     </p>
@@ -122,10 +125,7 @@
         Our data is based on the Federal Poverty Guidelines, which are released each year.
     </p>
     <p>
-        Financial Aid information available upon request. See Financial Aid Application Form for details.
-    </p>
-    <p>
-        Please mail the following documents to NECYSC, P.O. Box 615, Weston, MA, 02493
+        Please mail the following documents to NECYSC, P.O. Box 615, Weston, MA, 02493 or email to <a href="mailto:registration@necysc.org">registration@necysc.org</a>.
     </p>
     <p>
         Required documents for verification of income with rest of registration forms (Submit at Time of Registration 
@@ -137,8 +137,8 @@
         <li>Exemption approval of the School Lunch Program, or other relevant documents</li>
         <li>Cover letter explaining your situation.</li>
     </ul>
-</body> 
-<script>
+
+    <script>
     $(document).ready(function () { 
         var currentGfgStep, nextGfgStep, previousGfgStep; 
         var opacity; 
@@ -208,9 +208,5 @@
         }) 
     }); 
 </script> 
-</html> 
-
-
-
 
 {% endblock %}
