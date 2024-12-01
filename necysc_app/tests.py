@@ -5,6 +5,7 @@ from django import forms
 from django.contrib.auth.models import User
 from .models import Applicant, GlobalData, ApplicantHealth, POD
 
+
 class ApplicantModelTestCase(TestCase):
     def setUp(self):
         """Set up an Applicant instance with all required fields populated."""
@@ -39,7 +40,8 @@ class ApplicantModelTestCase(TestCase):
         self.assertEqual(self.applicant.applicant_fname, "John")
         self.assertEqual(self.applicant.parent1_fname, "Jane")
         self.assertEqual(self.applicant.app_status, "I")  # Default value
-        self.assertEqual(self.applicant.health_record_status, "NC")  # Default value
+        self.assertEqual(self.applicant.health_record_status,
+                         "NC")  # Default value
         self.assertTrue(self.applicant.parent1_for_POD)
 
     def test_applicant_defaults(self):
@@ -49,7 +51,8 @@ class ApplicantModelTestCase(TestCase):
         self.assertFalse(self.applicant.financial_aid_requested)
         self.assertFalse(self.applicant.interest_in_committee)
         self.assertFalse(self.applicant.listing_on_weekbook)
-    
+
+
 class GlobalDataTestCase(TestCase):
     def setUp(self):
         """Set up the GlobalData singleton with sample values."""
@@ -65,10 +68,58 @@ class GlobalDataTestCase(TestCase):
         self.assertEqual(self.global_data.ON_camp_cost, 1000.00)
         self.assertEqual(self.global_data.EA_camp_cost, 750.00)
         self.assertEqual(str(self.global_data), "Global Data Settings")
-    
-    # make sure we have everything in the init data working and testing, make sure we have access to whatever the models we have and 
+
+
+class FrontEndTestCase(TestCase):
+    def test_index_page(self):
+        response = self.client.get('/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'necysc_app/website/index.html')
+
+    def test_about_page(self):
+        response = self.client.get('/about/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'necysc_app/website/about.html')
+
+    def test_programs_page(self):
+        response = self.client.get('/programs/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'necysc_app/website/programs.html')
+
+    def test_registration_page(self):
+        response = self.client.get('/registration/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(
+            response, 'necysc_app/website/registration.html')
+
+    def test_faq_page(self):
+        response = self.client.get('/faq/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'necysc_app/website/faq.html')
+
+    def test_staff_page(self):
+        response = self.client.get('/staff/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'necysc_app/website/staff.html')
+
+    def test_login_page(self):
+        response = self.client.get('/applicant/login/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'necysc_app/applicant/login.html')
+
+    def test_register_page(self):
+        response = self.client.get('/applicant/register/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'necysc_app/applicant/register.html')
+
+    def test_applicant_index_page(self):
+        # should redirect to login page
+        response = self.client.get('/applicant/')
+        self.assertEqual(response.status_code, 302)
+
+    # make sure we have everything in the init data working and testing, make sure we have access to whatever the models we have and
     # can still access it
-    
+
     # def test_applicant_creation(self):
     #     """Test that an Applicant object is created successfully."""
     #     self.assertEqual(self.Applicant.applicant_fname, "John")
