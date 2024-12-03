@@ -75,7 +75,16 @@
             border-radius: 20px;
             display: inline-block;
             text-align: center;
+            background: #F9C784;
+            color: #4e598c;
+            transition: all 0.3s ease;
         }
+
+        .btn-padding:hover {
+            background-color: #4e598c;
+            color: #ffffff;
+        }
+
 
         .col-auto {
             display: flex;
@@ -86,6 +95,10 @@
             height: 4rem;
             max-width: 100%;
         }
+
+        #logobutton {
+            background: #4e598c;
+        }
     </style>
 </head>
 <body>
@@ -95,7 +108,7 @@
     <!-- NECYSC logo -->
     <div class="col-auto">
         <a href="{% url 'necysc_app:index' %}" id="logo-link">
-            <img src="https://www.necysc.org/v2/images/logo2.png" alt="Your Image Description" class="bg-dark rounded-pill p-3"/>
+            <img src="https://www.necysc.org/v2/images/logo2.png" alt="Your Image Description" id="logobutton" class="rounded-pill p-3"/>
         </a>
     </div>
 
@@ -156,7 +169,7 @@
     {% endif %}
     
     <div class="col-auto ms-auto">
-        <a href="https://youtu.be/PPZ1zu8fGl0?si=h436QWcB9vHQeV_G" target="_blank" class="btn-padding btn-secondary me-3">Promo Video</a>
+        <a href="https://youtu.be/PPZ1zu8fGl0?si=h436QWcB9vHQeV_G" target="_blank" class="btn-padding me-3">Promo Video</a>
         {% if request.user.is_authenticated %}
         <a href="{% url 'necysc_app:logout' %}" class="btn-login">Logout</a>
         {% else %}

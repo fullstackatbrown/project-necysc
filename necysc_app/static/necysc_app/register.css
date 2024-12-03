@@ -43,21 +43,6 @@
     border: 1px solid #ccc;
 }
 
-.register_form_body input[type="submit"] {
-    background-color: #2E6D9E;
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    width: 50%;
-    border-radius: 50px;
-}
-
-.register_form_body input[type="submit"]:hover {
-    transition: 0.3s;
-    background-color: #4E2498;
-}
-
 /* Login Redirect Section with Triangle */
 .login_redirect {
     width: 50%;
@@ -117,3 +102,19 @@
     z-index: -1;
     clip-path: polygon(0 0, 80% 0, 100% 100%, 0% 100%); /* Ensures overlay follows the triangle shape */
 }
+
+.btn-purple {
+    background-color: #4e598c;
+    color: #f9c784;
+    transition: all 0.3s ease;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    width: 50%;
+    border-radius: 50px;
+  }
+  
+  .btn-purple:hover {
+    background-color: #f9c784;
+    color: #ffffff;
+  }
