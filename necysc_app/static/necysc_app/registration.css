@@ -84,7 +84,7 @@ a{
 	position: relative;
 } 
 
-#progressbar .active { 
+#progressbar .activeprogress { 
 	color: black
 } 
 
@@ -130,7 +130,7 @@ a{
 	background: #e7ebff;
 	border-radius: 50%; 
 	margin: 0 auto 10px auto; 
-	padding: 2px
+	padding: 2px;
 } 
 
 #progressbar li:after { 
@@ -144,16 +144,16 @@ a{
 	z-index: -1
 } 
 
-#progressbar li.active:before, 
-#progressbar li.active:after { 
+#progressbar li.activeprogress:before, 
+#progressbar li.activeprogress:after { 
 	background: #4e598c;
-	box-shadow: 0 0 10px 6px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 0 23px 8px rgba(0, 0, 0, 0.1);
 } 
 
 .progress { 
 	height: 20px;
 	background: #e7ebff;
-	box-shadow: 0 0 8px 6px rgba(0, 0, 0, 0.1);
+
 } 
 
 .progress-bar { 
