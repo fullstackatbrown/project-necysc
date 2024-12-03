@@ -20,7 +20,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <section>
-    <div class="hero-section position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+    <div class="hero-section shadow position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
         <div class="overlay"></div>
         <div class="col-md-6 p-lg-5 mx-auto my-5 position-relative container">
             <h1 class="display-3 fw-bold text-white" id="importantdates">Registration Process</h1>
@@ -34,7 +34,7 @@
 				<div class="px-0 pt-4 pb-0 mt-3 mb-3"> 
 					<form id="form"> 
 						<ul id="progressbar"> 
-							<li class="active" id="jan"> 
+							<li class="activeprogress" id="jan"> 
 								<strong>Janurary</strong> 
 							</li> 
 							<li id="feb"><strong>February</strong></li> 
@@ -43,7 +43,7 @@
                             <li id="jul"><strong>July</strong></li>
                             <li id="aug"><strong>August</strong></li>
 						</ul> 
-						<div class="mt-4 mb-3 progress"> 
+						<div class="mt-4 mb-3 progress shadow"> 
 							<div class="progress-bar"></div> 
 						</div> <br> 
 						<fieldset> 
@@ -154,7 +154,7 @@
             nextGfgStep = $(this).parent().next(); 
 
             $("#progressbar li").eq($("fieldset") 
-                .index(nextGfgStep)).addClass("active"); 
+                .index(nextGfgStep)).addClass("activeprogress"); 
 
             nextGfgStep.show(); 
             currentGfgStep.animate({ opacity: 0 }, { 
@@ -178,7 +178,7 @@
             previousGfgStep = $(this).parent().prev(); 
 
             $("#progressbar li").eq($("fieldset") 
-                .index(currentGfgStep)).removeClass("active"); 
+                .index(currentGfgStep)).removeClass("activeprogress"); 
 
             previousGfgStep.show(); 
 
