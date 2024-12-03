@@ -9,7 +9,7 @@
 
 <div class="register_page">
     <div class="register_form">
-        <h1>Create Your Account</h1>
+        <h1 style="color: #4e598c">Create Your Account</h1>
         <form method="POST" action="" class="register_form_body">
             {% csrf_token %}
             <div>
@@ -29,11 +29,7 @@
                 {{ form.password2 }}
             </div>
 
-            <input style="background-color: #4e598c; color: #f9c784; transition: all 0.3s ease; padding: 10px 20px;
-                            border-radius: 20px;
-                            display: inline-block;
-                            text-align: center;"
-                    type="submit" class="fw-bold" value="Register" name="Create User">
+            <input type="submit" class="fw-bold btn-purple" value="Register" name="Create User">
         </form>
 
         {% if form.errors %}

@@ -10,6 +10,10 @@ html {
 h2{ 
 	color: black; 
 } 
+
+a{
+	color: #f9c784;
+}
 #form { 
 	text-align: center; 
 	position: relative; 
@@ -34,7 +38,9 @@ h2{
 #form .previous-step, .next-step { 
 	width: 100px; 
 	font-weight: bold; 
-	color: white; 
+	background-color: #4e598c;
+	color: #f9c784;
+	transition: all 0.3s ease;
 	border: 0 none; 
 	border-radius: 0px; 
 	cursor: pointer; 
@@ -44,21 +50,23 @@ h2{
 } 
 
 .form, .previous-step { 
-	background: #616161; 
+	background-color: #4e598c;
 } 
 
 .form, .next-step { 
-	background: black; 
+	background-color: #4e598c;
 } 
 
 #form .previous-step:hover, 
 #form .previous-step:focus { 
-	background-color: #000000
+	background-color: #f9c784;
+	color: #ffffff;
 } 
 
 #form .next-step:hover, 
 #form .next-step:focus { 
-	background-color: black
+	background-color: #f9c784;
+	color: #ffffff;
 } 
 
 .text { 
@@ -119,7 +127,7 @@ h2{
 	display: block; 
 	font-size: 20px; 
 	color: #ffffff; 
-	background: lightgray; 
+	background: #e7ebff;
 	border-radius: 50%; 
 	margin: 0 auto 10px auto; 
 	padding: 2px
@@ -138,13 +146,16 @@ h2{
 
 #progressbar li.active:before, 
 #progressbar li.active:after { 
-	background: black
+	background: #4e598c;
+	box-shadow: 0 0 10px 6px rgba(0, 0, 0, 0.1);
 } 
 
 .progress { 
-	height: 20px
+	height: 20px;
+	background: #e7ebff;
+	box-shadow: 0 0 8px 6px rgba(0, 0, 0, 0.1);
 } 
 
 .progress-bar { 
-	background-color: black
+	background-color: #4e598c;
 }
