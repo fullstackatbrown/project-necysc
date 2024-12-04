@@ -43,7 +43,6 @@
   color: #ffffff;
 }
 
-
 .accordion-item .accordion-button:not(.collapsed) {
   background-color: #4e598c; /* Darker purple when open */
   color: #ffffff; /* White text for contrast */
