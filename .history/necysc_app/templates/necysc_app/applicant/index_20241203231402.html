@@ -1,0 +1,50 @@
+{% extends "necysc_app/base.html" %}
+{% load static %}
+{% block title %} Applicant Portal {% endblock %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'necysc_app/applicant_home.css' %}">
+<h1>Welcome!</h1>
+{% if applications %}
+    <div class="container mb-4">
+        {% for application in applications %}
+        <div class="card col-4 glow">
+            <a href="{% url 'necysc_app:application_detail' application.id %}" class="application-card-link">
+                <div class="card-body">
+                    <h5 class="card-title"><span>{{ application.applicant_fname }} 
+                        {{ application.applicant_lname }}</span>                                                 
+                        {% if application.app_status == 'A' %}
+                        <span class="badge bg-success float-end">Accepted </span>
+                        {% elif application.app_status == 'P' %}
+                        <span class="badge bg-secondary float-end">Pending</span>
+                        {% else %}
+                        <span class="badge bg-danger float-end">Rejected</span>
+                        {% endif %}
+                                        
+                    </h5>
+                    <!-- horizontal line-->
+                    <hr>
+                    <p class="card-text fw-light">Year: {{application.app_year}}</p>
+                    <p class="card-text m-0 fw-light">Health Status: {{application.health_record_status}}</p>
+                </div>
+                    
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+<div class="container mt-4 pt-4">
+<a class="btn-purple" 
+        href="{% url 'necysc_app:new_application' %}">Create new camper application</a>
+</div>
+
+<style>
+.glow {
+    transition: box-shadow 0.3s ease-in-out;
+    }
+    
+.glow:hover {
+box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.15); /* Adjust the glow effect */
+}
+</style>
+{% endblock %}

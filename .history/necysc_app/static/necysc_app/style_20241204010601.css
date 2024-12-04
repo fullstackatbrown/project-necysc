@@ -1,0 +1,109 @@
+.hero-section {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-section .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.hero-section .position-relative {
+  z-index: 2;
+}
+
+.btn-purple {
+  background-color: #4e598c;
+  color: #f9c784;
+  transition: all 0.3s ease;
+  padding: 10px 20px;
+  border-radius: 20px;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  border: none;
+}
+
+.btn-purple:hover {
+  background-color: #f9c784;
+  color: #ffffff;
+}
+
+
+.accordion-item .accordion-button:not(.collapsed) {
+  background-color: #4e598c; /* Darker purple when open */
+  color: #ffffff; /* White text for contrast */
+}
+
+
+/* 汉堡菜单默认隐藏 */
+.menu-toggle {
+  display: none;
+}
+
+.hamburger {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #4e598c;
+}
+
+/* 导航栏默认样式 */
+.nav-links {
+  display: flex;
+  gap: 15px;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .nav-links {
+      display: none; /* 默认隐藏导航栏 */
+      flex-direction: column;
+      background-color: white;
+      position: absolute;
+      top: 60px;
+      right: 0;
+      width: 100%;
+      padding: 10px;
+      z-index: 1000;
+  }
+
+  .menu-toggle:checked + .hamburger + .nav-links {
+      display: flex; /* 点击汉堡菜单显示导航栏 */
+  }
+
+  .hamburger {
+      display: block; /* 显示汉堡菜单图标 */
+  }
+}
+
+.optional {
+  color: gray;
+  font-style: italic;
+}
+
+.custom-h2 {
+  font-family: 'Arial', sans-serif; /* 可以选择更艺术的字体 */
+  font-weight: 900; /* 设置字体为超粗 */
+  color: #000; /* 纯黑色 */
+}
+
+.custom-p {
+  font-family: 'Arial', sans-serif; /* 同样应用到段落 */
+  font-weight: bold; /* 粗体 */
+  color: #000; /* 纯黑色 */
+}

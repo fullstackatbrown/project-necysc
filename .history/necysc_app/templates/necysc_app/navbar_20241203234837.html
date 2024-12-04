@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Page Title</title>
+    <style>
+        a {
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+            top: 100%;
+        }
+
+        .dropdown-content a {
+            color: #4e598c;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: color 0.3s ease, background-color 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #4e598c;
+            color: #F9C784;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .navbar-link {
+            color: #4e598c;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-link:hover {
+            color: #F9C784;
+            background: #4e598c;
+            transition: color 0.3s ease;
+            padding: 10px 20px;
+            border-radius: 9px;
+        }
+
+        .active {
+            color: #F9C784; 
+            background: #4e598c;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 9px;
+        }
+
+
+        .btn-login {
+            background-color: #4e598c;
+            color: #F9C784;
+            transition: all 0.3s ease;
+            padding: 10px 20px;
+            border-radius: 20px;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-login:hover {
+            background-color: #F9C784;
+            color: #FFFFFF;
+        }
+
+        .btn-padding {
+            padding: 10px 20px;
+            border-radius: 20px;
+            display: inline-block;
+            text-align: center;
+            background: #F9C784;
+            color: #4e598c;
+            transition: all 0.3s ease;
+        }
+
+        .btn-padding:hover {
+            background-color: #4e598c;
+            color: #ffffff;
+        }
+
+
+        .col-auto {
+            display: flex;
+            align-items: center;
+        }
+
+        img {
+            height: 4rem;
+            max-width: 100%;
+        }
+
+        #logobutton {
+            background-color: #4e598c;
+            transition: all 0.3s ease;
+        }
+
+        #logobutton:hover {
+            background-color: #F9C784;
+            color: #FFFFFF;
+        }
+    </style>
+</head>
+<body>
+
+<!-- navbar sticky -->
+ <div class="row mt-2 pt-4 pb-4 mb-3 d-flex ps-4 pe-5 align-items-center gap-3 sticky-top bg-bi-white bg-white row">
+    <!-- NECYSC logo -->
+    <div class="col-auto">
+        <a href="{% url 'necysc_app:index' %}" id="logo-link">
+            <img src="https://www.necysc.org/v2/images/logo2.png" alt="Your Image Description" id="logobutton" class="rounded-pill p-3"/>
+        </a>
+    </div>
+
+    <div class="dropdown col-auto">
+        {% if request.user.is_authenticated %}
+        <a href="{% url 'necysc_app:home' %}" class="navbar-link {% if request.path == '/' %}active{% endif %}">Applicant Home</a>
+        {% else %}
+        <a href="{% url 'necysc_app:index' %}" class="navbar-link {% if request.path == '/' %}active{% endif %}">Home</a>
+        {% endif %}
+    </div>
+
+    {% if not request.user.is_authenticated %}
+    <div class="dropdown col-auto">
+        <a href="{% url 'necysc_app:about' %}" class="navbar-link {% if request.path == '/about/' %}active{% endif %}">About</a>
+        <div class="dropdown-content">
+            <a href="{% url 'necysc_app:about' %}#sponsors">Sponsors</a>
+            <a href="{% url 'necysc_app:about' %}#contact">Contact Us</a>
+        </div>
+    </div>
+
+    <div class="dropdown col-auto">
+        <a href="{% url 'necysc_app:programs' %}" class="navbar-link {% if request.path == '/programs/' %}active{% endif %}">Programs</a>
+        <div class="dropdown-content">
+            <a href="{% url 'necysc_app:programs' %}#day">Day Camp</a>
+            <a href="{% url 'necysc_app:programs' %}#on">Overnight Camp</a>
+            <a href="{% url 'necysc_app:programs' %}#ea">ExplorAsian</a>
+        </div>
+    </div>
+
+    <div class="dropdown col-auto">
+        <a href="{% url 'necysc_app:staff' %}" class="navbar-link {% if request.path == '/staff/' %}active{% endif %}">Staff</a>
+        <div class="dropdown-content">
+            <a href="{% url 'necysc_app:staff' %}#cit">CIT</a>
+            <a href="{% url 'necysc_app:staff' %}#counselor">Counselor</a>
+            <a href="{% url 'necysc_app:staff' %}#ra">RA</a>
+            <a href="{% url 'necysc_app:staff' %}#ops">OPs</a>
+            <a href="{% url 'necysc_app:staff' %}#committee">Committee</a>
+        </div>
+    </div>
+
+    <div class="dropdown col-auto">
+        <a href="{% url 'necysc_app:registration' %}" class="navbar-link {% if request.path == '/registration/' %}active{% endif %}">Registration</a>
+        <div class="dropdown-content">
+            <a href="{% url 'necysc_app:registration' %}#importantdates">2025 Important Dates</a>
+            <a href="{% url 'necysc_app:registration' %}#financialaid">Financial Aid</a>
+        </div>
+    </div>
+
+    <div class="dropdown col-auto">
+        <a href="{% url 'necysc_app:faq' %}" class="navbar-link {% if request.path == '/faq/' %}active{% endif %}">FAQ</a>
+        <div class="dropdown-content">
+            <a href="{% url 'necysc_app:faq' %}#faqregistration">Registration</a>
+            <a href="{% url 'necysc_app:faq' %}#faqleavingcamp">Leaves and Visits</a>
+            <a href="{% url 'necysc_app:faq' %}#faqhealth">Health and Safety</a>
+            <a href="{% url 'necysc_app:faq' %}#camp">Camp Activities</a>
+        </div>
+    </div>
+    {% endif %}
+    
+    <div class="col-auto ms-auto">
+        <a href="https://youtu.be/PPZ1zu8fGl0?si=h436QWcB9vHQeV_G" target="_blank" class="btn-padding me-3">Promo Video</a>
+        {% if request.user.is_authenticated %}
+        <a href="{% url 'necysc_app:logout' %}" class="btn-login">Logout</a>
+        {% else %}
+        <a href="{% url 'necysc_app:login' %}" class="btn-login">Login/Register</a>
+        {% endif %}
+    </div>
+    
+</div>
+
+</body>
+</html> 
+
+{% comment %} {% load static %}
+<div class="row mt-2 pt-4 pb-4 mb-3 d-flex ps-4 pe-5 align-items-center gap-3 sticky-top bg-bi-white bg-white row">
+    <!-- 汉堡菜单按钮 -->
+    <input type="checkbox" id="menu-toggle" class="menu-toggle">
+    <label for="menu-toggle" class="hamburger">
+        &#9776;
+    </label>
+
+    <!-- 导航内容 -->
+    <div class="nav-links">
+        <!-- NECYSC logo -->
+        <div class="col-auto">
+            <a href="{% url 'necysc_app:index' %}" id="logo-link">
+                <img src="https://www.necysc.org/v2/images/logo2.png" alt="Your Image Description" id="logobutton" class="rounded-pill p-3"/>
+            </a>
+        </div>
+
+        <div class="dropdown col-auto">
+            {% if request.user.is_authenticated %}
+            <a href="{% url 'necysc_app:home' %}" class="navbar-link {% if request.path == '/' %}active{% endif %}">Applicant Home</a>
+            {% else %}
+            <a href="{% url 'necysc_app:index' %}" class="navbar-link {% if request.path == '/' %}active{% endif %}">Home</a>
+            {% endif %}
+        </div>
+
+        {% if not request.user.is_authenticated %}
+        <div class="dropdown col-auto">
+            <a href="{% url 'necysc_app:about' %}" class="navbar-link {% if request.path == '/about/' %}active{% endif %}">About</a>
+            <div class="dropdown-content">
+                <a href="{% url 'necysc_app:about' %}#sponsors">Sponsors</a>
+                <a href="{% url 'necysc_app:about' %}#contact">Contact Us</a>
+            </div>
+        </div>
+
+        <div class="dropdown col-auto">
+            <a href="{% url 'necysc_app:programs' %}" class="navbar-link {% if request.path == '/programs/' %}active{% endif %}">Programs</a>
+            <div class="dropdown-content">
+                <a href="{% url 'necysc_app:programs' %}#day">Day Camp</a>
+                <a href="{% url 'necysc_app:programs' %}#on">Overnight Camp</a>
+                <a href="{% url 'necysc_app:programs' %}#ea">ExplorAsian</a>
+            </div>
+        </div>
+
+        <div class="dropdown col-auto">
+            <a href="{% url 'necysc_app:staff' %}" class="navbar-link {% if request.path == '/staff/' %}active{% endif %}">Staff</a>
+            <div class="dropdown-content">
+                <a href="{% url 'necysc_app:staff' %}#cit">CIT</a>
+                <a href="{% url 'necysc_app:staff' %}#counselor">Counselor</a>
+                <a href="{% url 'necysc_app:staff' %}#ra">RA</a>
+                <a href="{% url 'necysc_app:staff' %}#ops">OPs</a>
+                <a href="{% url 'necysc_app:staff' %}#committee">Committee</a>
+            </div>
+        </div>
+
+        <div class="dropdown col-auto">
+            <a href="{% url 'necysc_app:registration' %}" class="navbar-link {% if request.path == '/registration/' %}active{% endif %}">Registration</a>
+            <div class="dropdown-content">
+                <a href="{% url 'necysc_app:registration' %}#importantdates">2025 Important Dates</a>
+                <a href="{% url 'necysc_app:registration' %}#financialaid">Financial Aid</a>
+            </div>
+        </div>
+
+        <div class="dropdown col-auto">
+            <a href="{% url 'necysc_app:faq' %}" class="navbar-link {% if request.path == '/faq/' %}active{% endif %}">FAQ</a>
+            <div class="dropdown-content">
+                <a href="{% url 'necysc_app:faq' %}#faqregistration">Registration</a>
+                <a href="{% url 'necysc_app:faq' %}#faqleavingcamp">Leaves and Visits</a>
+                <a href="{% url 'necysc_app:faq' %}#faqhealth">Health and Safety</a>
+                <a href="{% url 'necysc_app:faq' %}#camp">Camp Activities</a>
+            </div>
+        </div>
+        {% endif %}
+        
+        <div class="col-auto ms-auto">
+            <a href="https://youtu.be/PPZ1zu8fGl0?si=h436QWcB9vHQeV_G" target="_blank" class="btn-padding me-3">Promo Video</a>
+            {% if request.user.is_authenticated %}
+            <a href="{% url 'necysc_app:logout' %}" class="btn-login">Logout</a>
+            {% else %}
+            <a href="{% url 'necysc_app:login' %}" class="btn-login">Login/Register</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+</body>
+</html>  {% endcomment %}

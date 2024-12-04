@@ -1,0 +1,1395 @@
+{% extends "necysc_app/base.html" %}
+<!-- prevent line break on autoformat -->
+{% block title %} New Application {% endblock %} {% block content %}
+<!--Application Border Box-->
+
+<div class="border p-5 rounded shadow-lg">
+	<h1>Start a New Application</h1>
+
+	<!--this overrides the default browser validation, we need to update the validation manually-->
+	<form
+		class="needs-validation"
+		novalidate
+		action="{% url 'necysc_app:submit_application' %}"
+		method="post"
+	>
+		{% csrf_token %}
+
+		<h3>Camper Information</h3>
+		<!--name inputs-->
+		<div class="row">
+			<div class="mb-3 col-md-4">
+				<label for="firstnamet" class="form-label"
+					>English First Name</label
+				>
+				<input
+					type="text"
+					class="form-control"
+					id="firstname"
+					name="applicant_fname"
+					placeholder="First Name"
+					required
+				/>
+			</div>
+			<div class="mb-3 col-md-4">
+				<label for="lastnamet" class="form-label"
+					>English Last Name</label
+				>
+				<input
+					type="text"
+					class="form-control"
+					id="lastname"
+					name="applicant_lname"
+					placeholder="Last Name"
+					required
+				/>
+			</div>
+			<div class="mb-3 col-md-4">
+				<label for="chineseName" class="form-label">Chinese Name <span class="optional">(Optional)</span> </label>
+				<input
+					type="text"
+					class="form-control"
+					id="chineseName"
+					name="applicant_chinese_name"
+					placeholder="Chinese Name"
+					required
+				/>
+				<div class="form-text">Use Chinese characters please.</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="mb-3 col-md-6">
+				<label for="applicantemail" class="form-label"
+					>Email Address</label
+				>
+				<input
+					type="email"
+					class="form-control"
+					id="applicantemail"
+					name="applicant_email"
+					placeholder="ex. johnsmith@gmail.com"
+				/>
+			</div>
+			<div class="mb-3 col-md-6">
+				<label for="applicantbirthdate" class="form-label"
+					>Birth Date</label
+				>
+				<input
+					type="date"
+					class="form-control"
+					id="applicantbirthdate"
+					name="applicant_bday"
+					data-date-format="yyyy/mm/dd"
+					required
+				/>
+			</div>
+		</div>
+
+		<!--radio buttons for gender-->
+		<label class="form-label">Gender</label>
+		<div class="form-check">
+			<input
+				class="form-check-input"
+				type="radio"
+				name="applicant_sex"
+				id="male"
+				value="M"
+				required
+			/>
+			<label class="form-check-label" for="male"> Male </label>
+		</div>
+		<div class="form-check mb-3">
+			<input
+				class="form-check-input"
+				type="radio"
+				name="applicant_sex"
+				id="female"
+				value="F"
+				required
+			/>
+			<label class="form-check-label" for="female"> Female </label>
+		</div>
+
+		<div class="mb-3 col-md-4">
+			<label for="applicantgrade" class="form-label">School Grade</label>
+			<input
+				type="number"
+				class="form-control"
+				id="applicantgrade"
+				name="applicant_grade"
+				placeholder="ex. 5"
+				step="1"
+				required
+			/>
+			<div class="form-text">Number only, in 2025 Fall semester</div>
+		</div>
+
+		<!--Need to change the application model field to accept more than 2 letters?-->
+		<!--Camper T-Shirt Size-->
+		<label class="form-label">Camper T-Shirt Size</label>
+		<div class="form-check">
+			<input
+				class="form-check-input"
+				type="radio"
+				name="applicant_shirt_size"
+				id="youthsmall"
+				value="YS"
+				required
+			/>
+			<label class="form-check-label" for="youthsmall">
+				Youth Small
+			</label>
+		</div>
+		<div class="form-check">
+			<input
+				class="form-check-input"
+				type="radio"
+				name="applicant_shirt_size"
+				id="youthmedium"
+				value="YM"
+				required
+			/>
+			<label class="form-check-label" for="youthmedium">
+				Youth Medium
+			</label>
+		</div>
+		<div class="form-check">
+			<input
+				class="form-check-input"
+				type="radio"
+				name="applicant_shirt_size"
+				id="youthlarge"
+				value="YL"
+				required
+			/>
+			<label class="form-check-label" for="youthlarge">
+				Youth Large
+			</label>
+		</div>
+		<div class="form-check">
+			<input
+				class="form-check-input"
+				type="radio"
+				name="applicant_shirt_size"
+				id="adultsmall"
+				value="AS"
+				required
+			/>
+			<label class="form-check-label" for="adultsmall">
+				Adult Small
+			</label>
+		</div>
+		<div class="form-check">
+			<input
+				class="form-check-input"
+				type="radio"
+				name="applicant_shirt_size"
+				id="adultmedium"
+				value="AM"
+				required
+			/>
+			<label class="form-check-label" for="adultmedium">
+				Adult Medium
+			</label>
+		</div>
+		<div class="form-check">
+			<input
+				class="form-check-input"
+				type="radio"
+				name="applicant_shirt_size"
+				id="adultlarge"
+				value="AL"
+				required
+			/>
+			<label class="form-check-label" for="adultlarge">
+				Adult Large
+			</label>
+		</div>
+		<div class="form-check mb-3">
+			<input
+				class="form-check-input"
+				type="radio"
+				name="applicant_shirt_size"
+				id="adultextralarge"
+				value="AX"
+				required
+			/>
+			<label class="form-check-label" for="adultextralarge">
+				Adult Extra Large
+			</label>
+		</div>
+
+		<!--Program options-->
+		<label class="form-label">Program</label>
+		<div id="program">
+			<div class="form-check">
+				<input
+					class="form-check-input"
+					type="radio"
+					name="program"
+					id="day"
+					value="D"
+					required
+				/>
+				<label class="form-check-label" for="day"> Day </label>
+			</div>
+			<div class="form-check">
+				<input
+					class="form-check-input"
+					type="radio"
+					name="program"
+					id="overnight"
+					value="ON"
+					required
+				/>
+				<label class="form-check-label" for="overnight"> Overnight </label>
+			</div>
+			<div class="form-check">
+				<input
+					class="form-check-input"
+					type="radio"
+					name="program"
+					id="cit"
+					value="CIT"
+					required
+				/>
+				<label class="form-check-label" for="cit"> CIT </label>
+			</div>
+			<div class="form-check">
+				<input
+					class="form-check-input"
+					type="radio"
+					name="program"
+					id="counselor"
+					value="C"
+					required
+				/>
+				<label class="form-check-label" for="counselor"> Counselor </label>
+			</div>
+			<div class="form-check mb-3">
+				<input
+					class="form-check-input"
+					type="radio"
+					name="program"
+					id="ea"
+					value="EA"
+					required
+				/>
+				<label class="form-check-label" for="ea"> EA </label>
+			</div>
+
+		<div class="row">
+			<div class="mb-3 col-md-6">
+				<label for="streetaddress" class="form-label"
+					>Street Address</label
+				>
+				<input
+					type="text"
+					class="form-control"
+					id="streetaddress"
+					name="street_address"
+					placeholder="Street Address"
+					required
+				/>
+			</div>
+			<div class="mb-3 col-md-6">
+				<label for="city" class="form-label">City</label>
+				<input
+					type="text"
+					class="form-control"
+					id="city"
+					name="city"
+					placeholder="City/Town"
+					required
+				/>
+			</div>
+		</div>
+	</div>
+
+		<div class="row">
+			<div class="mb-3 col-md-6">
+				<label for="state" class="form-label">State</label>
+				<input
+					type="text"
+					class="form-control"
+					id="state"
+					name="state"
+					placeholder="ex. MA"
+					required
+				/>
+			</div>
+			<div class="mb-3 col-md-6">
+				<label for="zipcode" class="form-label">Zip Code</label>
+				<input
+					type="text"
+					class="form-control"
+					id="zipcode"
+					name="zip_code"
+					placeholder="ex. 01719"
+					required
+				/>
+			</div>
+		</div>
+
+		<!--parent/guardian/emergency contact info-->
+		<h3>Parent/Guardian/Emergency Contact Information</h3>
+		<div class="form-text mb-3">
+			NOTE: Please enter as much contact information as possible in case
+			we need to contact you for application or during the camp week. The
+			parent's first and last name must match the legal name on government
+			issued ID
+		</div>
+
+		<div class="row">
+			<div class="mb-3 col-md-6">
+				<label for="parent1fname" class="form-label"
+					>Main Contact First Name</label
+				>
+				<input
+					type="text"
+					class="form-control"
+					id="parent1fname"
+					name="parent1_fname"
+					placeholder="First Name"
+					required
+				/>
+			</div>
+			<div class="mb-3 col-md-6">
+				<label for="parent1lname" class="form-label"
+					>Main Contact Last Name</label
+				>
+				<input
+					type="text"
+					class="form-control"
+					id="parent1lname"
+					name="parent1_lname"
+					placeholder="Last Name"
+					required
+				/>
+			</div>
+		</div>
+		<div class="row">
+			<div class="mb-3 col-md-6">
+				<label for="parent1phone" class="form-label"
+					>Main Contact Phone Number</label
+				>
+				<input
+					type="tel"
+					class="form-control"
+					id="parent1phone"
+					name="parent1_phone"
+					placeholder="ex. 123-456-7890"
+					required
+				/>
+			</div>
+			<div class="mb-3 col-md-6">
+				<label for="parent1email" class="form-label"
+					>Main Contact Email</label
+				>
+				<input
+					type="email"
+					class="form-control"
+					id="parent1email"
+					name="parent1_email"
+					placeholder="ex. johnsmith@gmail.com"
+					required
+				/>
+			</div>
+		</div>
+
+		<!--Parent relationship choices-->
+		<label class="form-label">Main Contact Relationship</label>
+		<div class="form-check">
+			<input
+				class="form-check-input"
+				type="radio"
+				name="parent1_relationship"
+				id="parent1father"
+				value="F"
+				required
+			/>
+			<label class="form-check-label" for="parent1father"> Father </label>
+		</div>
+		<div class="form-check">
+			<input
+				class="form-check-input"
+				type="radio"
+				name="parent1_relationship"
+				id="parent1mother"
+				value="M"
+				required
+			/>
+			<label class="form-check-label" for="parent1mother"> Mother </label>
+		</div>
+		<div class="form-check mb-3">
+			<input
+				class="form-check-input"
+				type="radio"
+				name="parent1_relationship"
+				id="parent1guardian"
+				value="G"
+				required
+			/>
+			<label class="form-check-label" for="parent1guardian">
+				Guardian
+			</label>
+		</div>
+
+		<!--Secondary Contact-->
+		<div class="row">
+			<div class="mb-3 col-md-6">
+				<label for="parent2fname" class="form-label"
+					>Secondary Contact First Name</label
+				>
+				<input
+					type="text"
+					class="form-control"
+					id="parent2fname"
+					name="parent2_fname"
+					placeholder="First Name"
+				/>
+			</div>
+			<div class="mb-3 col-md-6">
+				<label for="parent2lname" class="form-label"
+					>Secondary Contact Last Name</label
+				>
+				<input
+					type="text"
+					class="form-control"
+					id="parent2lname"
+					name="parent2_lname"
+					placeholder="Last Name"
+				/>
+			</div>
+		</div>
+		<div class="row">
+			<div class="mb-3 col-md-6">
+				<label for="parent2phone" class="form-label"
+					>Secondary Contact Phone Number</label
+				>
+				<input
+					type="tel"
+					class="form-control"
+					id="parent2phone"
+					name="parent2_phone"
+					placeholder="ex. 123-456-7890"
+				/>
+			</div>
+			<div class="mb-3 col-md-6">
+				<label for="parent2email" class="form-label"
+					>Secondary Contact Email</label
+				>
+				<input
+					type="email"
+					class="form-control"
+					id="parent2email"
+					name="parent2_email"
+					placeholder="ex. janesmith@gmail.com"
+				/>
+			</div>
+		</div>
+
+		<label class="form-label">Secondary Contact Relationship</label>
+		<div class="form-check">
+			<input
+				class="form-check-input"
+				type="radio"
+				name="parent2_relationship"
+				id="parent2father"
+				value="F"
+			/>
+			<label class="form-check-label" for="parent2father"> Father </label>
+		</div>
+		<div class="form-check">
+			<input
+				class="form-check-input"
+				type="radio"
+				name="parent2_relationship"
+				id="parent2mother"
+				value="M"
+			/>
+			<label class="form-check-label" for="parent2mother"> Mother </label>
+		</div>
+		<div class="form-check mb-3">
+			<input
+				class="form-check-input"
+				type="radio"
+				name="parent2_relationship"
+				id="parent2guardian"
+				value="G"
+			/>
+			<label class="form-check-label" for="parent2guardian">
+				Guardian
+			</label>
+		</div>
+
+		<!--Emergency Contact Info-->
+		<div class="row">
+			<div class="mb-3 col-md-6">
+				<label for="emergencyfname" class="form-label"
+					>Emergency Contact First Name</label
+				>
+				<input
+					type="text"
+					class="form-control"
+					id="emergencyfname"
+					name="additional_emergency_contact_fname"
+					placeholder="First Name"
+					required
+				/>
+			</div>
+			<div class="mb-3 col-md-6">
+				<label for="emergencylname" class="form-label"
+					>Emergency Contact Last Name</label
+				>
+				<input
+					type="text"
+					class="form-control"
+					id="emergencylname"
+					name="additional_emergency_contact_lname"
+					placeholder="Last Name"
+					required
+				/>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="mb-3 col-md-6">
+				<label class="form-label" for="emergencyrelationship">
+					Emergency Contact Relationship
+				</label>
+				<input
+					class="form-control"
+					type="text"
+					name="additional_emergency_contact_relationship"
+					id="emergencyrelationship"
+					placeholder="ex. Grandmother"
+				/>
+			</div>
+
+			<div class="mb-3 col-md-6">
+				<label for="emergencyphone" class="form-label"
+					>Emergency Contact Phone Number</label
+				>
+				<input
+					type="tel"
+					class="form-control"
+					id="emergencyphone"
+					name="additional_emergency_contact_phone"
+					placeholder="ex. 123-456-7890"
+					required
+				/>
+			</div>
+		</div>
+
+		<!--POD Preference--set to false by default-->
+		<h3>Parent On Duty (POD) Preference</h3>
+		<div class="form-text mb-3">
+			NOTE: One shift required for each child enrolled in Overnight and
+			ExplorAsian program. If you cannot serve POD, please select Paid
+			Waiver. For all other program we encourage parents to help out.
+		</div>
+		<label class="form-label">POD Preference</label>
+		<div class="form-check">
+			<input
+				class="form-check-input"
+				type="checkbox"
+				name="parent1_for_POD"
+				value="false"
+				id="parent1POD"
+			/>
+			<label class="form-check-label" for="parent1POD">
+				Parent #1 as POD
+			</label>
+		</div>
+		<div class="form-check mb-3">
+			<input
+				class="form-check-input"
+				type="checkbox"
+				name="parent2_for_POD"
+				value="false"
+				id="parent2POD"
+			/>
+			<label class="form-check-label" for="parent2POD">
+				Parent #2 as POD
+			</label>
+		</div>
+		<div class="form-check mb-3">
+			<input
+				class="form-check-input"
+				type="checkbox"
+				name="interest_in_POD_lead"
+				value="false"
+				id="PODlead"
+			/>
+			<label class="form-check-label" for="PODlead">
+				I am willing to be a POD lead.
+			</label>
+		</div>
+
+		<h3>Roomate Request</h3>
+		<div class="mb-3 col-md-4">
+			<label for="roomaterequest" class="form-label">Roomate Name</label>
+			<input
+				type="text"
+				class="form-control"
+				id="roommaterequest"
+				name="preferred_roommate"
+				placeholder="ex. Michael Li"
+			/>
+		</div>
+		<div class="form-text mb-3">
+			If no roommate name is indicated, a roommate of the same gender and
+			age category will be assigned. Roommate request will only be
+			considered if both campers request each other. Ask your friend to
+			put your name as their roommate request. Group request for Overnight
+			Campers will NOT be accepted.
+		</div>
+
+		<h3>Medical Information</h3>
+		<div class="mb-3">
+			<div class="form-text mb-3">
+				For camper's immunization requirements, please refer to
+				<a
+					href="https://www.mass.gov/info-details/massachusetts-law-about-vaccination-immunization#massachusetts-regulations-"
+					>regulations</a
+				>
+				from Mass Department of Public Health.
+			</div>
+			<div class="row">
+				<div class="mb-3 col-md-6">
+					<label for="insuranceprovider" class="form-label"
+						>Health Insurance Provider</label
+					>
+					<input
+						type="text"
+						class="form-control"
+						id="insuranceprovider"
+						name="insurance_provider"
+						placeholder="Insurance Provider"
+						required
+					/>
+				</div>
+				<div class="mb-3 col-md-6">
+					<label for="insurancesubscriber" class="form-label"
+						>Insurance Subscriber's Name</label
+					>
+					<input
+						type="text"
+						class="form-control"
+						id="insurancesubscriber"
+						name="subscriber_name"
+						placeholder="Subscriber's Name"
+						required
+					/>
+				</div>
+			</div>
+			<div class="row">
+				<div class="mb-3 col-md-6">
+					<label for="doctorname" class="form-label"
+						>Primary Physician's Name</label
+					>
+					<input
+						type="text"
+						class="form-control"
+						id="doctorname"
+						name="primary_physician_name"
+						placeholder="Doctor's Name"
+						required
+					/>
+				</div>
+				<div class="mb-3 col-md-6">
+					<label for="doctorphone" class="form-label"
+						>Primary Physician's Phone</label
+					>
+					<input
+						type="text"
+						class="form-control"
+						id="doctorphone"
+						name="primary_physician_phone"
+						placeholder="Doctor's Phone"
+						required
+					/>
+				</div>
+			</div>
+
+			<label class="form-label"
+				>I grant NECYSC permission to: (check box to grant
+				consent)</label
+			>
+			<div class="form-check">
+				<input
+					class="form-check-input"
+					type="checkbox"
+					name="grant_hospital_permission"
+					value="false"
+					id="hospitalpermission"
+				/>
+				<label class="form-check-label" for="hospitalpermission">
+					Accompany my child to the nearest hospital in case of an
+					Emergency
+				</label>
+			</div>
+			<div class="form-check">
+				<input
+					class="form-check-input"
+					type="checkbox"
+					name="grant_medical_treatment_permission"
+					value="false"
+					id="medicaltreatmentpermission"
+				/>
+				<label
+					class="form-check-label"
+					for="medicaltreatmentpermission"
+				>
+					Secure medical treatment for my child if I cannot be reached
+				</label>
+			</div>
+			<div class="form-check">
+				<input
+					class="form-check-input"
+					type="checkbox"
+					name="grant_first_aid_permission"
+					value="false"
+					id="firstaidpermission"
+				/>
+				<label class="form-check-label" for="firstaidpermission">
+					Administer first aid in case of an injury
+				</label>
+			</div>
+			<div class="form-check">
+				<input
+					class="form-check-input"
+					type="checkbox"
+					name="grant_meds_permission"
+					value="false"
+					id="medspermission"
+				/>
+				<label class="form-check-label" for="medspermission">
+					Administer Tylenol/Ibuprofen/Benadryl/Tums to my child by
+					the camp nurse if needed
+				</label>
+			</div>
+			<div class="form-check">
+				<input
+					class="form-check-input"
+					type="checkbox"
+					name="grant_bug_spray_permission"
+					value="false"
+					id="bugspraypermission"
+				/>
+				<label class="form-check-label" for="bugspraypermission">
+					Apply insect repellant (bug spray) if needed
+				</label>
+			</div>
+			<div class="form-check mb-3">
+				<input
+					class="form-check-input"
+					type="checkbox"
+					name="grant_skin_treatment_permission"
+					value="false"
+					id="skintreatmentpermission"
+				/>
+				<label class="form-check-label" for="skintreatmentpermission">
+					Apply Calamine lotion/Bacitracin/Sunscreen if needed
+				</label>
+			</div>
+			<div class="form-text mb-3">
+				NOTE: If consent is not granted for any of the above, please
+				email us at
+				<a href="mailto: registration@necysc.org"
+					>registration@necysc.org</a
+				>
+			</div>
+
+			<div class="row">
+				<div class="col-md-6">
+					<label class="form-label">
+						Does your child have any allergies?</label
+					>
+					<div class="form-check">
+						<input
+							class="form-check-input"
+							type="radio"
+							name="allergies"
+							id="allergiesyes"
+							value="false"
+							required
+						/>
+						<label class="form-check-label" for="allergiesyes">
+							Yes
+						</label>
+					</div>
+					<div class="form-check mb-3">
+						<input
+							class="form-check-input"
+							type="radio"
+							name="allergies"
+							id="allergiesno"
+							value="false"
+				
+						/>
+						<label class="form-check-label" for="allergiesno">
+							No
+						</label>
+					</div>
+				</div>
+
+				<div class="mb-3 col-md-6">
+					<label for="allergieslist" class="form-label"
+						>If yes, to what? Please describe reaction and
+						treatment.</label
+					>
+					<input
+						type="text"
+						class="form-control"
+						id="allergieslist"
+						name="allergies_description"
+						placeholder="List allergies"
+					/>
+				</div>
+			</div>
+
+			<div class="mb-3">
+				<label for="initialforallergytreatment" class="form-label"
+					>Initial to grant permission to treat allergic
+					reactions</label
+				>
+				<div class="col-md-4">
+					<input
+						type="text"
+						class="form-control"
+						id="initialforallergytreatment"
+						name="initial_for_allergy_treatment"
+						placeholder="Initials"
+					/>
+				</div>
+			</div>
+
+			<label class="form-label"
+				>Does your Physician's Health Form list an Epi-Pen as medication
+				prescribed?</label
+			>
+			<div class="form-text mb-3">
+				If yes, do you understand that you MUST bring two Epi-Pens so
+				that your child can attend camp? You must also fill out the
+				NECYSC Medication Permission Slip for the Epi-Pens and submit
+				along with other application forms.
+			</div>
+			<div class="form-check">
+				<input
+					class="form-check-input"
+					type="radio"
+					name="epi_pen_prescribed"
+					id="epipenyes"
+					value="false"
+					required
+				/>
+				<label class="form-check-label" for="epipenyes"> Yes </label>
+			</div>
+			<div class="form-check mb-3">
+				<input
+					class="form-check-input"
+					type="radio"
+					name="epi_pen_prescribed"
+					id="epipenno"
+					value="false"
+				/>
+				<label class="form-check-label" for="epipenno"> No </label>
+			</div>
+
+			<div class="mb-3">
+				<label for="socialemotionalconcerns" class="form-label"
+					>Does your child have any social/emotional concerns we
+					should be aware of? If yes, please elaborate.</label
+				>
+				<div class="col-md-4">
+					<input
+						type="text"
+						class="form-control"
+						id="socialemotionalconcerns"
+						name="social_emotional_concerns"
+						placeholder="Yes/no, please describe"
+						required
+					/>
+				</div>
+			</div>
+
+			<label class="form-label"
+				>Does your child wear any of the following:</label
+			>
+			<div class="form-check">
+				<input
+					class="form-check-input"
+					type="checkbox"
+					name="wear_glasses"
+					value="false"
+					id="wearsglasses"
+					
+				/>
+				<label class="form-check-label" for="wearsglasses">
+					Glasses
+				</label>
+			</div>
+			<div class="form-check">
+				<input
+					class="form-check-input"
+					type="checkbox"
+					name="wear_contacts"
+					value="false"
+					id="wearscontacts"
+				/>
+				<label class="form-check-label" for="wearscontacts">
+					Contact lenses
+				</label>
+			</div>
+			<div class="form-check mb-3">
+				<input
+					class="form-check-input"
+					type="checkbox"
+					name="wear_hearing_aids"
+					value="false"
+					id="wearshearingaids"
+				/>
+				<label class="form-check-label" for="wearshearingaids">
+					Hearing Aids
+				</label>
+			</div>
+
+			<div class="row">
+				<div class="col-md-6">
+					<label class="form-label"
+						>Is your child taking any medication?</label
+					>
+					<div class="form-check">
+						<input
+							class="form-check-input"
+							type="radio"
+							name="medication"
+							id="medicationyes"
+							value="false"
+							required
+						/>
+						<label class="form-check-label" for="medicationyes">
+							Yes
+						</label>
+					</div>
+					<div class="form-check mb-3">
+						<input
+							class="form-check-input"
+							type="radio"
+							name="medication"
+							id="medicationno"
+							value="false"
+						/>
+						<label class="form-check-label" for="medicationno">
+							No
+						</label>
+					</div>
+				</div>
+
+				<div class="mb-3 col-md-6">
+					<label for="medicationdescription" class="form-label"
+						>If yes, will the camp need to administer the medication
+						to your child during camp? Please explain
+						dose/frequency/other note; If no, please explain why
+						medication is not needed at camp</label
+					>
+					<input
+						type="text"
+						class="form-control"
+						id="medicationdescription"
+						name="medication_description"
+						placeholder="Yes/no, please describe"
+					/>
+				</div>
+			</div>
+
+			<div class="mb-3 col-md-6">
+				<label for="optoutactivity" class="form-label"
+					>Are there any activities your child should not take part
+					in? If yes, please elaborate.</label
+				>
+				<input
+					type="text"
+					class="form-control"
+					id="optoutactivity"
+					name="opt_out_activities"
+					placeholder="Yes/no, please describe"
+				/>
+			</div>
+
+			<div class="text mb-3">
+				In case of medical emergency: I understand every effort will be
+				made to contact parents/guardians of campers. IN THE EVENT THAT
+				I CANNOT BE REACHED, I HEREBY GIVE MY PERMISSION FOR THE
+				FOLLOWING: THE PHYSICIAN SELECTED BY THE CAMP DIRECTOR MAY
+				SECURE PROPER TREATMENT FOR, HOSPITALIZE, ORDER AND ADMINISTER
+				MEDICATIONS AND ANESTHESIA, PERFORM X-RAYS, SPECIAL PROCEDURES
+				OR SURGERY IF DEEMED NECESSARY BY HIM/HER FOR MY CHILD.
+			</div>
+
+			<div class="mb-3">
+				<label for="signature" class="form-label"
+					>PARENT/GUARDIAN SIGNATURE (Type in full name)</label
+				>
+				<div class="col-md-4">
+					<input
+						type="text"
+						class="form-control"
+						id="signature"
+						name="signature"
+						placeholder="Signature"
+					/>
+				</div>
+			</div>
+		</div>
+
+		<h3>All Persons authorized For Child Pickup</h3>
+		<div class="mb-3">
+			<div class="form-text mb-3">
+				NOTE: Please list names for all persons including parents that
+				are authorized to pick up your child(ren). We will only release
+				your child(ren) to the authorized persons listed.
+			</div>
+
+			<div class="mb-3 col-md-4">
+				<label for="pickuppersons" class="form-label"
+					>Names of authorized persons</label
+				>
+				<input
+					type="text"
+					class="form-control"
+					id="pickuppersons"
+					name="allowed_pickup_persons"
+				/>
+			</div>
+		</div>
+
+		<h3>Supplemental Information for CITs/Counselors/RAs</h3>
+		<div class="mb-3">
+			<div class="form-text mb-3">
+				Supplements for the Counselor/CIT/RA application are required
+				and can be found on the <a>website</a>
+				<!-- TODO: add website link -->
+			</div>
+			<div class="form-text mb-3">
+				Please follow the instruction to complete it and email it by
+				application deadline when applicable.
+			</div>
+		</div>
+
+		<h3>Supplemental Information for CITs/Counselors/RAs</h3>
+		<div class="mb-3">
+			<!-- TODO: update camp fees -->
+			<div class="form-text mb-3">
+				NOTE: The camp fee: $1800 for ExplorAsian, $1800 for Overnight,
+				$900 for Day Camp and $1100 for CIT.
+			</div>
+
+			<!-- TODO: make '$' inline/part of the input box? -->
+			<div class="mb-3 col-md-4">
+				<label for="campfee" class="form-label">Camp Fee: ($)</label>
+				<input
+					type="text"
+					class="form-control"
+					id="campfee"
+					name="payment_camp"
+				/>
+			</div>
+			<div class="mb-3 col-md-4">
+				<label for="podfee" class="form-label"
+					>Parent On Duty (POD) Waiver Fee: ($)</label
+				>
+				<input
+					type="text"
+					class="form-control"
+					id="podfee"
+					name="payment_pod"
+				/>
+			</div>
+
+			<div class="mb-3">
+				<label for="donation" class="form-label"
+					>Voluntary Donation (tax deductible receipt will be mailed
+					after camp): ($)</label
+				>
+				<div class="col-md-4">
+					<input
+						type="text"
+						class="form-control"
+						id="donation"
+						name="payment_donation"
+					/>
+				</div>
+			</div>
+
+			<div class="mb-3 col-md-4">
+				<label id=totalcostlabel for="paymenttotal" class="form-label">TOTAL: ($)</label>
+				<input
+					type="text"
+					class="form-control"
+					id="paymenttotal"
+					name="payment_total"
+					readonly="true"
+				/>
+			</div>
+
+			<div class="form-check">
+				<input
+					class="form-check-input"
+					type="checkbox"
+					name="financial_aid_requested"
+					value="false"
+					id="fincialaid"
+				/>
+				<label class="form-check-label" for="fincialaid">
+					I am also applying for financial aid. I will submit 50% of
+					my payment to hold my application. Please download and
+					submit the financial aid application form for consideration.
+					Use original amount for the Camp Fee field and 50% amount
+					for the TOTAL field.
+				</label>
+			</div>
+		</div>
+
+		<h3>Additional Information</h3>
+		<div class="mb-3">
+			<div class="form-check">
+				<input
+					class="form-check-input"
+					type="checkbox"
+					name="interest_in_wkbook_ads"
+					value="false"
+					id="weekbookads"
+				/>
+				<label class="form-check-label" for="weekbookads">
+					Check if you want us to contact you to place ads in Camp
+					Book
+				</label>
+			</div>
+
+			<div class="form-check">
+				<input
+					class="form-check-input"
+					type="checkbox"
+					name="listing_on_weekbook"
+					value="false"
+					id="listonweekbook"
+				/>
+				<label class="form-check-label" for="listonweekbook">
+					Check if you don't want to publish name/address/phone in
+					camp week-book
+				</label>
+			</div>
+
+			<div class="form-check">
+				<input
+					class="form-check-input"
+					type="checkbox"
+					name="available_for_carpool"
+					value="false"
+					id="carpoollist"
+				/>
+				<label class="form-check-label" for="carpoollist">
+					Check if you want to publish name/city/phone in day camp car
+					pool list
+				</label>
+			</div>
+
+			<div class="form-check mb-3">
+				<input
+					class="form-check-input"
+					type="checkbox"
+					name="interest_in_committee"
+					value="false"
+					id="committeeinterest"
+				/>
+				<label class="form-check-label" for="committeeinterest">
+					Check if you want to be added in next year camp Committee
+					candidate list
+				</label>
+			</div>
+
+			<div class="mb-3 col-md-4">
+				<label for="heardfrom" class="form-label"
+					>Where did you hear about us?</label
+				>
+				<input
+					type="text"
+					class="form-control"
+					id="heardfrom"
+					name="heard_from"
+				/>
+			</div>
+			<div class="mb-3 col-md-4">
+				<label for="referrals" class="form-label"
+					>Were you referred by anyone?</label
+				>
+				<input
+					type="text"
+					class="form-control"
+					id="referrals"
+					name="referrals"
+				/>
+			</div>
+		</div>
+
+		<h3>Important Documents</h3>
+		<div class="mb-3">
+			<div class="form-text">
+				Please access and read our documents on camp rules form via the
+				hyperlinks below and acknowledge consent by checking the boxes
+				below.
+			</div>
+
+			<div class="form-check">
+				<input
+					class="form-check-input"
+					type="checkbox"
+					name="camp_rule_agreement"
+					value="false"
+					id="campruleagrement"
+				/>
+				<label class="form-check-label" for="campruleagrement">
+					<a
+						href="https://www.necysc.org/v2/files/app//Camp_Rules_Form.pdf"
+						>*Click here to accept the Camp Rule Agreement</a
+					>
+				</label>
+			</div>
+
+			<div class="form-check">
+				<input
+					class="form-check-input"
+					type="checkbox"
+					name="liability_agreement"
+					value="false"
+					id="liabilityagreement"
+				/>
+				<label class="form-check-label" for="liabilityagreement">
+					<a
+						href="https://www.necysc.org/v2/files/app/Liability_and_Photo_Waiver.pdf"
+						>*Click here to accept the Liability and Photo
+						Agreement</a
+					>
+				</label>
+			</div>
+		</div>
+
+		<div class="mb-3">
+			<div class="text">
+				By clicking the Submit button below I certify that I have read
+				and understand
+				<a
+					href="https://www.necysc.org/v2/files/app/Application-Information-Sheet.pdf"
+					>NECYSC Camp Information</a
+				>
+				and the information provided on this application form is
+				accurate to the best of my knowledge.
+			</div>
+		</div>
+		<div class="mb-3">
+			<div class="text">
+				NOTE: After you submit this application, please make sure you
+				see a confirmation page. Write down your confirmation number. In
+				order to complete the registration process, you must print and
+				fill out the required forms on the
+				<a href="http://www.necysc.org/v2/admission.php"
+					>Download Forms page</a
+				>
+				and mail them along with your check to "NECYSC, P.O.BOX 615,
+				Weston, MA 02493" as soon as possible. Please make sure to write
+				your camper's name and confirmation number on the check. The
+				application priority is based on the latest postmark date of
+				receipt of the check and
+				<a href="http://www.necysc.org/v2/admission.php"
+					>ALL required information</a
+				>. Contact
+				<a href="mailto: registration@necysc.org"
+					>registration@necysc.org</a
+				>
+				if you have trouble to complete online application.
+			</div>
+		</div>
+
+		<!--old form: {{ form.as_p }}-->
+
+		<button type="submit" class="btn-purple fw-bold">Submit</button>
+
+		{% if form.errors %}
+		<div>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Oops!</strong> There was an error processing your form. Please check the form for any errors and try again.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+        </div>
+		{% endif %}
+
+		<script>
+			//change value depending on whether the checkbox is checked or not
+			document
+				.getElementById("parent1POD")
+				.addEventListener("change", function () {
+					this.value = this.checked ? true : false;
+				});
+			document
+				.getElementById("parent2POD")
+				.addEventListener("change", function () {
+					this.value = this.checked ? true : false;
+				});
+
+			//custom check validation on form submission
+			document
+				.querySelector("form")
+				.addEventListener("submit", function (event) {
+					if (!this.checkValidity()) {
+						event.preventDefault();
+						event.stopPropagation();
+					}
+					this.classList.add("was-validated");
+				});
+
+			// access to global data values
+			const globaldata = {
+				day_camp_cost: "{{ globaldata.day_camp_cost }}",
+				ON_camp_cost: "{{ globaldata.ON_camp_cost }}",
+				CIT_camp_cost: "{{ globaldata.CIT_camp_cost }}",
+				RA_camp_cost: "{{ globaldata.RA_camp_cost }}",
+				EA_camp_cost: "{{ globaldata.EA_camp_cost }}"
+       		};
+
+			// updates the total cost field to the corresponding cost of the program chosen
+			document
+				.querySelectorAll('input[name="program"]')
+				.forEach((radio) => {
+					radio.addEventListener("change", (event) => {
+						changeCost(event.target.value)
+					} )
+				});
+
+			function changeCost(program) {
+				switch(program) {
+					case "D":
+						document.getElementById("paymenttotal").value = globaldata.day_camp_cost;
+						break;
+					case "ON":
+						document.getElementById("paymenttotal").value = globaldata.ON_camp_cost;
+						break;
+					case "CIT":
+						document.getElementById("paymenttotal").value = globaldata.CIT_camp_cost;
+						break;
+					case "C":
+						document.getElementById("paymenttotal").value = globaldata.RA_camp_cost;
+						break;
+					case "EA":
+						document.getElementById("paymenttotal").value = globaldata.EA_camp_cost;
+						break;
+					default:
+				}
+			}
+		</script>
+	</form>
+</div>
+{% endblock %}
