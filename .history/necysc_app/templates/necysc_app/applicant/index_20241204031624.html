@@ -21,20 +21,12 @@
         top: 0;
         left: 0;
         width: 100%;
-        height: calc(100% - 0px);
+        height: calc(100% - 150px); 
         z-index: -1;
         background-image: url("{% static 'necysc_app/images/necyscbannerimage.jpg' %}");
         background-size: cover;
         background-position: center;
         filter: blur(8px); 
-    }
-
-    body, html {
-        margin: 0;
-        padding: 0;
-        height: 100%;
-        width: 100%;
-        background-color: #f8f9fa; /* 可选 */
     }
 
     .container {
@@ -69,6 +61,7 @@
         margin-top: 5vh; 
     }
 
+    /* 按钮样式 */
     .btn-purple {
         background-color: #4e598c;
         color: #f9c784;
@@ -107,7 +100,7 @@
 <div class="background"></div>
 
 
-<div class="content-container">
+<div>
     <h2 class="welcome-title">Welcome!</h2>
 </div>
 
