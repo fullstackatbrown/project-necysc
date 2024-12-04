@@ -9,6 +9,12 @@
 .hero-section { 
     background-image: url("{% static 'necysc_app/images/necyscbannerimage.jpg' %}");
 }
+
+@media (max-width: 776px) {
+    .ratio {
+        width: 47% !important; /* Adjust the value as needed */
+    }
+}
 </style>
 
 <section>
@@ -33,7 +39,7 @@
 </div>
 
 <div class="ms-5 me-5 mb-5 bg-dark" style="height: 2px;"></div>
-<div class="row ms-5 me-5 justify-content-center align-items-center">
+<div class="row ms-md-5 me-md-5 justify-content-center align-items-center">
     <div class="ratio ratio-1x1 mb-5 col-3 mx-2 shadow" style="width: 23%">
         <img src="{% static 'necysc_app/images/waterballoons.png' %}" alt="Water Balloons Image" class="img-fluid" style="object-fit: cover;">
     </div>
@@ -67,7 +73,7 @@
 
 
 <div class="ms-5 me-5 mb-5 bg-dark" style="height: 2px;"></div>
-<div class="row ms-5 me-5 justify-content-center align-items-center">
+<div class="row ms-md-5 me-md-5 justify-content-center align-items-center">
     <div class="ratio ratio-1x1 mb-5 mx-2 shadow" style="width: 23%">
         <img src="{% static 'necysc_app/images/lunch.png' %}" alt="Lunch Image" class="img-fluid" style="object-fit: cover;">
     </div>
@@ -92,7 +98,7 @@
         <div class="card-body">
             <h3 class="card-title">Sample Schedule</h3>
             <!-- Horizontal line -->
-            <div class="bg-secondary mt-3 mb-3" style="height: 1px;"></div>
+            {% comment %} <div class="bg-secondary mt-3 mb-3" style="height: 1px;"></div>
             <h5 class="card-text">Tuesday</h5>
             <p>8:30 - 9:00 - Check-in</p>
             <p>9:25 - 10:25 - Folk Dance</p>
@@ -103,7 +109,8 @@
             <p>2:20 - 3:20 - Big Flag Activity</p>
             <p>3:20 - 3:45 - Snack</p>
             <p>3:45 - 4:45 - Intergroup Time</p>
-            <p>5:00 - 5:30 - Check-out</p>
+            <p>5:00 - 5:30 - Check-out</p> {% endcomment %}
+            <img src="{% static 'necysc_app/images/schedule.svg' %}" alt="Sample Schedule" class="img-fluid">
         </div>
     </div>
 </div>
