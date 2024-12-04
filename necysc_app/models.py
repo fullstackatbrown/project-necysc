@@ -82,7 +82,7 @@ class Applicant(models.Model):
     applicant_fname = models.CharField(max_length=200, verbose_name="First Name")
     applicant_lname = models.CharField(max_length=200, verbose_name="Last Name")
     applicant_chinese_name = models.CharField(max_length=200, blank=True, null=True, verbose_name="Chinese Name") # optional
-    applicant_email = models.EmailField(verbose_name="Email", blank=False)
+    applicant_email = models.EmailField(verbose_name="Email")
 
     parent1_fname = models.CharField(max_length=200, verbose_name="Primary Contact First Name")
     parent1_lname = models.CharField(max_length=200, verbose_name="Primary Contact Last Name")
