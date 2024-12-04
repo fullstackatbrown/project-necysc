@@ -58,4 +58,3 @@ class ApplicationForm(forms.ModelForm):
                   # important docs
                   'camp_rule_agreement', 'liability_agreement',
                   ]
-      
