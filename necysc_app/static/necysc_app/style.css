@@ -47,3 +47,7 @@
   background-color: #4e598c; /* Darker purple when open */
   color: #ffffff; /* White text for contrast */
 }
+
+.bg-purple {
+  background-color: #4e598c;
+}
