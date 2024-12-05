@@ -7,7 +7,23 @@
 <link rel="stylesheet" href="{% static 'necysc_app/index.css' %}">
 <style>
 .hero-section { 
-    background-image: url("{% static 'necysc_app/images/necyscbannerimage.jpg' %}");
+    background-image: url("{% static 'necysc_app/images/home_hero_banner.gif' %}");
+}
+
+.hero-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3); /* Adjust the opacity as needed */
+    z-index: 1;
+    transition: background-color 0.3s ease;
+}
+
+.hero-section:hover::before {
+    background-color: rgba(0, 0, 0, 0.8); /* Adjust the opacity as needed */
 }
 
 @media (max-width: 776px) {
@@ -20,7 +36,7 @@
 <section>
     <div class="hero-section shadow position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
         <div class="col-md-10 p-lg-5 mx-auto my-5 position-relative container">
-            <h1 class="display-4 fw-bold text-white" id="importantdates">New England Chinese Youth Summer Camp</h1>
+            <h1 class="display-4 fw-bold text-white" id="importantdates" style="">New England Chinese Youth Summer Camp</h1>
         </div>
     </div>
 </section>

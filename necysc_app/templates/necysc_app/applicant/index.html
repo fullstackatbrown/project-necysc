@@ -123,10 +123,12 @@
                     <h5 class="card-title col-md-4 float-end">
                         {% if application.app_status == 'A' %}
                         <span class="badge bg-success">Accepted</span>
-                        {% elif application.app_status == 'P' %}
+                        {% elif application.app_status == 'I' %}
                         <span class="badge bg-secondary">Pending</span>
-                        {% else %}
+                        {% elif application.app_status == 'R' %}
                         <span class="badge bg-danger">Rejected</span>
+                        {% else %}
+                        <span class="badge bg-warning">Incomplete</span>
                         {% endif %}
                     </h5>
                 </div>
