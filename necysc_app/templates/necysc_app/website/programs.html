@@ -6,6 +6,12 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'necysc_app/programs.css' %}">
 
+<style>
+.bg-purple {
+    background-color: #4E598C;
+}
+</style>
+
 <div class="hero-section shadow position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
     <div class="overlay"></div>
         <div class="col-md-6 p-lg-5 mx-auto my-5 position-relative">
@@ -14,15 +20,15 @@
         </div>
     </div>
 </div>
-<div class="container px-4 py-5" id="why-join-us">
+<div class="container px-4 py-5 mb-sm-5" id="why-join-us" style="z-index: 100">
     <h1 class="pb-2 text-center fw-bold display-5" style="color: #4e598c;">Why Join Us?</h1>
-    <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 align-items-stretch g-5 py-5">
+        <div class="col d-none d-lg-block"> </div>
         <div class="col" style="height: 350px;" >
             <div class="card why-join-card card-1 h-100 text-bg-dark rounded-4 shadow-lg" >
                 <div class="text-content">
-                    <h3 class="display-6 lh-1 fw-bold">Engage with Nature</h3>
-                    <p>Discover the beauty of the outdoors with hands-on activities that foster a deep connection with
-                        nature.</p>
+                    <h3 class="display-6 lh-1 fw-bold">Engage with Culture</h3>
+                    <p>Discover Chinese culture with hands-on activities such as Erhu, Guzheng, and calligraphy.</p>
                 </div>
             </div>
         </div>
@@ -45,87 +51,90 @@
                 </div>
             </div>
         </div>
+        <div class="col d-none d-lg-block"> </div>
     </div>
 </div>
 
+<div class="bg-purple position-relative" style="padding: 0; margin-top: -25vw; margin-bottom: -4vw;" style="z-index: -100;" id="daycamp">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#ffffff" fill-opacity="1" d="M0,96L48,122.7C96,149,192,203,288,202.7C384,203,480,149,576,144C672,139,768,181,864,186.7C960,192,1056,160,1152,144C1248,128,1344,128,1392,128L1440,128L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
+    <h1 class="text-center fw-bold display-5 text-white">Our Programs</h1>
+    <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5 flex-container">
+        <div class="col align-items-center justify-content-center">
+            <div class="card text-bg-dark shadow-lg m-3" >
+                <div class="text-content">
+                    <h3 class="display-6 fw-bold text-center pt-4" style="color: #4e598c;">Day Camp</h3>
+                    <h5 class="text-muted text-center p-1">Ages 6-10</h5>
+                    <p class="ps-md-4 pe-md-4 text-center">Throughout the day, day campers travel in their groups to classes and activities, such as Chinese yo-yo, cooking, swimming, and arts and crafts. The week ends with a Closing Ceremony on Friday during which campers perform what they’ve learned. Lunch and snacks included.</p>
+                </div>
+                <a href="#day-overnight-camp" class="btn-purple fw-bold w-50 m-auto mb-4" style="">Discover</a>
+            </div>
+        </div>
+        <div class="col align-items-center justify-content-center" id="overnightcamp">
+            <div class="card text-bg-dark shadow-lg m-3" >
+                <div class="text-content">
+                    <h3 class="display-6 fw-bold text-center pt-4" style="color: #4e598c;">Overnight Camp</h3>
+                    <h5 class="text-muted text-center p-1">Ages 10-14</h5>
+                    <p class="ps-md-4 pe-md-4 text-center">During the day, campers travel in their groups to class and activities learning about
+                        Chinese culture and preparing for the end-of-the-week Closing Ceremony. At night, campers attend exciting
+                        evening activities, including the Talent Show, Carnival, CIT Dress-Up, and Movie Nights!</p>
+                </div>
+                <a href="#day-overnight-camp" class="btn-purple fw-bold w-50 m-auto mb-4" style="">Explore</a>
+            </div>
+        </div>
+        <div class="col align-items-center justify-content-center" id="explorasian">
+            <div class="card text-bg-dark shadow-lg m-3" >
+                <div class="text-content">
+                    <h3 class="display-6 fw-bold text-center pt-4" style="color: #4e598c;">ExplorAsian</h3>
+                    <h5 class="text-muted text-center p-1">Ages 14-16</h5>
+                    <p class="ps-md-4 pe-md-4 text-center">Established in 2002, ExplorAsian is usually a week-long, overnight program for students aged 14 to 16
+                        who are interested in exploring Chinese-American identity and related issues, building leadership
+                        skills, and meeting new people. The goal is to empower youth to become leaders in their communities.</p>
+                </div>
+                <a href="#explorasian-2" class="btn-purple fw-bold w-50 m-auto mb-4" style="">Learn More</a>
+            </div>
+        </div>
+    </div>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#ffffff" fill-opacity="1" d="M0,96L48,122.7C96,149,192,203,288,202.7C384,203,480,149,576,144C672,139,768,181,864,186.7C960,192,1056,160,1152,144C1248,128,1344,128,1392,128L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
+</div>
 
-<div id="daycamp" class="container">
-    <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
-        <div class="col-lg-9 p-3 p-lg-5 pt-lg-3">
+<div id="day-overnight-camp" class="container bg-white" style="z-index: 100">
+    <div class="row pb-4 pe-lg-5 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+        <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
             <h1 class="display-6 fw-bold lh-1 text-body-emphasis" style="color: #4e598c;" id="day">
-                Day Camp
+                Day / Overnight Camp
             </h1>
-            <ul class="list-unstyled mb-3">
-                <li><strong>Ages:</strong> 6-10 years old</li>
-                <li><strong>Dates:</strong> July 29 - August 2, 2024</li>
-                <li><strong>Time:</strong> 8:30am - 5:00pm</li>
-                <li><strong>Program Fee:</strong> $900</li>
-            </ul>
             <p class="lead">
-                Throughout the day, day campers travel in their groups to classes and activities, such as Chinese yo-yo,
-                cooking, swimming, and arts and crafts. The week kicks off with a Carnival on Monday and ends with a
-                Closing Ceremony on Friday during which campers perform what they’ve learned. Lunch and snacks included.
+                Day camp runs from 8:30 AM to 5:00 PM, Monday through Friday. Overnight campers stay in the dorms at
+                Brandeis University from Sunday to Friday. Campers are divided into groups based on age and experience.
+                Throughout the week, campers participate in a variety of activities, including Chinese yo-yo, Kung-fu,
+                Calligraphy, and more. The week ends with a Closing Ceremony on Friday during which campers perform what
+                they’ve learned. Watch the video to learn more about our programs and activities!
             </p>
             <a href="#" class="btn-purple fw-bold" style="">Registration</a>
         </div>
-        <div class="col-lg-3 d-flex align-items-center justify-content-center">
-            <img class="rounded-pill" src="{% static 'necysc_app/images/DayCamp.JPG' %}" alt="Day Camp Image" style="width:15rem;height:auto;">
+        <div class="col-lg-5 d-flex align-items-center justify-content-center">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/J2VV52Ny2ec?si=Ma8FLbsjohIYjTMe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
     </div>
 </div>
 
-<div id="overnightcamp" class="container my-5">
-<div class="row p-4 pb-0 pt-5 align-items-center text-center rounded-3 border shadow-lg">
-    <h1 class="display-4 fw-bold position-relative" style="color: #4e598c; font-size: 3rem;" id="on">Overnight Camp</h1>
-    <div class="container">
-        <img src="{% static 'necysc_app/images/night.png' %}" class="img-fluid border rounded-pill shadow-lg mb-4"
-            alt="ON Camp" width="400" height="300" loading="lazy">
-    </div>
-    <div class="col-lg-6 mx-auto position-relative">
-        <ul class="list-unstyled mb-3">
-            <li><strong>Ages:</strong> 10-14 years old</li>
-            <li><strong>Dates:</strong> July 28 - August 3, 2024</li>
-            <li><strong>Program Fee:</strong> $1,800</li>
-        </ul>
-        <p class="lead mb-4">During the day, campers travel in their groups to class and activities learning about
-            Chinese culture and preparing for the end-of-the-week Closing Ceremony. At night, campers attend exciting
-            evening activities, including the Talent Show, Carnival, CIT Dress-Up, and Movie Nights!</p>
-        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
-            <a href="#" class="btn-purple fw-bold">Registration</a>
-        </div>
-    </div>
-    
-</div>
-
-<div id="explorasian" class="container my-5">
-    <div class="row pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
-        <div class="col-md-5 d-flex justify-content-center">
-            <img class="rounded-pill text-center" src="{% static 'necysc_app/images/king.png' %}" alt="Day Camp Image"
-            style="width:25rem;height:auto;">
-
-        </div>
-        <div class="col-lg-7 p-3 p-lg-5 pt-lg-3 ms-auto">
-            <h1 class="display-6 fw-bold lh-1" style="color: #4e598c;" id="ea">
+<div id="explorasian-2" class="container bg-white my-4">
+    <div class="row pb-4 pe-lg-5 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+        <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
+            <h1 class="display-6 fw-bold lh-1 text-body-emphasis" style="color: #4e598c;" id="day">
                 ExplorAsian
             </h1>
-            <ul class="list-unstyled mb-3">
-                <li><strong>Ages:</strong> 14-16 years old</li>
-                <li><strong>Dates:</strong> July 28 - August 3, 2024</li>
-                <li><strong>Program Fee:</strong> $1,800</li>
-            </ul>
             <p class="lead">
                 Established in 2002, ExplorAsian is usually a week-long, overnight program for students aged 14 to 16
                 who are interested in exploring Chinese-American identity and related issues, building leadership
-                skills, and meeting new people. The goal is to empower youth to become leaders in their communities.
+                skills, and meeting new people. The goal is to empower youth to become leaders in their communities. Watch the video to learn more about the EA program!
             </p>
-            <a href="#" class="btn-purple fw-bold">Registration</a>
+            <a href="#" class="btn-purple fw-bold" style="">Registration</a>
         </div>
-
-
-    </div>
+        <div class="col-lg-5 d-flex align-items-center justify-content-center">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/jf35iCaY63g?si=JSnxyksZZnWARt4u" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
 </div>
-
-
 
 
 {% endblock %}

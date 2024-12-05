@@ -42,97 +42,10 @@
 
 <section class="ms-md-5 me-md-5 mb-5 mt-5">
 	<div class="container mb-5">
-		<div id="meettheteam" class="overlay">
+		<div class="overlay">
 		<h1 class="textleft"><i class="icon-right-circled"></i>Meet the Team</h1>
-			<div class="row g-4 pt-2">
-				<div class="col-sm-3">
-					<div class="card text-center border-0 bg-light">
-						<div class="card-body px-4 py-4">
-							<div class="mb-4 mx-2 mx-md-5"><img class="img-fluid rounded-circle" src="{% static 'necysc_app/images/headshots/chris_chiu.jpg'%}"></div>
-							<h5 class="fw-bold">Christopher Chiu</h5>
-							<div class="text-muted">
-								Director
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-3">
-					<div class="card text-center border-0 bg-light">
-						<div class="card-body px-4 py-4">
-							<div class="mb-4 mx-2 mx-md-5"><img class="img-fluid rounded-circle" src="{% static 'necysc_app/images/headshots/paul_eska.jpg'%}"></div>
-							<h5 class="fw-bold">Paul Eska</h5>
-							<div class="text-muted">
-								Assistant Director
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-3">
-					<div class="card text-center border-0 bg-light">
-						<div class="card-body px-4 py-4">
-							<div class="mb-4 mx-2 mx-md-5"><img class="img-fluid rounded-circle" src="{% static 'necysc_app/images/headshots/mikayla.jpg'%}"></div>
-							<h5 class="fw-bold">Mikayla Tow</h5>
-							<div class="text-muted">
-								Head Counselor
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-3">
-					<div class="card text-center border-0 bg-light">
-						<div class="card-body px-4 py-4">
-							<div class="mb-4 mx-2 mx-md-5"><img class="img-fluid rounded-circle" src="{% static 'necysc_app/images/headshots/charles.jpg'%}"></div>
-							<h5 class="fw-bold">Charles Tang</h5>
-							<div class="text-muted">
-								Head Counselor
-							</div>
-						</div>
-					</div>
-				</div>
-				{% comment %} <div class="col-sm-3">
-					<div class="card text-center border-0 bg-light">
-						<div class="card-body px-4 py-4">
-							<div class="mb-4 mx-2 mx-md-5"><img class="img-fluid rounded-circle" src="https://freefrontend.dev/assets/square.png"></div>
-							<h5 class="fw-bold">Lola Yao</h5>
-							<div class="text-muted">
-								Treasurer
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-3">
-					<div class="card text-center border-0 bg-light">
-						<div class="card-body px-4 py-4">
-							<div class="mb-4 mx-2 mx-md-5"><img class="img-fluid rounded-circle" src="https://freefrontend.dev/assets/square.png"></div>
-							<h5 class="fw-bold">Ivan Yim</h5>
-							<div class="text-muted">
-								Treasurer
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-3">
-					<div class="card text-center border-0 bg-light">
-						<div class="card-body px-4 py-4">
-							<div class="mb-4 mx-2 mx-md-5"><img class="img-fluid rounded-circle" src="https://freefrontend.dev/assets/square.png"></div>
-							<h5 class="fw-bold">Eugene Chiu</h5>
-							<div class="text-muted">
-								Education
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-3">
-					<div class="card text-center border-0 bg-light">
-						<div class="card-body px-4 py-4">
-							<div class="mb-4 mx-2 mx-md-5"><img class="img-fluid rounded-circle" src="https://freefrontend.dev/assets/square.png"></div>
-							<h5 class="fw-bold">Wendy Chan</h5>
-							<div class="text-muted">
-								Administration
-							</div>
-						</div>
-					</div>
-				</div> {% endcomment %}
+			<div class="row g-4 pt-2" id="meettheteam">
+				<!-- staff cards will be dynamically added here -->
 			</div>
 		</div>
 		<div class="mt-4">
@@ -269,4 +182,48 @@
 	box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.15); /* Adjust the glow effect */
 	}
 </style>
+
+<script>
+	const staff = [
+		["Christopher Chiu", "Directory", "chris_chiu.jpg"],
+		["Paul Eska", "Assistant Director", "paul_eska.jpg"],
+		["Mikayla Tow", "Head Counselor", "mikayla.jpg"],
+		["Charles Tang", "Head Counselor", "charles.jpg"],
+		["David Fox", "Public Relations", "david_fox.jpg"],
+		["Helen Ng", "Public Relations", "helen_ng.jpg"],
+		["Mike Breen", "Registration", "mike_breen.jpg"],
+		["Lola Yao", "Treasurer", "lola_yao.jpg"],
+		["Lina Harp", "Education", "lina_harp.jpg"],
+		["Deb Morris", "Education", "deb_morris.jpg"],
+		["Eugene Chiu", "Education", "eugene_chiu.jpg"],
+		["Deb Breen", "General Admin", "deb_breen.jpg"],
+		["Wendy Chan", "General Admin", "wendy_chan.jpg"],
+		["Danielle Watson", "Medical", "danielle_watson.jpg"],
+		["Alyssa Chan", "Medical", "alyssa_chan.jpg"],
+		["Barbara O'Toole", "Registration", "barbara_otoole.jpg"]
+		["Wei Tang", "Registration", "wei_tang.jpg"]
+		
+	]
+
+	const staffContainer = document.getElementById("meettheteam");
+
+	for (let i = 0; i < staff.length; i++) {
+		const staffMember = staff[i];
+		const staffCard = document.createElement("div");
+		staffCard.className = "col-xl-3 col-md-6";
+		staffCard.innerHTML = `
+			<div class="card text-center border-0 bg-light">
+				<div class="card-body px-4 py-4">
+					<div class="mb-4 mx-2 mx-md-5"><img onerror="this.onerror=null; this.remove();" class="img-fluid rounded-circle" src="{% static 'necysc_app/images/headshots/' %}${staffMember[2]}"></div>
+					<h5 class="fw-bold">${staffMember[0]}</h5>
+					<div class="text-muted">
+						${staffMember[1]}
+					</div>
+				</div>
+			</div>
+		`;
+		staffContainer.appendChild(staffCard);
+	}
+
+</script>
 {% endblock %}
