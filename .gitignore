@@ -6,3 +6,4 @@
 env/
 /myenv/
 __pycache__/
+.history/
