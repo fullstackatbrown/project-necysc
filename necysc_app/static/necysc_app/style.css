@@ -43,6 +43,24 @@
   color: #ffffff;
 }
 
+.btn-yellow {
+  background-color: #f9c784;
+  color: #4e598c;
+  transition: all 0.3s ease;
+  padding: 10px 20px;
+  border-radius: 20px;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  border: none;
+}
+
+.btn-yellow:hover {
+  background-color: #4e598c;
+  color: #ffffff;
+}
+
 .accordion-item .accordion-button:not(.collapsed) {
   background-color: #4e598c; /* Darker purple when open */
   color: #ffffff; /* White text for contrast */

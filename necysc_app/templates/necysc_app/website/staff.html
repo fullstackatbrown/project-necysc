@@ -1,13 +1,108 @@
 {% extends "necysc_app/base.html" %} {% load static %} {% block title %} Staff
 {% endblock %} {% block content %}
+
+<style>
+    #why-join-us .why-join-card {
+        position: relative;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        color: white;
+        height: 100%;
+        display: flex;
+      
+        flex-direction: column;
+        justify-content: end;
+        border-radius: 0.75rem;
+        overflow: hidden;
+        padding: 20px;
+      }
+      
+      #why-join-us .why-join-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4); /* Dark overlay with 40% opacity */
+        z-index: 1;
+      }
+      
+      #why-join-us .why-join-card .text-content {
+        position: relative;
+        z-index: 2; /* Ensures the text content is above the overlay */
+        text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.7);
+        color: #fff;
+      }
+      
+      #why-join-us .why-join-card .text-content h3 {
+        font-size: 1.5rem;
+        margin-top: 1rem;
+      }
+      
+      #why-join-us .why-join-card .text-content p {
+        font-size: 1rem;
+        margin-top: 0.5rem;
+        line-height: 1.4;
+      }
+      
+      /* Specific background images for each card */
+      #why-join-us .why-join-card.card-1 {
+        background-image: url("{% static 'necysc_app/images/staff/cit.jpg' %}");
+      }
+      
+      #why-join-us .why-join-card.card-2 {
+        background-image: url("{% static 'necysc_app/images/staff/counselor.jpg' %}");
+      }
+      
+      #why-join-us .why-join-card.card-3 {
+        background-image: url("{% static 'necysc_app/images/staff/ra.jpg' %}");
+      }
+</style>
 <link rel="stylesheet" href="{% static 'necysc_app/staff.css' %}" />
 <div class="staff-section shadow position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
     <div class="overlay"></div>
     <div class="col-md-6 p-lg-5 mx-auto my-5 position-relative">
-        <h1 class="display-3 fw-bold text-white">Staffs & Applications</h1>
-        <h3 class="fw-normal text-light mb-4">Apply to Become a Staff Member!</h3>
+        <h1 class="display-3 fw-bold text-white">Staff</h1>
     </div>
 </div>
+
+<section>
+    <div class="container px-4 py-5 mb-sm-5" id="why-join-us" style="z-index: 100">
+        <h1 class="pb-2 text-center fw-bold display-5" style="color: #4e598c;">How do I join staff programs?</h1>
+        <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+            <div class="col" style="height: 350px;" >
+                <div class="card why-join-card card-1 h-100 text-bg-dark rounded-4 shadow-lg" >
+                    <div class="text-content">
+                        <h3 class="display-6 lh-1 fw-bold">Counselor-In-Training</h3>
+                        <p>CITs (and OPs) are core to NECYSC. CITs learn leadership, collaboration, and set an example to campers. </p>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="col">
+                <div class="card why-join-card card-2 h-100 text-bg-dark rounded-4 shadow-lg">
+                    <div class="text-content">
+                        <h3 class="display-6 lh-1 fw-bold">Counselor</h3>
+                        <p>Counselors serve as leading members of the camp community and
+                            work on creating new experiences for campers.
+                        </p>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="col">
+                <div class="card why-join-card card-3 h-100 text-bg-dark rounded-4 shadow-lg">
+                    <div class="text-content">
+                        <h3 class="display-6 lh-1 fw-bold">Residential Advisor</h3>
+                        <p>Residential Advisors are the "counselor" equivalent to the ExplorAsian program, guiding older teens during camp.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <section id="citapp">
     <div class="container">
@@ -33,14 +128,14 @@
                 <img src="{% static 'necysc_app/images/pose.png' %}" class="rounded-pill d-block" alt="Program Image" style="width:25rem; height: auto"loading="lazy">
             </div>
         </div>
-</div>
+    </div>
 </section>
 
 <section id="counselorapp">
 <div class="container">
-    <div class="row align-items-center p-5 my-5 border rounded-3 shadow-lg">
+    <div class="row bg-purple text-white align-items-center p-5 my-5 rounded-3 shadow-lg">
         <div class="col-md-8">
-            <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3" style="color: #4e598c;" id="counselor"> 
+            <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3"  id="counselor"> 
                 Counselor
             </h1>
             <ul class="list-unstyled mb-3">
@@ -54,7 +149,7 @@
             <p>
                 Learn more about the Counselor role and apply through the link below!
             </p>
-            <a href="https://forms.gle/edmjdzmKK1PuaatbA" target="_blank" class="btn-purple fw-bold" style="color: #F9C784;">Counselor Application</a>
+            <a href="https://forms.gle/edmjdzmKK1PuaatbA" target="_blank" class="btn-yellow fw-bold">Counselor Application</a>
         </div>
         <div class="col-md-4 align-items-center justify-content-center text-center mt-sm-5">
             <img src="{% static 'necysc_app/images/waterballoons.png' %}" class="rounded-pill d-block" alt="Counselor Image" style="width:25rem; height:auto" loading="lazy">
@@ -91,9 +186,9 @@
 
 <section id="OPapp">
     <div class="container">
-        <div class="row align-items-center p-5 my-5 border rounded-3 shadow-lg">
+        <div class="row bg-purple text-white align-items-center p-5 my-5 border rounded-3 shadow-lg">
             <div class="col-md-8">
-                <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3" style="color: #4e598c;" id="ops">
+                <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3" id="ops">
                     Operations CIT (OPs)
                 </h1>
                 <ul class="list-unstyled mb-3">
@@ -107,7 +202,7 @@
                 <p>
                     Learn more about the OPs role and apply through the link below!
                 </p>
-                <a href="https://forms.gle/edmjdzmKK1PuaatbA" target="_blank" class="btn-purple fw-bold" style="color: #F9C784;">OPs CIT Application</a>
+                <a href="https://forms.gle/edmjdzmKK1PuaatbA" target="_blank" class="btn-yellow fw-bold">OPs CIT Application</a>
             </div>
             <div class="col-md-4 align-items-center justify-content-center text-center mt-sm-5">
                 <img src="{% static 'necysc_app/images/king.png' %}" class="rounded-pill d-block" alt="Operations Staff Image" style="width:25rem; height:auto" loading="lazy">
@@ -117,24 +212,25 @@
 </section>
 
 <section id="committee">
-<div class="centered-section p-5 text-center border rounded-3 shadow-lg">
-    <h1 class="fw-bold position-relative" style="color: #4e598c;" id="committee">
-        Committee
-    </h1>
-    <div class="col-lg-8 mx-auto position-relative">
-        <ul class="list-unstyled">
-            <li><strong>Director:</strong> Christopher Chiu</li>
-            <li><strong>Asst Director:</strong> Paul Eska</li>
-            <li><strong>Education:</strong> Lina Harp, Deb Morris, Eugene Chiu</li>
-            <li><strong>General Admin:</strong> Deb Breen, Wendy Chan, Karen Tseng, Jessica Zhang</li>
-            <li><strong>Medical:</strong> Danielle Watson, Alyssa Chan, Jennifer Cheng</li>
-            <li><strong>Public Relations:</strong> David Fox, Helen Ng, Andrew Yang, Tonia Chu</li>
-            <li><strong>Registration:</strong> Mike Breen, Hongbo Deng, Sau Sim Lee, Barbara O'Toole, Wei Tang</li>
-            <li><strong>Treasurer:</strong> Lola Yao</li>
-        </ul>
+    <div class="container">
+        <div class="row p-5 text-center border rounded-3 shadow-lg">
+            <h1 class="fw-bold position-relative" style="color: #4e598c;" id="committee">
+                Committee
+            </h1>
+            <div class="col-lg-8 mx-auto position-relative">
+                <ul class="list-unstyled">
+                    <li><strong>Director:</strong> Christopher Chiu</li>
+                    <li><strong>Asst Director:</strong> Paul Eska</li>
+                    <li><strong>Education:</strong> Lina Harp, Deb Morris, Eugene Chiu</li>
+                    <li><strong>General Admin:</strong> Deb Breen, Wendy Chan, Karen Tseng, Jessica Zhang</li>
+                    <li><strong>Medical:</strong> Danielle Watson, Alyssa Chan, Jennifer Cheng</li>
+                    <li><strong>Public Relations:</strong> David Fox, Helen Ng, Andrew Yang, Tonia Chu</li>
+                    <li><strong>Registration:</strong> Mike Breen, Hongbo Deng, Sau Sim Lee, Barbara O'Toole, Wei Tang</li>
+                    <li><strong>Treasurer:</strong> Lola Yao</li>
+                </ul>
+            </div>
+        </div>
     </div>
-    </div>
-</div>
 </section>
 
 
