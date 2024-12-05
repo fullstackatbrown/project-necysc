@@ -1,7 +1,119 @@
 {% extends "necysc_app/base.html" %} {% load static %} {% block title %} Login /
 Register {% endblock %} {% block content %}
-<link rel="stylesheet" href="{% static 'necysc_app/login.css' %}" />
 
+<style>
+    .login_page {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        width: 100%;
+        height: 90vh;
+      }
+      
+      .login_form {
+        width: 50%;
+        height: 100%;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 30px;
+      }
+      
+      .login_form_body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 35px;
+        flex-direction: column;
+        width: 100%;
+      }
+      
+      .login_form_body #id_email,
+      .login_form_body #id_password {
+        width: 300px;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+      
+      /* .login_form_body input[type="submit"] {
+          background-color: #2E6D9E;
+          color: white;
+          border: none;
+          padding: 10px;
+          cursor: pointer;
+          width: 50%;
+          border-radius: 50px;
+      }
+      
+      .login_form_body input[type="submit"]:hover {
+          transition: 0.3s;
+          background-color: #4E2498;
+      } */
+      
+      .register_form {
+        width: 50%;
+        height: 100%;
+        padding: 60px;
+        padding-left: 150px;
+      
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        background-image: url("{% static 'necysc_app/images/king.png'%}");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        color: white;
+        flex-direction: column;
+        gap: 50px;
+        text-align: center;
+        clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
+      }
+
+      .register_form::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+      }
+      
+      .register_form h2 {
+        font-size: 35px;
+        z-index: 2;
+      }
+      
+      .register_form p {
+        font-size: 15px;
+        z-index: 2;
+      }
+      
+      .register_form a {
+        border: 1px solid white;
+        padding: 10px 20px;
+        color: white;
+        background-color: transparent;
+        text-decoration: none;
+        width: 350px;
+        font-size: 15px;
+        border-radius: 50px;
+        transition: background-color 0.3s ease;
+        z-index: 2;
+      }
+      
+      .register_form a:hover {
+        color: white;
+        background-color: rgba(255, 255, 255, 0.3);
+        z-index: 2;
+      }
+</style>
 <div class="login_page">
     <!-- Login Form -->
     <div class="login_form">
@@ -22,7 +134,7 @@ Register {% endblock %} {% block content %}
                             border-radius: 20px;
                             display: inline-block;
                             text-align: center;" 
-                    class="fw-bold" type="submit" value="Login" name="Login User">
+                    class="fw-bold w-50" type="submit" value="Login" name="Login User">
         </form>
         
         {% if form.errors %}
@@ -39,7 +151,7 @@ Register {% endblock %} {% block content %}
     <div class="register_form">
         <h2>Don't Have an Account?</h2>
         <p>Sign up for the summer!</p>
-        <a class="" href="{% url 'necysc_app:register' %}">Sign Up</a>
+        <a class="btn " href="{% url 'necysc_app:register' %}">Sign Up</a>
     </div>
     <script>
         var form_fields = document.getElementsByTagName('input')

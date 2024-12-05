@@ -6,8 +6,9 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'necysc_app/application_detail.css' %}">
 
-<h1>Application Details</h1>
-
+<div>
+    <a href="{% url 'necysc_app:home' %}" class="btn-purple rounded-pill">Back to Home</a>
+</div>
 <div class="application-detail">
     <div class="application-detail-header">
         <h2>Name: {{ application.applicant_fname }} {{ application.applicant_lname }}</h2>
